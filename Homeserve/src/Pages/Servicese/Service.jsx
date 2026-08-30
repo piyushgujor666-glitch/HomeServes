@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Layout from "../../Components/Layout.jsx";
 
-import plumbing from "../../assets/plumber.png";
+import plumbing from "../../assets/Plumber.png";
 import cleaning from "../../assets/cleaning.png";
 import electrical from "../../assets/electrician.png";
 import repair from "../../assets/Painting.png";
