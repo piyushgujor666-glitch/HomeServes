@@ -6,6 +6,12 @@ import plumbing from "../../assets/Plumber.png";
 import cleaning from "../../assets/cleaning.png";
 import electrical from "../../assets/electrician.png";
 import repair from "../../assets/Painting.png";
+import Acrepair from "../../assets/Acrepair.png";
+import Crpantry from "../../assets/Crpantry.png";
+import repairappliance from "../../assets/repairappliance.png";
+import PestControl from "../../assets/PestControl.png";
+import WaterPurifierService from "../../assets/WaterPurifierService.png";
+import Locksmith from "../../assets/Locksmith.png";
 
 function Service() {
   const services = [
@@ -33,9 +39,51 @@ function Service() {
     {
       id: 4,
       title: "Painting",
-      description: "Get help with doors, furniture and general repairs.",
+      description: "Get Help of your home Add Best Colour.",
       price: "₹299",
       image: repair,
+    },
+    {
+      id:5,
+      title: "AC Repair & Service",
+      description: "Reliable AC repair, servicing, installation, and maintenance to keep your home cool and comfortable.",
+      price:"₹599",
+      image: Acrepair,
+    },
+    {
+      id:6,
+      title: "Carpentry",
+      description: "Professional carpentry services for furniture repair, door and cabinet fixes, shelves, and custom woodwork at your home.",
+      price:"₹899",
+      image: Crpantry,
+    },
+    {
+      id:7,
+      title: "Appliance Repair",
+      description: "Reliable repair and maintenance services for refrigerators, washing machines, microwaves, and other home appliances.",
+      price:"₹499",
+      image: repairappliance,
+    },
+    {
+      id:8,
+      title: "Pest Control",
+      description: "Effective pest control services to protect your home from cockroaches, ants, termites, mosquitoes, and other unwanted pests.",
+      price:"₹399",
+      image: PestControl,
+    },
+    {
+      id:9,
+      title: "RO/Water Purifier Service",
+      description: "Professional RO and water purifier servicing, filter replacement, repair, and maintenance to ensure clean and safe drinking water.",
+      price:"₹699",
+      image: WaterPurifierService,
+    },
+    {
+      id:10,
+      title: "Locksmith",
+      description: "Professional locksmith services for lock repair, replacement, key duplication, and secure door access at your home.",
+      price:"₹199",
+      image: Locksmith,
     },
   ];
 

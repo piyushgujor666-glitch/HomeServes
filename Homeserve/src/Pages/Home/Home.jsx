@@ -97,7 +97,7 @@ function Home() {
           </div>
 
           <NavLink
-            to="/service"
+            to="/services"
             className="text-green-600 font-semibold"
           >
             View All →
@@ -118,15 +118,15 @@ function Home() {
             </div>
 
             <h3 className="mt-5 text-xl font-semibold text-gray-800">
-              Home Repair
+              Painting
             </h3>
 
             <p className="mt-2 text-gray-500 text-sm">
-              Get help with general home repairs.
+              Get help with colour of you Home.
             </p>
 
             <NavLink
-              to="/service"
+              to="/services"
               className="inline-block mt-5 text-green-600 font-semibold"
             >
               Book Now →
@@ -152,7 +152,7 @@ function Home() {
             </p>
 
             <NavLink
-              to="/service"
+              to="/services"
               className="inline-block mt-5 text-green-600 font-semibold"
             >
               Book Now →
@@ -178,7 +178,7 @@ function Home() {
             </p>
 
             <NavLink
-              to="/service"
+              to="/services"
               className="inline-block mt-5 text-green-600 font-semibold"
             >
               Book Now →
@@ -204,7 +204,7 @@ function Home() {
             </p>
 
             <NavLink
-              to="/service"
+              to="/services"
               className="inline-block mt-5 text-green-600 font-semibold"
             >
               Book Now →

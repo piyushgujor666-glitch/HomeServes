@@ -80,7 +80,7 @@ function Header() {
           </nav>
 
           <button
-  className="relative text-gray-600 hover:text-green-600 transition ml-90 mt-1"
+  className="relative text-gray-600 hover:text-green-600 transition mt-1"
 >
   <FontAwesomeIcon
     icon={faBell}
