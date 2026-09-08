@@ -1,9 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import logo from "../../assets/logo.png"
 
 function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="bg-gray-900 text-gray-300 hover:scale-102
+             hover:drop-shadow-[0_0_20px_rgba(255,0,0,0.8)] rounded-[20px] ml-10 mr-10 mb-10">
 
       <div className="max-w-7xl mx-auto px-6 py-10">
 
@@ -13,19 +15,11 @@ function Footer() {
 
           <div>
 
-            <NavLink
-              to="/home"
-              className="flex items-center gap-3"
-            >
-
-              <div className="w-10 h-10 bg-green-600 rounded-xl flex items-center justify-center text-white text-2xl">
-                ⌂
-              </div>
-
-              <h2 className="text-xl font-bold text-white">
-                HomeServe
-              </h2>
-
+            <NavLink to="/home" className="flex items-center gap-3 " > 
+              <img src={logo} alt="HomeServe Logo" className="w-15 transition-all duration-300
+             hover:scale-110 zoom-animation transition-all duration-100
+             hover:drop-shadow-[0_0_15px_rgba(34,197,94,0.8)] height-10 " /> 
+              <h1 className="text-2xl font-bold text-green-700"> HomeServe </h1> 
             </NavLink>
 
             <p className="mt-4 text-sm text-gray-400">

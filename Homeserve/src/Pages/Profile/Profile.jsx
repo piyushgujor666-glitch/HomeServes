@@ -107,7 +107,7 @@ function Profile() {
           {/* Edit */}
 
           <button
-            className="mt-8 bg-green-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-green-700"
+            className="mt-8 bg-green-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-green-700 zoom_animation"
           >
             Edit Profile
           </button>
@@ -121,7 +121,7 @@ function Profile() {
 
           <NavLink
             to="/login"
-            className="inline-block border border-red-300 text-red-600 px-6 py-3 rounded-xl font-semibold hover:bg-red-50"
+            className="inline-block border border-red-300 text-red-600 px-6 py-3 rounded-xl font-semibold zoom-animation"
           >
             Logout
           </NavLink>

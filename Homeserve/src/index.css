@@ -1,1 +1,42 @@
 @import "tailwindcss";
+@keyframes zoomInOut {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.01);
+  }
+}
+
+.zoom-animation {
+  animation: zoomInOut 3s ease-in-out infinite;
+}
+
+@keyframes zoomIn {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.zoomanimation {
+  animation: zoomIn 4s ease-in-out infinite;
+}
+
+@keyframes zoom {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+.zoom_animation {
+  animation: zoom 4s ease-in-out infinite;
+}

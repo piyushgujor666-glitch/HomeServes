@@ -12,6 +12,7 @@ import repairappliance from "../../assets/repairappliance.png";
 import PestControl from "../../assets/PestControl.png";
 import WaterPurifierService from "../../assets/WaterPurifierService.png";
 import Locksmith from "../../assets/Locksmith.png";
+import backgroundimage from "../../assets/service_background.jpg"
 
 function Service() {
   const services = [
@@ -96,7 +97,7 @@ function Service() {
 
         <div
   className="relative h-[420px] rounded-3xl overflow-hidden bg-cover bg-center bg-green-700"
-  // style={{ backgroundImage: `url(${serviceBg})` }}
+  style={{ backgroundImage: `url(${backgroundimage})` }}
 >
   
   {/* Dark overlay */}
@@ -190,7 +191,7 @@ function Service() {
 
                 <NavLink
                   to="/book-service"
-                  className="block text-center mt-5 bg-green-600 text-white py-3 rounded-xl font-semibold hover:bg-green-700 transition"
+                  className="block text-center mt-5 bg-green-600 text-white py-3 rounded-xl font-semibold hover:bg-green-700 transition zoom_animation transition-all duration-800"
                 >
                   Book Now
                 </NavLink>

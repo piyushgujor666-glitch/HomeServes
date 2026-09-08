@@ -85,7 +85,7 @@ function Bookings() {
 
           <NavLink
             to="/services"
-            className="inline-block bg-green-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-green-700"
+            className="inline-block bg-green-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-green-700 zoomanimation transition-all duration-100"
           >
             Book Another Service
           </NavLink>

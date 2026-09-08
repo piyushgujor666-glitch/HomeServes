@@ -2,10 +2,11 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-solid-svg-icons";
+import logo from "../../assets/logo.png";
 
 function Header() {
   return (
-    <header className="bg-white border-b border-gray-200 shadow-sm">
+    <header className="bg-black border-b border-gray-200 shadow-sm rounded-[30px] mt-1 ml-10 mr-10 zoom-animation">
 
       <div className="max-w-7xl mx-auto px-6 py-4">
 
@@ -13,19 +14,19 @@ function Header() {
 
           {/* LOGO */}
 
-          <NavLink
-            to="/home"
-            className="flex items-center gap-3"
-          >
-
-            <div className="w-10 h-10 bg-green-600 rounded-xl flex items-center justify-center text-white text-2xl">
-              ⌂
-            </div>
-
-            <h1 className="text-2xl font-bold text-green-700">
-              HomeServe
-            </h1>
-
+          <NavLink to="/home" className="flex items-center gap-3" > 
+          <img
+  src={logo}
+  alt="HomeServe"
+  className="
+    w-10 h-10
+    transition-all duration-500
+    zoomanimation
+    hover:scale-110
+    hover:drop-shadow-[0_0_15px_rgba(34,197,94,0.8)]
+  "
+/>
+          <h1 className="text-2xl font-bold text-green-700"> HomeServe </h1> 
           </NavLink>
 
 
