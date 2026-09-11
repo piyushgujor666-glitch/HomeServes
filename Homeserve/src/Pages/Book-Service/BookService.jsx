@@ -100,6 +100,31 @@ function BookService() {
                   Home Repair
                 </option>
 
+                <option value="repair">
+                  Ac repair
+                </option>
+
+                <option value="repair">
+                  Carpentry
+                </option>
+
+                <option value="repair">
+                  Appliance Repair
+                </option>
+
+                <option value="repair">
+                  Pest Control
+                </option>
+
+                <option value="repair">
+                  RO/Water Purifier Service
+                </option>
+
+                <option value="repair">
+                  Lock-smith
+                </option>
+
+
               </select>
 
             </div>

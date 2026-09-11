@@ -81,7 +81,7 @@ function Service() {
     },
     {
       id:10,
-      title: "Locksmith",
+      title: "Lock-npm runsmith",
       description: "Professional locksmith services for lock repair, replacement, key duplication, and secure door access at your home.",
       price:"₹199",
       image: Locksmith,
