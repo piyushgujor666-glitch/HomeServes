@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Layout from "../../Components/Layout.jsx";
-import backgroundImage from "../../assets/background image.jpg";
+import image from "../../assets/Home_background.png";
 
 function Home() {
 
@@ -20,20 +20,20 @@ function Home() {
             {/* LEFT */}
 
             <div className="p-8 md:p-14 text-white bg-cover bg-center"
-            style={{ backgroundImage: `url(${backgroundImage})` }}>
+            style={{ backgroundImage: `url(${image})` }}>
               
 
-              <p className="text-green-900 font-semibold text-sm">
+              <p className="text-yellow-300 font-semibold text-sm zoomanimation">
                 WELCOME TO HOMESERVE
               </p>
 
-              <h1 className="mt-4 text-4xl md:text-5xl font-bold leading-tight text-black">
+              <h1 className="mt-4 text-4xl md:text-5xl font-bold leading-tight text-amber-500 zoomanimation">
                 Reliable services
                 <br />
                 for your home.
               </h1>
 
-              <p className="mt-5 text-lg max-w-lg text-black">
+              <p className="mt-5 text-lg max-w-lg text-orange-400 zoomanimation">
                 Find trusted professionals for cleaning,
                 plumbing, electrical work and other home services.
               </p>
@@ -41,7 +41,7 @@ function Home() {
               <NavLink
                 to="/services"
                 className="inline-block mt-10 bg-white text-green-700 px-10 py-3 rounded-xl font-semibold
-               ml-220 zoomanimation transition-all duration-100"
+                zoomanimation transition-all duration-100"
               >
                 Book a Service
               </NavLink>
@@ -76,7 +76,7 @@ function Home() {
 
           <NavLink
             to="/services"
-            className="text-green-600 font-semibold zoomanimation transition-all duration-100"
+            className="text-green-600 font-semibold zoomanimation"
           >
             View All →
           </NavLink>
@@ -91,7 +91,7 @@ function Home() {
 
           <div className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition">
 
-            <div className="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center text-3xl">
+            <div className="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center text-3xl hover:shadow-lg transition">
               🔧
             </div>
 
@@ -105,7 +105,7 @@ function Home() {
 
             <NavLink
               to="/services"
-              className="inline-block mt-5 text-green-600 font-semibold zoom animation transition-all duration-100"
+              className="inline-block mt-5 text-green-600 font-semibold zoomanimation"
             >
               Book Now →
             </NavLink>
@@ -117,7 +117,7 @@ function Home() {
 
           <div className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition">
 
-            <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-3xl">
+            <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-3xl hover:shadow-lg transition">
               🧹
             </div>
 
@@ -131,7 +131,7 @@ function Home() {
 
             <NavLink
               to="/services"
-              className="inline-block mt-5 text-green-600 font-semibold zoom-animation transition-all duration-100"
+              className="inline-block mt-5 text-green-600 font-semibold zoomanimation"
             >
               Book Now →
             </NavLink>
@@ -143,7 +143,7 @@ function Home() {
 
           <div className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition">
 
-            <div className="w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center text-3xl">
+            <div className="w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center text-3xl hover:shadow-lg transition">
               ⚡
             </div>
 
@@ -157,7 +157,7 @@ function Home() {
 
             <NavLink
               to="/services"
-              className="inline-block mt-5 text-green-600 font-semibold zoom-animation transition-all duration-100"
+              className="inline-block mt-5 text-green-600 font-semibold zoomanimation"
             >
               Book Now →
             </NavLink>
@@ -169,7 +169,7 @@ function Home() {
 
           <div className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition">
 
-            <div className="w-14 h-14 bg-cyan-100 rounded-xl flex items-center justify-center text-3xl">
+            <div className="w-14 h-14 bg-cyan-100 rounded-xl flex items-center justify-center text-3xl hover:shadow-lg transition">
               🚰
             </div>
 
@@ -183,7 +183,7 @@ function Home() {
 
             <NavLink
               to="/services"
-              className="inline-block mt-5 text-green-600 font-semibold zoom-animation transition-all duration-100"
+              className="inline-block mt-5 text-green-600 font-semibold zoomanimation"
             >
               Book Now →
             </NavLink>
@@ -219,7 +219,7 @@ function Home() {
 
             <div className="text-center">
 
-              <div className="mx-auto w-14 h-14 bg-green-100 rounded-full flex items-center justify-center text-2xl zoom-animation transition-all duration-100">
+              <div className="mx-auto w-14 h-14 bg-green-100 rounded-full flex items-center justify-center text-2xl zoom-animation transition-all duration-100 hover:shadow-lg transition">
                 ✓
               </div>
 
@@ -236,7 +236,7 @@ function Home() {
 
             <div className="text-center">
 
-              <div className="mx-auto w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center text-2xl zoom-animation transition-all duration-100">
+              <div className="mx-auto w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center text-2xl zoom-animation transition-all duration-100 hover:shadow-lg transition">
                 📅
               </div>
 
@@ -253,7 +253,7 @@ function Home() {
 
             <div className="text-center">
 
-              <div className="mx-auto w-14 h-14 bg-yellow-100 rounded-full flex items-center justify-center text-2xl zoom-animation transition-all duration-100">
+              <div className="mx-auto w-14 h-14 bg-yellow-100 rounded-full flex items-center justify-center text-2xl zoom-animation transition-all duration-100 hover:shadow-lg transition">
                 ⭐
               </div>
 

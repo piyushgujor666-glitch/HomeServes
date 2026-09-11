@@ -6,7 +6,7 @@ import logo from "../../assets/logo.png";
 
 function Header() {
   return (
-    <header className="bg-black border-b border-gray-200 shadow-sm rounded-[30px] mt-1 ml-10 mr-10 zoom-animation">
+    <header className="bg-black border-b border-gray-200 shadow-sm rounded-[30px] mt-1 ml-10 mr-10 zoom-animation zoomanimation">
 
       <div className="max-w-7xl mx-auto px-6 py-4">
 
@@ -39,7 +39,7 @@ function Header() {
               className={({ isActive }) =>
                 isActive
                   ? "text-green-600 font-semibold"
-                  : "text-gray-600 hover:text-green-600"
+                  : "text hover:text-green-600 text-white"
               }
             >
               Home
@@ -50,7 +50,7 @@ function Header() {
               className={({ isActive }) =>
                 isActive
                   ? "text-green-600 font-semibold"
-                  : "text-gray-600 hover:text-green-600"
+                  : "text hover:text-green-600 text-white"
               }
             >
               Services
@@ -61,7 +61,7 @@ function Header() {
               className={({ isActive }) =>
                 isActive
                   ? "text-green-600 font-semibold"
-                  : "text-gray-600 hover:text-green-600"
+                  : "text hover:text-green-600 text-white"
               }
             >
               Bookings
@@ -72,7 +72,7 @@ function Header() {
               className={({ isActive }) =>
                 isActive
                   ? "text-green-600 font-semibold"
-                  : "text-gray-600 hover:text-green-600"
+                  : "text hover:text-green-600 text-white"
               }
             >
               Profile

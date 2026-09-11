@@ -13,18 +13,21 @@
   animation: zoomInOut 3s ease-in-out infinite;
 }
 
-@keyframes zoomIn {
-  0%, 100% {
-    transform: scale(1);
+
+@keyframes leftRight {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
   }
 
-  50% {
-    transform: scale(1.2);
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
 .zoomanimation {
-  animation: zoomIn 4s ease-in-out infinite;
+  animation: leftRight 1s ease-out;
 }
 
 @keyframes zoom {
@@ -39,4 +42,20 @@
 
 .zoom_animation {
   animation: zoom 4s ease-in-out infinite;
+}
+
+@keyframes leftRight {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.zoom.animation {
+  animation: leftRight 1s ease-out;
 }

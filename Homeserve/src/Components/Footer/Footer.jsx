@@ -5,7 +5,7 @@ import logo from "../../assets/logo.png"
 function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300 hover:scale-102
-             hover:drop-shadow-[0_0_20px_rgba(255,0,0,0.8)] rounded-[20px] ml-10 mr-10 mb-10">
+             hover:drop-shadow-[0_0_20px_rgba(255,0,0,0.8)] rounded-[20px] ml-10 mr-10 mb-10 zoomanimation">
 
       <div className="max-w-7xl mx-auto px-6 py-10">
 

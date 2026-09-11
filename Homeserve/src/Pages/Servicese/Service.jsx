@@ -108,17 +108,17 @@ function Service() {
 
     <div className="px-8 md:px-14 text-white max-w-2xl">
 
-      <p className="text-green-300 font-semibold">
+      <p className="text-green-300 font-semibold zoomanimation">
         HOMESERVE SERVICES
       </p>
 
-      <h1 className="text-4xl md:text-6xl font-bold mt-4 leading-tight">
+      <h1 className="text-4xl md:text-6xl font-bold mt-4 leading-tight zoomanimation">
         Professional services
         <br />
         for your home.
       </h1>
 
-      <p className="mt-5 text-lg text-gray-200">
+      <p className="mt-5 text-lg text-gray-200 zoomanimation">
         From plumbing to cleaning and electrical work,
         find trusted professionals for your home.
       </p>
