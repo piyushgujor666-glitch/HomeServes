@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Mail, Phone, KeyRound } from "lucide-react";
+import  logo from "../../assets/forgot_logo.png"
 
 function Forgot() {
   const [method, setMethod] = useState("email");
@@ -46,7 +47,8 @@ function Forgot() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 bg-no-repeat bg-cover"
+    style={{backgroundImage : `url(${logo})`}}>
 
       {/* Main Card */}
       <div className="w-full max-w-md bg-white rounded-3xl shadow-xl p-6 sm:p-8">

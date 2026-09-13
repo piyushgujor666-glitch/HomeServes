@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-solid-svg-icons";
-import logo from "../../assets/Logo.jpeg";
+import logo from "../../assets/FIX.jpg";
 
 function Header() {
   return (
@@ -19,7 +19,7 @@ function Header() {
   src={logo}
   alt="FixmaTe"
   className="
-    w-15 h-15
+    w-10 h-10
     transition-all duration-500
     zoomanimation
     hover:scale-110
