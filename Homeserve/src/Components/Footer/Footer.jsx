@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../../assets/logo.png"
+import Logo from "../../assets/Logo.jpeg"
 
 function Footer() {
   return (
@@ -16,10 +16,10 @@ function Footer() {
           <div>
 
             <NavLink to="/home" className="flex items-center gap-3 " > 
-              <img src={logo} alt="HomeServe Logo" className="w-15 transition-all duration-300
+              <img src={Logo} alt="Fixma🔨e Logo" className="w-15 transition-all duration-300
              hover:scale-110 zoom-animation transition-all duration-100
              hover:drop-shadow-[0_0_15px_rgba(34,197,94,0.8)] height-10 " /> 
-              <h1 className="text-2xl font-bold text-green-700"> HomeServe </h1> 
+              <h1 className="text-2xl font-bold text-green-700"> Fixma🔨e </h1> 
             </NavLink>
 
             <p className="mt-4 text-sm text-gray-400">
@@ -120,7 +120,7 @@ function Footer() {
         <div className="border-t border-gray-700 mt-10 pt-6 text-center">
 
           <p className="text-sm text-gray-500">
-            © 2026 HomeServe. All rights reserved.
+            © 2026 Fixma🔨e. All rights reserved.
           </p>
 
         </div>

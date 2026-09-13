@@ -2,11 +2,11 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-solid-svg-icons";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/Logo.jpeg";
 
 function Header() {
   return (
-    <header className="bg-black border-b border-gray-200 shadow-sm rounded-[30px] mt-1 ml-10 mr-10 zoom-animation zoomanimation">
+    <header className="bg-black border-b border-gray-200 shadow-sm rounded-[30px] mt-1 ml-6 mr-6 zoom-animation zoomanimation">
 
       <div className="max-w-7xl mx-auto px-6 py-4">
 
@@ -14,19 +14,19 @@ function Header() {
 
           {/* LOGO */}
 
-          <NavLink to="/home" className="flex items-center gap-3" > 
+          <NavLink to="/home" className="flex items-center gap-2" > 
           <img
   src={logo}
-  alt="HomeServe"
+  alt="FixmaTe"
   className="
-    w-10 h-10
+    w-15 h-15
     transition-all duration-500
     zoomanimation
     hover:scale-110
     hover:drop-shadow-[0_0_15px_rgba(34,197,94,0.8)]
   "
 />
-          <h1 className="text-2xl font-bold text-green-700"> HomeServe </h1> 
+          <h1 className="text-2xl font-bold text-green-700">Fixma🔨e</h1> 
           </NavLink>
 
 

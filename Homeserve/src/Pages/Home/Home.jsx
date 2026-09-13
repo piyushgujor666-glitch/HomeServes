@@ -24,7 +24,7 @@ function Home() {
               
 
               <p className="text-yellow-300 font-semibold text-sm zoomanimation">
-                WELCOME TO HOMESERVE
+                WELCOME TO Fixma🔨e
               </p>
 
               <h1 className="mt-4 text-4xl md:text-5xl font-bold leading-tight text-amber-500 zoomanimation">
@@ -92,7 +92,7 @@ function Home() {
           <div className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition">
 
             <div className="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center text-3xl hover:shadow-lg transition">
-              🔧
+              🎨
             </div>
 
             <h3 className="mt-5 text-xl font-semibold text-gray-800">

@@ -1,190 +1,85 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from 'react';
+import { NavLink,Link } from 'react-router-dom';
+import backgroundimage from "../../assets/login_bg.png"
 
-function Signup() {
+export default function SignupForm() {
 
-  const navigate = useNavigate();
+   return (
+      <main className="grid items-center gap-y-6 lg:grid-cols-3 md:grid-cols-2">
+         <div className="w-full h-full max-md:order-1 md:min-h-screen">
+            <img src={backgroundimage} className="w-full h-full object-cover"
+               alt="signup-image" />
+         </div>
 
-  const handleSignup = () => {
-    navigate("/home");
-  };
+         <div className="p-4 md:p-8 lg:col-span-2">
+            <div className="max-w-md mx-auto w-full">
+               <div className="mb-10">
+                  <h1 className="text-slate-900 text-2xl font-bold dark:text-slate-50">Create an account</h1>
+               </div>
 
-  return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-5">
+               <form className="space-y-6 w-full">
+                  <div>
+                     <label htmlFor="name"
+                        className="mb-2 text-slate-900 font-medium text-sm inline-block dark:text-slate-50">Name</label>
+                     <input type="text" id="name" name="name" placeholder="John Doe" required
+                        className="px-3 py-2.5 text-sm text-slate-900 rounded-md bg-white w-full outline-1 -outline-offset-1 outline-slate-300 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 dark:text-slate-50 dark:bg-neutral-800 dark:outline-neutral-700" />
+                  </div>
+                  <div>
+                     <label htmlFor="email"
+                        className="mb-2 text-slate-900 font-medium text-sm inline-block dark:text-slate-50">Email</label>
+                     <input type="email" id="email" name="email" placeholder="john@readymadeui.com" required
+                        className="px-3 py-2.5 text-sm text-slate-900 rounded-md bg-white w-full outline-1 -outline-offset-1 outline-slate-300 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 dark:text-slate-50 dark:bg-neutral-800 dark:outline-neutral-700" />
+                  </div>
+                  <div>
+                     <label htmlFor="password"
+                        className="mb-2 text-slate-900 font-medium text-sm inline-block dark:text-slate-50">Password</label>
+                     <input type="password" id="password" name="password" placeholder="••••••••" required
+                        className="px-3 py-2.5 text-sm text-slate-900 rounded-md bg-white w-full outline-1 -outline-offset-1 outline-slate-300 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 dark:text-slate-50 dark:bg-neutral-800 dark:outline-neutral-700" />
+                  </div>
+                  <div>
+                     <label htmlFor="confirm-password"
+                        className="mb-2 text-slate-900 font-medium text-sm inline-block dark:text-slate-50">Confirm
+                        password</label>
+                     <input type="password" id="confirm-password" name="confirm-password" placeholder="••••••••" required
+                        className="px-3 py-2.5 text-sm text-slate-900 rounded-md bg-white w-full outline-1 -outline-offset-1 outline-slate-300 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 dark:text-slate-50 dark:bg-neutral-800 dark:outline-neutral-700" />
+                  </div>
 
-      <div className="w-full max-w-5xl bg-white rounded-3xl shadow-2xl overflow-hidden grid md:grid-cols-2">
+                  <div className="flex items-start flex-wrap gap-2">
+                     <label className="flex items-center group has-[input:checked]:text-slate-900">
+                        <input id="tmc" name="tmc" type="checkbox" required className="sr-only" />
+                        {/* Custom box */}
+                        <span
+                           className="flex h-4 w-4 shrink-0 items-center justify-center rounded outline-1 outline-slate-300 dark:outline-neutral-700 bg-white dark:bg-neutral-800 group-has-[input:checked]:bg-blue-600 group-has-[input:checked]:outline-blue-600 group-focus-within:outline-2 group-focus-within:outline-blue-600"
+                           aria-hidden="true">
+                           {/* Checkmark */}
+                           <svg className="size-3 text-white opacity-0 group-has-[input:checked]:opacity-100" viewBox="0 0 12 10"
+                              fill="none" stroke="currentColor" stroke-width="2">
+                              <path d="M1 5l3 3 7-7" />
+                           </svg>
+                        </span>
+                        <span className="ml-3 text-sm text-slate-700 dark:text-slate-300">
+                           I accept the
+                        </span>
+                     </label>
 
+                     <a href="#"
+                        className="ml-1 text-sm font-medium text-blue-700 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded dark:text-blue-500">
+                        Terms and Conditions
+                     </a>
+                  </div>
 
-        {/* LEFT SIDE */}
+                  <button type="submit"
+                     className="w-full py-2 px-3.5 text-sm rounded-md font-semibold cursor-pointer tracking-wide text-white border border-blue-600 bg-blue-600 hover:bg-blue-700 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+                     Create an account</button>
+               </form>
 
-        <div className="hidden md:flex bg-green-700 text-white items-center justify-center p-12">
-
-          <div className="text-center">
-
-            <div className="text-7xl">
-              🏠
+               <div className="mt-6 text-slate-900 text-sm text-center dark:text-slate-50">Already have an account? <NavLink
+               to="/login"
+                  className="text-blue-700 ml-1 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded dark:text-blue-500">
+                  Login here</NavLink>
+               </div>
             </div>
-
-            <h1 className="text-4xl font-bold mt-5">
-              HomeServe
-            </h1>
-
-            <p className="mt-4 text-green-100 leading-6">
-              Reliable Home Services,
-              <br />
-              Just a Click Away
-            </p>
-
-          </div>
-
-        </div>
-
-
-        {/* RIGHT SIDE */}
-
-        <div className="p-8 sm:p-10 md:p-12 flex items-center">
-
-          <div className="w-full max-w-md mx-auto">
-
-
-            {/* MOBILE LOGO */}
-
-            <div className="flex md:hidden justify-center items-center gap-2 mb-7">
-
-              <span className="text-4xl">
-                🏠
-              </span>
-
-              <h2 className="text-2xl font-bold text-green-700">
-                HomeServe
-              </h2>
-
-            </div>
-
-
-            <h1 className="text-3xl font-bold text-gray-900 text-center">
-              Create Account
-            </h1>
-
-            <p className="text-gray-500 text-sm text-center mt-2 mb-7">
-              Join HomeServe today
-            </p>
-
-
-            {/* NAME */}
-
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              Full Name
-            </label>
-
-            <input
-              type="text"
-              placeholder="Enter your full name"
-              className="w-full h-11 px-4 border border-gray-300 rounded-lg outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100"
-            />
-
-
-            {/* EMAIL */}
-
-            <label className="block text-sm font-semibold text-gray-700 mt-4 mb-2">
-              Email
-            </label>
-
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="w-full h-11 px-4 border border-gray-300 rounded-lg outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100"
-            />
-
-
-            {/* PHONE */}
-
-            <label className="block text-sm font-semibold text-gray-700 mt-4 mb-2">
-              Phone Number
-            </label>
-
-            <input
-              type="tel"
-              placeholder="Enter your phone number"
-              className="w-full h-11 px-4 border border-gray-300 rounded-lg outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100"
-            />
-
-
-            {/* PASSWORD */}
-
-            <label className="block text-sm font-semibold text-gray-700 mt-4 mb-2">
-              Password
-            </label>
-
-            <input
-              type="password"
-              placeholder="Create a password"
-              className="w-full h-11 px-4 border border-gray-300 rounded-lg outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100"
-            />
-
-
-            {/* CONFIRM PASSWORD */}
-
-            <label className="block text-sm font-semibold text-gray-700 mt-4 mb-2">
-              Confirm Password
-            </label>
-
-            <input
-              type="password"
-              placeholder="Confirm your password"
-              className="w-full h-11 px-4 border border-gray-300 rounded-lg outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100"
-            />
-
-
-            {/* TERMS */}
-
-            <label className="flex items-start gap-2 mt-4 text-sm text-gray-600">
-
-              <input
-                type="checkbox"
-                className="mt-1 accent-green-600"
-              />
-
-              <span>
-                I agree to the Terms & Conditions
-              </span>
-
-            </label>
-
-
-            {/* SIGN UP */}
-
-            <button
-              onClick={handleSignup}
-              className="w-full h-12 mt-5 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition"
-            >
-              Create Account
-            </button>
-
-
-            {/* LOGIN */}
-
-            <p className="text-center text-sm text-gray-500 mt-6">
-
-              Already have an account?
-
-              <Link
-                to="/login"
-                className="ml-1 text-green-700 font-bold hover:underline"
-              >
-                Login
-              </Link>
-
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-  );
+         </div>
+      </main>
+   );
 }
-
-export default Signup;

@@ -81,7 +81,7 @@ function Service() {
     },
     {
       id:10,
-      title: "Lock-npm runsmith",
+      title: "Locksmith",
       description: "Professional locksmith services for lock repair, replacement, key duplication, and secure door access at your home.",
       price:"₹199",
       image: Locksmith,
@@ -97,7 +97,7 @@ function Service() {
 
         <div
   className="relative h-[420px] rounded-3xl overflow-hidden bg-cover bg-center bg-green-700"
-  style={{ backgroundImage: `url(${backgroundimage})` }}
+  style={{backgroundImage: `url(${backgroundimage})`}}
 >
   
   {/* Dark overlay */}
@@ -109,7 +109,7 @@ function Service() {
     <div className="px-8 md:px-14 text-white max-w-2xl">
 
       <p className="text-green-300 font-semibold zoomanimation">
-        HOMESERVE SERVICES
+        Fixma🔨e SERVICES
       </p>
 
       <h1 className="text-4xl md:text-6xl font-bold mt-4 leading-tight zoomanimation">
