@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell } from "@fortawesome/free-solid-svg-icons";
+import { faBell} from "@fortawesome/free-solid-svg-icons";
 import logo from "../../assets/FIX.jpg";
-
 function Header() {
   return (
     <header className="bg-black border-b border-gray-200 shadow-sm rounded-[30px] mt-1 ml-6 mr-6 zoom-animation zoomanimation">
@@ -67,17 +66,6 @@ function Header() {
               Bookings
             </NavLink>
 
-            <NavLink
-              to="/profile"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-green-600 font-semibold"
-                  : "text hover:text-green-600 text-white"
-              }
-            >
-              Profile
-            </NavLink>
-
           </nav>
 
           <button
@@ -100,7 +88,6 @@ function Header() {
           >
             P
           </NavLink>
-
         </div>
 
       </div>

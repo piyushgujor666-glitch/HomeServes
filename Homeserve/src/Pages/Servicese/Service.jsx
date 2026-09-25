@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 import Layout from "../../Components/Layout.jsx";
 
 import plumbing from "../../assets/Plumber.png";
@@ -15,6 +15,7 @@ import Locksmith from "../../assets/Locksmith.png";
 import backgroundimage from "../../assets/service_background.jpg";
 
 function Service() {
+  const navigate = useNavigate();
   const services = [
     {
       id: 1,
@@ -110,6 +111,28 @@ function Service() {
 
   return (
     <Layout>
+
+      <div className="pointer-events-none fixed inset-x-0 bottom-6 z-50 flex items-center justify-between px-4 md:px-6">
+
+  {/* Back */}
+  <button
+    type="button"
+    onClick={() => navigate("/home")}
+    className="pointer-events-auto rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#16302B] shadow-lg ring-1 ring-black/10 transition hover:bg-[#16302B] hover:text-white"
+  >
+    ← Back
+  </button>
+
+  {/* Next */}
+  <button
+    type="button"
+    onClick={() => navigate("/bookings")}
+    className="pointer-events-auto rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#16302B] shadow-lg ring-1 ring-black/10 transition hover:bg-[#16302B] hover:text-white"
+  >
+    Next →
+  </button>
+
+</div>
 
       {/* =====================================================
           HERO
