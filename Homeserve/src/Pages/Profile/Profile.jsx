@@ -334,6 +334,12 @@ function Profile() {
               </div>
 
               <NavLink
+              onClick={(e)=>{
+                const confirmlogout = window.confirm("Are you sure you want to log out? 🥺 \n We’ll miss having you around! Your next order is just one click away. ❤️");
+                  if(!confirmlogout){
+                    e.preventDefault();
+                  }
+              }}
                 to="/login"
                 className="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-red-200 text-red-600 font-bold hover:bg-red-50 transition-all duration-200"
               >

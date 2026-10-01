@@ -462,7 +462,7 @@ function Home() {
 
               <div className="mt-10">
 
-                <img src={logo} alt="logo" className="h-20"/>
+                <img src={logo} alt="logo" className="h-20 rounded-2xl"/>
 
                 <h3 className="text-3xl font-extrabold mt-5">
                   One place.

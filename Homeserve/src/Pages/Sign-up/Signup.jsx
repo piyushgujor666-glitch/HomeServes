@@ -37,7 +37,7 @@ export default function SignupForm() {
           />
 
           <span className="text-xl sm:text-2xl font-bold tracking-tight text-gray-900">
-            FixMate
+            FixmaTe
           </span>
         </NavLink>
       </div>
@@ -580,7 +580,7 @@ export default function SignupForm() {
               FOOTER
               ================================================= */}
 
-          <p className="text-center text-xs text-gray-400 mt-6">
+          <p className="text-center text-xs text-black-500 mt-6">
             © 2026 FixMate · Home services made simple
           </p>
 

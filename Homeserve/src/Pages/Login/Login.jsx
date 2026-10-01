@@ -1,79 +1,73 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 import logo from "../../assets/FIX.jpg";
-import backgroundimage from "../../assets/login_page.png"
-
-// Add your background image here.
-// Example:
-// import bg from "../../assets/login-background.jpg";
+import backgroundimage from "../../assets/login_page.png";
 
 export default function LoginForm() {
+  const navigate = useNavigate();
+
   const [isVisible, setIsVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+
+    // Simulate login process
+    setTimeout(() => {
+      setLoading(false);
+      navigate("/home");
+    }, 1500);
+  };
 
   return (
-    <main className="min-h-screen relative overflow-hidden bg-gradient-to-br from-white via-[#F8FAFC] to-[#ECFDF5] bg-cover"
-    style={{backgroundImage:`url(${backgroundimage})`}}>
-
-      {/* =====================================================
-          OPTIONAL BACKGROUND IMAGE
-          =====================================================
-
-          If you want to use your own image, uncomment:
-
-          import bg from "../../assets/login-background.jpg";
-
-          Then add:
-
-          style={{ backgroundImage: `url(${bg})` }}
-
-          to this main element.
-      */}
-
-      {/* =====================================================
+    <main
+      className="min-h-screen relative overflow-hidden bg-gradient-to-br from-white via-[#F8FAFC] to-[#ECFDF5] bg-cover bg-center"
+      style={{
+        backgroundImage: `url(${backgroundimage})`,
+      }}
+    >
+      {/* ================================
           TOP LEFT BRAND
-          ===================================================== */}
+      ================================= */}
 
       <div className="absolute top-6 left-6 sm:top-8 sm:left-10 z-20">
-
         <NavLink
           to="/"
           className="flex items-center gap-3"
         >
-
           <img
             src={logo}
-            alt="FixMate"
+            alt="FixMate Logo"
             className="w-11 h-11 sm:w-12 sm:h-12 object-cover rounded-xl shadow-sm"
           />
 
           <span className="text-xl sm:text-2xl font-bold tracking-tight text-gray-900">
-            FixMate
+            Fix<span className="text-[#0E6B5C]">maTe</span>
           </span>
-
         </NavLink>
-
       </div>
 
-
-      {/* =====================================================
+      {/* ================================
           LOGIN AREA
-          ===================================================== */}
+      ================================= */}
 
       <div className="min-h-screen flex items-center justify-center px-4 py-24 sm:py-20">
 
         <div className="w-full max-w-md">
 
-          {/* =================================================
+          {/* ================================
               LOGIN CARD
-              ================================================= */}
+          ================================= */}
 
           <div className="bg-white rounded-2xl border border-gray-100 shadow-xl shadow-gray-200/50 px-6 py-8 sm:px-8 sm:py-9">
 
             {/* Header */}
 
             <div className="text-center mb-8">
-
               <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
                 Welcome back
               </h1>
@@ -81,20 +75,20 @@ export default function LoginForm() {
               <p className="text-sm text-gray-500 mt-2">
                 Login to your FixMate account
               </p>
-
             </div>
 
-
-            {/* =================================================
+            {/* ================================
                 LOGIN FORM
-                ================================================= */}
+            ================================= */}
 
-            <form className="space-y-5">
+            <form
+              onSubmit={handleLogin}
+              className="space-y-5"
+            >
 
               {/* EMAIL */}
 
               <div>
-
                 <label
                   htmlFor="email"
                   className="block text-sm font-medium text-gray-700 mb-2"
@@ -127,15 +121,11 @@ export default function LoginForm() {
                     focus:ring-green-500/10
                   "
                 />
-
               </div>
-
 
               {/* PASSWORD */}
 
               <div>
-
-                {/* Password label + forgot */}
 
                 <div className="flex items-center justify-between mb-2">
 
@@ -161,8 +151,7 @@ export default function LoginForm() {
 
                 </div>
 
-
-                {/* Password input */}
+                {/* Password Input */}
 
                 <div className="relative">
 
@@ -193,7 +182,6 @@ export default function LoginForm() {
                     "
                   />
 
-
                   {/* Show / Hide Password */}
 
                   <button
@@ -218,13 +206,9 @@ export default function LoginForm() {
                   </button>
 
                 </div>
-
               </div>
 
-
-              {/* =================================================
-                  REMEMBER ME
-                  ================================================= */}
+              {/* REMEMBER ME */}
 
               <div className="flex items-center">
 
@@ -249,39 +233,67 @@ export default function LoginForm() {
 
               </div>
 
-
-              {/* =================================================
+              {/* ================================
                   LOGIN BUTTON
-                  ================================================= */}
+              ================================= */}
 
-              <NavLink
-                to="/home"
-                className="
+              <button
+                type="submit"
+                disabled={loading}
+                className={`
                   w-full
                   flex
                   items-center
                   justify-center
+                  gap-2
                   py-3
                   rounded-lg
-                  bg-green-600
-                  hover:bg-green-700
-                  active:bg-green-800
                   text-white
                   font-semibold
                   transition
                   shadow-sm
                   shadow-green-600/20
-                "
+                  ${
+                    loading
+                      ? "bg-green-500 cursor-not-allowed"
+                      : "bg-green-600 hover:bg-green-700 active:bg-green-800"
+                  }
+                `}
               >
-                Login
-              </NavLink>
+
+                {loading ? (
+                  <>
+                    {/* Loading Spinner */}
+
+                    <span
+                      className="
+                        w-5
+                        h-5
+                        border-2
+                        border-white
+                        border-t-transparent
+                        rounded-full
+                        animate-spin
+                      "
+                    />
+
+                    Logging in...
+                  </>
+                ) : (
+                  <>
+                    Login
+
+                    <ArrowRight className="w-5 h-5" />
+                  </>
+                )}
+
+              </button>
 
             </form>
 
-
-            {/* =================================================
+            {/* ================================
                 DIVIDER
-                ================================================= */}
+            ================================= */}
 
             <div className="flex items-center gap-3 my-6">
 
@@ -295,11 +307,9 @@ export default function LoginForm() {
 
             </div>
 
-
-            {/* =================================================
+            {/* ================================
                 GOOGLE LOGIN
-                Firebase can be added here later
-                ================================================= */}
+            ================================= */}
 
             <button
               type="button"
@@ -322,8 +332,6 @@ export default function LoginForm() {
               "
             >
 
-              {/* Google icon */}
-
               <span className="text-lg font-bold">
                 G
               </span>
@@ -334,11 +342,9 @@ export default function LoginForm() {
 
             </button>
 
-
-            {/* =================================================
+            {/* ================================
                 FACEBOOK LOGIN
-                Firebase can be added here later
-                ================================================= */}
+            ================================= */}
 
             <button
               type="button"
@@ -361,8 +367,6 @@ export default function LoginForm() {
                 mt-3
               "
             >
-
-              {/* Facebook icon */}
 
               <span
                 className="
@@ -387,10 +391,9 @@ export default function LoginForm() {
 
             </button>
 
-
-            {/* =================================================
+            {/* ================================
                 SIGN UP
-                ================================================= */}
+            ================================= */}
 
             <p className="text-center text-sm text-gray-500 mt-7">
 
@@ -402,7 +405,7 @@ export default function LoginForm() {
                   ml-1
                   font-semibold
                   text-green-600
-                  hover:text-green-700
+                  hover:text-black-700
                   transition
                 "
               >
@@ -413,12 +416,11 @@ export default function LoginForm() {
 
           </div>
 
-
-          {/* =================================================
+          {/* ================================
               FOOTER
-              ================================================= */}
+          ================================= */}
 
-          <p className="text-center text-xs text-gray-400 mt-6">
+          <p className="text-center text-xs text-black-500 mt-6">
             © 2026 FixMate · Home services made simple
           </p>
 
@@ -429,4 +431,3 @@ export default function LoginForm() {
     </main>
   );
 }
-

@@ -277,9 +277,11 @@ function Forgot() {
           </Link>
 
         </div>
+        
 
       </div>
     </div>
+    
   );
 }
 
