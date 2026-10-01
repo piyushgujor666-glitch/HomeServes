@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
+import image from "../assets/background.png"
+
 import {
   Package,
   CheckCircle2,
@@ -20,6 +22,8 @@ import {
 } from "lucide-react";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
   const [isAvailable, setIsAvailable] = useState(true);
 
   const stats = [
@@ -111,6 +115,19 @@ const Dashboard = () => {
 
   return (
     <Layout>
+      {/* Back / Next Navigation */}
+      <div className="pointer-events-none fixed inset-x-0 bottom-6 z-50 flex items-center justify-between px-4 md:px-6">
+
+        {/* Next */}
+        <button
+          type="button"
+          onClick={() => navigate("/orders")}
+          className="pointer-events-auto rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#16302B] shadow-lg ring-1 ring-black/10 transition hover:bg-[#16302B] hover:text-white"
+        >
+          Next →
+        </button>
+      </div>
+
       <div className="min-h-screen bg-[#FBFAF7] p-4 md:p-8">
 
         {/* Header */}
@@ -206,6 +223,7 @@ const Dashboard = () => {
           </h2>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+
             <NavLink
               to="/orders"
               className="group flex items-center justify-between rounded-xl bg-white p-4 shadow-sm ring-1 ring-black/5 transition hover:shadow-md"
@@ -279,15 +297,18 @@ const Dashboard = () => {
                 className="text-[#8A8A82] transition group-hover:translate-x-1"
               />
             </button>
+
           </div>
         </div>
 
         {/* Upcoming Job */}
         <div className="mb-8 rounded-2xl bg-[#16302B] p-5 text-white shadow-sm md:p-6">
           <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+
             <div>
               <div className="mb-2 flex items-center gap-2">
                 <Clock size={17} />
+
                 <span className="text-sm font-medium text-white/70">
                   Upcoming Job
                 </span>
@@ -298,6 +319,7 @@ const Dashboard = () => {
               </h2>
 
               <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm text-white/70">
+
                 <span className="flex items-center gap-1.5">
                   <UserRound size={14} />
                   Rahul Sharma
@@ -312,10 +334,12 @@ const Dashboard = () => {
                   <Clock size={14} />
                   Today, 10:30 AM
                 </span>
+
               </div>
             </div>
 
             <div className="flex gap-3">
+
               <button className="flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-[#16302B] transition hover:bg-gray-100">
                 <Navigation size={16} />
                 Navigate
@@ -325,6 +349,7 @@ const Dashboard = () => {
                 <Phone size={16} />
                 Call
               </button>
+
             </div>
           </div>
         </div>
@@ -424,6 +449,7 @@ const Dashboard = () => {
 
           {/* Profile Completion */}
           <div className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-black/5">
+
             <h2 className="text-lg font-bold text-[#16302B]">
               Profile Completion
             </h2>
@@ -435,6 +461,7 @@ const Dashboard = () => {
             {/* Progress */}
             <div className="mt-6">
               <div className="mb-2 flex justify-between text-sm">
+
                 <span className="font-medium text-[#16302B]">
                   60% Complete
                 </span>
@@ -442,6 +469,7 @@ const Dashboard = () => {
                 <span className="text-[#8A8A82]">
                   60%
                 </span>
+
               </div>
 
               <div className="h-2 overflow-hidden rounded-full bg-[#EAE7E1]">
@@ -451,6 +479,7 @@ const Dashboard = () => {
 
             {/* Checklist */}
             <div className="mt-6 space-y-4">
+
               <div className="flex items-center gap-3">
                 <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#0E6B5C] text-xs text-white">
                   ✓
@@ -494,6 +523,7 @@ const Dashboard = () => {
                   Certificates
                 </span>
               </div>
+
             </div>
 
             <NavLink
@@ -502,7 +532,9 @@ const Dashboard = () => {
             >
               Complete Profile
             </NavLink>
+
           </div>
+
         </div>
       </div>
     </Layout>

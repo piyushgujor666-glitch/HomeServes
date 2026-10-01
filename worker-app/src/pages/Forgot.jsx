@@ -8,6 +8,8 @@ import {
   CheckCircle2,
   LockKeyhole,
 } from "lucide-react";
+import logo from "../assets/FIX.jpg"
+import image from "../assets/forgot.png"
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
@@ -29,7 +31,8 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FBFAF7]">
+    <div className="min-h-screen bg-[#FBFAF7] bg-cover"
+    style={{backgroundImage:`url(${image})`}}>
 
       {/* Top Green Bar */}
       <div className="h-1.5 bg-[#0E6B5C]" />
@@ -43,15 +46,16 @@ const ForgotPassword = () => {
 
             <NavLink to="/login">
 
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#16302B]">
-                <ShieldCheck
-                  size={28}
-                  className="text-white"
+              <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5 ml-48">
+                <img
+                src={logo}
+                  alt="FixMate Logo"
+                  className="h-full w-full object-contain"
                 />
               </div>
 
               <h1 className="mt-4 text-3xl font-bold text-[#16302B]">
-                HomeServe
+                FixmaTe
               </h1>
 
             </NavLink>
@@ -392,12 +396,12 @@ const ForgotPassword = () => {
           </div>
 
           {/* Footer */}
-          <div className="mt-6 flex items-center justify-center gap-2 text-xs text-[#A6A69C]">
+          <div className="mt-6 flex items-center justify-center gap-2 text-xs text-black">
             <ShieldCheck size={14} />
             <span>Your account information is protected.</span>
           </div>
 
-          <p className="mt-4 text-center text-xs text-[#B2B0A8]">
+          <p className="mt-4 text-center text-xs text-black">
             © {new Date().getFullYear()} HomeServe. All rights reserved.
           </p>
 

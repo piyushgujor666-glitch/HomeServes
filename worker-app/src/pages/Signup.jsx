@@ -12,6 +12,8 @@ import {
   ArrowRight,
   CheckCircle2,
 } from "lucide-react";
+import logo from "../assets/FIX.jpg"
+import image from "../assets/signuppage.png"
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -65,7 +67,8 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FBFAF7]">
+    <div className="min-h-screen bg-[#FBFAF7] bg-cover"
+    style={{backgroundImage:`url(${image})`}}>
 
       {/* Top Accent */}
       <div className="h-1.5 bg-[#0E6B5C]" />
@@ -81,16 +84,20 @@ const Signup = () => {
               to="/login"
               className="inline-flex flex-col items-center"
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#16302B] shadow-sm">
-                <BriefcaseBusiness
-                  size={27}
-                  className="text-white"
+
+              {/* Logo Image */}
+              <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5">
+                <img
+                src={logo}
+                  alt="FixMate Logo"
+                  className="h-full w-full object-contain"
                 />
               </div>
 
               <h1 className="mt-4 text-3xl font-bold tracking-tight text-[#16302B]">
-                HomeServe
+                FixmaTe
               </h1>
+
             </NavLink>
 
             <p className="mt-1 text-sm font-medium text-[#8A8A82]">
@@ -175,7 +182,7 @@ const Signup = () => {
                   <select
                     value={countryCode}
                     onChange={(e) => setCountryCode(e.target.value)}
-                    className="w-[105px] rounded-l-xl border border-r-0 border-[#E3E1DA] bg-[#FBFAF7] px-2 text-sm font-medium text-[#16302B] outline-none focus:border-[#0E6B5C]"
+                    className="w-[115px] rounded-l-xl border border-r-0 border-[#E3E1DA] bg-[#FBFAF7] px-2 text-sm font-medium text-[#16302B] outline-none focus:border-[#0E6B5C]"
                   >
                     <option value="+91">🇮🇳 +91</option>
                     <option value="+1">🇺🇸 +1</option>
@@ -187,8 +194,19 @@ const Signup = () => {
                     <option value="+49">🇩🇪 +49</option>
                     <option value="+33">🇫🇷 +33</option>
                     <option value="+81">🇯🇵 +81</option>
+                    <option value="+82">🇰🇷 +82</option>
+                    <option value="+86">🇨🇳 +86</option>
+                    <option value="+7">🇷🇺 +7</option>
+                    <option value="+39">🇮🇹 +39</option>
+                    <option value="+34">🇪🇸 +34</option>
+                    <option value="+31">🇳🇱 +31</option>
+                    <option value="+41">🇨🇭 +41</option>
+                    <option value="+55">🇧🇷 +55</option>
+                    <option value="+27">🇿🇦 +27</option>
+                    <option value="+64">🇳🇿 +64</option>
                   </select>
 
+                  {/* Phone */}
                   <div className="relative flex-1">
 
                     <Phone
@@ -454,19 +472,23 @@ const Signup = () => {
                   className="text-xs leading-5 text-[#6B6B62]"
                 >
                   I agree to the{" "}
+
                   <button
                     type="button"
                     className="font-semibold text-[#0E6B5C] hover:underline"
                   >
                     Terms & Conditions
-                  </button>{" "}
-                  and{" "}
+                  </button>
+
+                  {" "}and{" "}
+
                   <button
                     type="button"
                     className="font-semibold text-[#0E6B5C] hover:underline"
                   >
                     Privacy Policy
                   </button>
+
                   .
                 </label>
 
@@ -482,7 +504,7 @@ const Signup = () => {
 
                 <p className="text-xs leading-5 text-[#6B6B62]">
                   Your account information is protected and will only be used
-                  to manage your HomeServe worker account.
+                  to manage your FixMate worker account.
                 </p>
 
               </div>
@@ -533,18 +555,22 @@ const Signup = () => {
           </div>
 
           {/* Bottom */}
-          <div className="mt-6 flex items-center justify-center gap-2 text-xs text-[#A6A69C]">
+          <div className="mt-6 flex items-center justify-center gap-2 text-xs text-black">
+
             <ShieldCheck size={14} />
+
             <span>Secure worker registration</span>
+
           </div>
 
-          <p className="mt-3 text-center text-xs text-[#B2B0A8]">
-            © {new Date().getFullYear()} HomeServe. All rights reserved.
+          <p className="mt-3 text-center text-xs text-black">
+            © {new Date().getFullYear()} FixMate. All rights reserved.
           </p>
 
         </div>
 
       </div>
+
     </div>
   );
 };

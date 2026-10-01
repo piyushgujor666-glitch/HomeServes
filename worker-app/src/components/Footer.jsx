@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import logo from "../assets/FIX.jpg";
 
 const Footer = () => {
   return (
@@ -13,9 +14,17 @@ const Footer = () => {
           <div>
             <NavLink
               to="/dashboard"
-              className="text-xl font-bold text-gray-900"
+              className="inline-flex items-center gap-3"
             >
-              HomeServe
+              <img
+                src={logo}
+                alt="FixMate Logo"
+                className="h-10 w-10 rounded-lg object-contain"
+              />
+
+              <span className="text-xl font-bold text-gray-900">
+                Fix<span className="text-[#0E6B5C]">maTe</span>
+              </span>
             </NavLink>
 
             <p className="mt-2 max-w-sm text-sm text-gray-500">
@@ -47,13 +56,6 @@ const Footer = () => {
               Profile
             </NavLink>
 
-            <NavLink
-              to="/settings"
-              className="text-gray-500 hover:text-black"
-            >
-              Settings
-            </NavLink>
-
           </div>
         </div>
 
@@ -61,7 +63,7 @@ const Footer = () => {
         <div className="mt-8 flex flex-col gap-2 border-t border-gray-100 pt-5 text-sm text-gray-500 sm:flex-row sm:items-center sm:justify-between">
 
           <p>
-            © {new Date().getFullYear()} HomeServe. All rights reserved.
+            © {new Date().getFullYear()} FixmaTe. All rights reserved.
           </p>
 
           <div className="flex gap-5">

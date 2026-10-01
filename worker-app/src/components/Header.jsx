@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import logo from "../assets/FIX.jpg"
 
 const Header = () => {
   const navigate = useNavigate();
@@ -13,12 +14,20 @@ const Header = () => {
       <div className="flex h-16 items-center justify-between px-6">
 
         {/* Logo */}
-        <NavLink
-          to="/dashboard"
-          className="text-2xl font-bold text-gray-900"
-        >
-          HomeServe
-        </NavLink>
+<div className="flex items-center gap-3">
+  <img
+    src={logo}
+    alt="FixMate Logo"
+    className="h-10 w-10 rounded-lg object-contain"
+  />
+
+  <NavLink
+    to="/dashboard"
+    className="text-2xl font-bold text-gray-900"
+  >
+    Fix<span className="text-[#0E6B5C]">maTe</span>
+  </NavLink>
+</div>
 
         {/* Navigation */}
         <nav className="hidden items-center gap-2 md:flex">
@@ -47,19 +56,6 @@ const Header = () => {
             }
           >
             Orders
-          </NavLink>
-
-          <NavLink
-            to="/profile"
-            className={({ isActive }) =>
-              `rounded-lg px-4 py-2 text-sm font-medium transition ${
-                isActive
-                  ? "bg-black text-white"
-                  : "text-gray-600 hover:bg-gray-100 hover:text-black"
-              }`
-            }
-          >
-            Profile
           </NavLink>
 
         </nav>
