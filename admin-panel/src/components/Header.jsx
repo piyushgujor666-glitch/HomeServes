@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import {
-  ShieldCheck,
   Bell,
   LayoutDashboard,
   ClipboardList,
@@ -9,6 +8,8 @@ import {
   Users,
   UserCog,
 } from "lucide-react";
+
+import fixLogo from "../assets/FIX.jpg";
 
 const Header = () => {
   const navClass = ({ isActive }) =>
@@ -19,59 +20,79 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-[#FBFAF7]/95 backdrop-blur-md border-b border-[#E3E1DA] shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         <div className="h-[72px] flex items-center justify-between gap-4">
 
-          {/* Logo */}
+          {/* ================= LOGO ================= */}
           <NavLink
             to="/admin/dashboard"
             className="flex items-center gap-3 shrink-0"
           >
-            <div className="w-10 h-10 rounded-xl bg-[#0E6B5C] flex items-center justify-center shadow-sm">
-              <ShieldCheck size={21} className="text-white" />
-            </div>
+
+            <img
+              src={fixLogo}
+              alt="FixMate Logo"
+              className="w-10 h-10 rounded-xl object-cover shadow-sm"
+            />
 
             <div>
               <h1 className="text-lg font-bold tracking-tight text-[#16302B]">
-                HomeServe
+                Fix<span className="text-[#0E6B5C]">maTe</span>
               </h1>
 
               <p className="text-[11px] font-medium text-[#8A8A82]">
                 Admin Panel
               </p>
             </div>
+
           </NavLink>
 
-          {/* Navigation */}
+          {/* ================= NAVIGATION ================= */}
           <nav className="hidden lg:flex items-center gap-1.5">
 
-            <NavLink to="/admin/dashboard" className={navClass}>
+            <NavLink
+              to="/admin/dashboard"
+              className={navClass}
+            >
               <LayoutDashboard size={16} />
               Dashboard
             </NavLink>
 
-            <NavLink to="/admin/order" className={navClass}>
+            <NavLink
+              to="/admin/order"
+              className={navClass}
+            >
               <ClipboardList size={16} />
               Orders
             </NavLink>
 
-            <NavLink to="/admin/services" className={navClass}>
+            <NavLink
+              to="/admin/services"
+              className={navClass}
+            >
               <Wrench size={16} />
               Services
             </NavLink>
 
-            <NavLink to="/admin/users" className={navClass}>
+            <NavLink
+              to="/admin/users"
+              className={navClass}
+            >
               <Users size={16} />
               Users
             </NavLink>
 
-            <NavLink to="/admin/workers" className={navClass}>
+            <NavLink
+              to="/admin/workers"
+              className={navClass}
+            >
               <UserCog size={16} />
               Workers
             </NavLink>
 
           </nav>
 
-          {/* Right Side */}
+          {/* ================= RIGHT SIDE ================= */}
           <div className="flex items-center gap-3">
 
             {/* Notification */}
@@ -92,6 +113,7 @@ const Header = () => {
               to="/admin/adminprofile"
               className="flex items-center gap-2.5 rounded-xl px-2 py-1.5 hover:bg-[#F4F5F2] transition"
             >
+
               <div className="w-9 h-9 rounded-full bg-[#16302B] flex items-center justify-center shadow-sm">
                 <span className="text-white text-sm font-semibold">
                   A
@@ -99,6 +121,7 @@ const Header = () => {
               </div>
 
               <div className="hidden xl:block">
+
                 <p className="text-sm font-semibold text-[#16302B]">
                   Admin
                 </p>
@@ -106,7 +129,9 @@ const Header = () => {
                 <p className="text-[11px] text-[#8A8A82]">
                   Administrator
                 </p>
+
               </div>
+
             </NavLink>
 
           </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Users,
   Wrench,
@@ -17,7 +17,7 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-[#FBFAF7] p-4 sm:p-6 lg:p-8">
 
-      {/* Page Header */}
+      {/* ================= PAGE HEADER ================= */}
       <div className="mb-8">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
 
@@ -31,10 +31,11 @@ const Dashboard = () => {
             </h1>
 
             <p className="mt-2 text-sm text-[#8A8A82]">
-              Welcome back, Admin. Here's what's happening with HomeServe.
+              Welcome back, Admin. Here's what's happening with FixMate.
             </p>
           </div>
 
+          {/* System Status */}
           <div className="flex w-fit items-center gap-2 rounded-full bg-green-50 px-4 py-2 text-sm font-semibold text-green-700">
             <span className="h-2 w-2 rounded-full bg-green-500" />
             System Active
@@ -43,11 +44,13 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Statistics Cards */}
+
+      {/* ================= STATISTICS CARDS ================= */}
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
 
         {/* Users */}
         <div className="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5 transition duration-200 hover:-translate-y-1 hover:shadow-md">
+
           <div className="flex items-start justify-between">
 
             <div>
@@ -73,10 +76,13 @@ const Dashboard = () => {
             <TrendingUp size={15} />
             <span>12% from last month</span>
           </div>
+
         </div>
+
 
         {/* Workers */}
         <div className="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5 transition duration-200 hover:-translate-y-1 hover:shadow-md">
+
           <div className="flex items-start justify-between">
 
             <div>
@@ -102,10 +108,13 @@ const Dashboard = () => {
             <TrendingUp size={15} />
             <span>8% from last month</span>
           </div>
+
         </div>
+
 
         {/* Orders */}
         <div className="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5 transition duration-200 hover:-translate-y-1 hover:shadow-md">
+
           <div className="flex items-start justify-between">
 
             <div>
@@ -131,10 +140,13 @@ const Dashboard = () => {
             <TrendingUp size={15} />
             <span>18% from last month</span>
           </div>
+
         </div>
+
 
         {/* Revenue */}
         <div className="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5 transition duration-200 hover:-translate-y-1 hover:shadow-md">
+
           <div className="flex items-start justify-between">
 
             <div>
@@ -160,14 +172,16 @@ const Dashboard = () => {
             <TrendingUp size={15} />
             <span>15% from last month</span>
           </div>
+
         </div>
 
       </div>
 
-      {/* Main Dashboard Content */}
+
+      {/* ================= MAIN CONTENT ================= */}
       <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
 
-        {/* Recent Orders */}
+        {/* ================= RECENT ORDERS ================= */}
         <div className="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5 lg:col-span-2">
 
           <div className="flex items-center justify-between border-b border-[#EEECE5] p-6">
@@ -183,7 +197,7 @@ const Dashboard = () => {
             </div>
 
             <Link
-              to="/admin/orders"
+              to="/admin/order"
               className="hidden items-center gap-1 text-sm font-semibold text-[#0E6B5C] transition hover:text-[#16302B] sm:flex"
             >
               View All
@@ -192,12 +206,14 @@ const Dashboard = () => {
 
           </div>
 
+
           <div className="overflow-x-auto">
 
             <table className="w-full text-sm">
 
               <thead className="bg-[#FBFAF7]">
                 <tr>
+
                   <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-[#8A8A82]">
                     Customer
                   </th>
@@ -213,12 +229,16 @@ const Dashboard = () => {
                   <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-[#8A8A82]">
                     Status
                   </th>
+
                 </tr>
               </thead>
 
+
               <tbody className="divide-y divide-[#F0EEE8]">
 
+                {/* Rahul */}
                 <tr className="transition hover:bg-[#FBFAF7]">
+
                   <td className="whitespace-nowrap px-6 py-4 font-semibold text-[#16302B]">
                     Rahul
                   </td>
@@ -236,9 +256,13 @@ const Dashboard = () => {
                       Completed
                     </span>
                   </td>
+
                 </tr>
 
+
+                {/* Priya */}
                 <tr className="transition hover:bg-[#FBFAF7]">
+
                   <td className="whitespace-nowrap px-6 py-4 font-semibold text-[#16302B]">
                     Priya
                   </td>
@@ -256,9 +280,13 @@ const Dashboard = () => {
                       Pending
                     </span>
                   </td>
+
                 </tr>
 
+
+                {/* Arjun */}
                 <tr className="transition hover:bg-[#FBFAF7]">
+
                   <td className="whitespace-nowrap px-6 py-4 font-semibold text-[#16302B]">
                     Arjun
                   </td>
@@ -276,6 +304,7 @@ const Dashboard = () => {
                       In Progress
                     </span>
                   </td>
+
                 </tr>
 
               </tbody>
@@ -284,23 +313,28 @@ const Dashboard = () => {
 
           </div>
 
+
           {/* Mobile View All */}
           <div className="border-t border-[#EEECE5] p-4 sm:hidden">
+
             <Link
-              to="/admin/orders"
+              to="/admin/order"
               className="flex items-center justify-center gap-1 text-sm font-semibold text-[#0E6B5C]"
             >
               View All Orders
               <ChevronRight size={16} />
             </Link>
+
           </div>
 
         </div>
 
-        {/* Quick Overview */}
+
+        {/* ================= QUICK OVERVIEW ================= */}
         <div className="rounded-2xl bg-white shadow-sm ring-1 ring-black/5">
 
           <div className="border-b border-[#EEECE5] p-6">
+
             <h2 className="text-lg font-bold text-[#16302B]">
               Quick Overview
             </h2>
@@ -308,12 +342,15 @@ const Dashboard = () => {
             <p className="mt-1 text-sm text-[#8A8A82]">
               Current platform activity
             </p>
+
           </div>
+
 
           <div className="space-y-3 p-5">
 
-            {/* Pending */}
+            {/* Pending Orders */}
             <div className="flex items-center justify-between rounded-xl bg-[#FBFAF7] p-4 transition hover:bg-[#F5F3EC]">
+
               <div className="flex items-center gap-3">
 
                 <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-yellow-50">
@@ -332,10 +369,13 @@ const Dashboard = () => {
               <span className="font-bold text-[#16302B]">
                 42
               </span>
+
             </div>
+
 
             {/* Active Workers */}
             <div className="flex items-center justify-between rounded-xl bg-[#FBFAF7] p-4 transition hover:bg-[#F5F3EC]">
+
               <div className="flex items-center gap-3">
 
                 <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-green-50">
@@ -354,10 +394,13 @@ const Dashboard = () => {
               <span className="font-bold text-[#16302B]">
                 218
               </span>
+
             </div>
+
 
             {/* New Users */}
             <div className="flex items-center justify-between rounded-xl bg-[#FBFAF7] p-4 transition hover:bg-[#F5F3EC]">
+
               <div className="flex items-center gap-3">
 
                 <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50">
@@ -376,10 +419,13 @@ const Dashboard = () => {
               <span className="font-bold text-[#16302B]">
                 86
               </span>
+
             </div>
 
-            {/* Cancelled */}
+
+            {/* Cancelled Orders */}
             <div className="flex items-center justify-between rounded-xl bg-[#FBFAF7] p-4 transition hover:bg-[#F5F3EC]">
+
               <div className="flex items-center gap-3">
 
                 <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-red-50">
@@ -398,6 +444,7 @@ const Dashboard = () => {
               <span className="font-bold text-red-600">
                 12
               </span>
+
             </div>
 
           </div>

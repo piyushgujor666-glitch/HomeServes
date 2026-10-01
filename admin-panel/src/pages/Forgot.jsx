@@ -8,6 +8,8 @@ import {
   ShieldCheck,
   CheckCircle2,
 } from "lucide-react";
+import logo from "../assets/FIX.jpg"
+import image from "../assets/forgot_bg.png"
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -23,7 +25,8 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FBFAF7]">
+    <div className="min-h-screen bg-[#FBFAF7] bg-cover"
+    style={{backgroundImage:`url(${image})`}}>
 
       {/* Top Accent */}
       <div className="h-1.5 bg-[#0E6B5C]" />
@@ -39,20 +42,21 @@ const ForgotPassword = () => {
               to="/login"
               className="inline-flex flex-col items-center"
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#16302B] shadow-sm">
-                <ShieldCheck
-                  size={28}
-                  className="text-white"
+              <div className="flex h-14 w-14 items-center justify-center bg-[#16302B] shadow-sm rounded-4xl">
+                <img
+                src={logo}
+                alt="logo"
+                className="rounded-2xl"
                 />
               </div>
 
               <h1 className="mt-4 text-3xl font-bold tracking-tight text-[#16302B]">
-                HomeServe
+                FixmaTe
               </h1>
             </Link>
 
             <p className="mt-1 text-sm font-medium text-[#8A8A82]">
-              Worker Portal
+              Admin Panel
             </p>
 
           </div>
@@ -200,12 +204,12 @@ const ForgotPassword = () => {
           </div>
 
           {/* Bottom */}
-          <div className="mt-6 flex items-center justify-center gap-2 text-xs text-[#A6A69C]">
+          <div className="mt-6 flex items-center justify-center gap-2 text-xs text-black">
             <ShieldCheck size={14} />
             <span>Your account information is protected.</span>
           </div>
 
-          <p className="mt-3 text-center text-xs text-[#B2B0A8]">
+          <p className="mt-3 text-center text-xs text-black">
             © {new Date().getFullYear()} HomeServe. All rights reserved.
           </p>
 
