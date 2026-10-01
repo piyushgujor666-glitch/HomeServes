@@ -36,7 +36,7 @@ function Signup() {
             />
 
             <span className="text-3xl font-extrabold tracking-tight">
-              FixMate
+              FixmaTe
             </span>
 
           </div>

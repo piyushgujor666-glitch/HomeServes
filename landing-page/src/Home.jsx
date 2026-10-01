@@ -33,7 +33,7 @@ function Home() {
               <img
                 src={bgimage}
                 alt="FixmaTe Logo"
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover rounded-xl"
               />
             </div>
 
@@ -48,39 +48,6 @@ function Home() {
             </div>
 
           </Link>
-
-          {/* NAVIGATION */}
-          <div className="hidden items-center gap-8 md:flex">
-
-            <Link
-              to="/home"
-              className="font-medium transition hover:text-emerald-600"
-            >
-              Home
-            </Link>
-
-            <a
-              href={USER_URL}
-              className="font-medium transition hover:text-emerald-600"
-            >
-              User
-            </a>
-
-            <a
-              href={WORKER_URL}
-              className="font-medium transition hover:text-emerald-600"
-            >
-              Worker
-            </a>
-
-            <a
-              href={ADMIN_URL}
-              className="font-medium transition hover:text-emerald-600"
-            >
-              Admin
-            </a>
-
-          </div>
 
           {/* GET STARTED */}
           <a

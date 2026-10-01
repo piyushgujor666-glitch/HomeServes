@@ -34,7 +34,7 @@ function ForgotPassword() {
             <img
               src={image}
               alt="FixMate Logo"
-              className="w-28 h-auto object-contain mb-8"
+              className="w-28 h-auto object-contain mb-8 rounded-2xl"
             />
 
             <h1 className="text-4xl font-bold leading-tight mb-5">
