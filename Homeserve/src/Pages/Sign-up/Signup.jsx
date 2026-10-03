@@ -258,7 +258,7 @@ export default function SignupForm() {
                     "
                   />
 
-                  <button
+                  <NavLink
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
                     className="
@@ -269,6 +269,7 @@ export default function SignupForm() {
                       text-gray-400
                       hover:text-gray-700
                       transition
+                      bg-white
                     "
                     aria-label={
                       showPassword
@@ -277,7 +278,7 @@ export default function SignupForm() {
                     }
                   >
                     {showPassword ? "🙈" : "👁️"}
-                  </button>
+                  </NavLink>
 
                 </div>
 
@@ -326,7 +327,7 @@ export default function SignupForm() {
                     "
                   />
 
-                  <button
+                  <NavLink
                     type="button"
                     onClick={() =>
                       setShowConfirmPassword(!showConfirmPassword)
@@ -339,6 +340,7 @@ export default function SignupForm() {
                       text-gray-400
                       hover:text-gray-700
                       transition
+                      bg - white
                     "
                     aria-label={
                       showConfirmPassword
@@ -347,7 +349,7 @@ export default function SignupForm() {
                     }
                   >
                     {showConfirmPassword ? "🙈" : "👁️"}
-                  </button>
+                  </NavLink>
 
                 </div>
 

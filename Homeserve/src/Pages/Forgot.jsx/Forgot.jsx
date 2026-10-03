@@ -163,14 +163,6 @@ function Forgot() {
 
               </div>
 
-              {/* Switch to Mobile */}
-              <button
-                type="button"
-                onClick={() => handleMethodChange("mobile")}
-                className="mt-3 text-sm text-green-600 hover:text-green-700 font-medium"
-              >
-                Reset using mobile number
-              </button>
 
             </div>
           )}
@@ -227,15 +219,6 @@ function Forgot() {
                 </div>
 
               </div>
-
-              {/* Switch to Email */}
-              <button
-                type="button"
-                onClick={() => handleMethodChange("email")}
-                className="mt-3 text-sm text-green-600 hover:text-green-700 font-medium"
-              >
-                Reset using email address
-              </button>
 
             </div>
           )}

@@ -184,7 +184,7 @@ export default function LoginForm() {
 
                   {/* Show / Hide Password */}
 
-                  <button
+                  <NavLink
                     type="button"
                     onClick={() => setIsVisible(!isVisible)}
                     className="
@@ -195,6 +195,7 @@ export default function LoginForm() {
                       text-gray-400
                       hover:text-gray-700
                       transition
+                      bg-white
                     "
                     aria-label={
                       isVisible
@@ -203,7 +204,7 @@ export default function LoginForm() {
                     }
                   >
                     {isVisible ? "🙈" : "👁️"}
-                  </button>
+                  </NavLink>
 
                 </div>
               </div>
