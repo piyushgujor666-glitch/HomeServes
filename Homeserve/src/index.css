@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 @keyframes zoomInOut {
   0%, 100% {
     transform: scale(1);
@@ -58,4 +59,537 @@
 
 .zoom.animation {
   animation: leftRight 1s ease-out;
+}
+
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: white;
+  color: black;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* =========================
+   DARK MODE
+========================= */
+
+html.dark body {
+  background-color: #111827;
+  color: white;
+}
+
+/* Common backgrounds */
+
+html.dark .bg-white {
+  background-color: #1f2937 !important;
+}
+
+html.dark .bg-gray-50 {
+  background-color: #111827 !important;
+}
+
+html.dark .bg-gray-100 {
+  background-color: #1f2937 !important;
+}
+
+html.dark .bg-gray-200 {
+  background-color: #374151 !important;
+}
+
+/* Common text */
+
+html.dark .text-black {
+  color: white !important;
+}
+
+html.dark .text-gray-900 {
+  color: white !important;
+}
+
+html.dark .text-gray-800 {
+  color: #f3f4f6 !important;
+}
+
+html.dark .text-gray-700 {
+  color: #e5e7eb !important;
+}
+
+html.dark .text-gray-600 {
+  color: #d1d5db !important;
+}
+
+/* Common borders */
+
+html.dark .border-gray-200 {
+  border-color: #374151 !important;
+}
+
+html.dark .border-gray-300 {
+  border-color: #4b5563 !important;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+/*
+   LIGHT MODE
+   Black button + white text
+*/
+
+button {
+  background-color: black;
+  color: white;
+}
+
+/*
+   DARK MODE
+   White button + black text
+*/
+
+html.dark button {
+  background-color: white;
+  color: white;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+input,
+textarea,
+select {
+  background-color: white;
+  color: black;
+  border-color: #d1d5db;
+}
+
+html.dark input,
+html.dark textarea,
+html.dark select {
+  background-color: #374151;
+  color: white;
+  border-color: #4b5563;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #9ca3af;
+}
+
+
+/* =========================
+   LINKS
+========================= */
+
+html.dark a {
+  color: inherit;
+}
+
+/* =========================================
+   FIXMATE PROFILE UI
+========================================= */
+
+/* Profile background pattern */
+.profile-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 35px 35px;
+}
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.profile-back-button {
+  background-color: #111827 !important;
+  color: white !important;
+  border: 1px solid #374151 !important;
+}
+
+html.dark .profile-back-button {
+  background-color: #1f2937 !important;
+  color: white !important;
+  border-color: #374151 !important;
+}
+
+.profile-back-button:hover {
+  background-color: #16a34a !important;
+  color: white !important;
+  transform: translateY(-2px);
+}
+
+
+/* =========================================
+   EDIT PROFILE
+========================================= */
+
+.profile-edit-button {
+  background-color: #16a34a !important;
+  color: white !important;
+  border: none !important;
+}
+
+.profile-edit-button:hover {
+  background-color: #15803d !important;
+  color: white !important;
+  transform: translateY(-2px);
+}
+
+
+/* =========================================
+   STAT CARDS
+========================================= */
+
+.profile-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 18px;
+
+  border-radius: 18px;
+
+  background-color: #f9fafb;
+
+  border: 1px solid #e5e7eb;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+html.dark .profile-stat-card {
+  background-color: #111a2a;
+  border-color: #334155;
+}
+
+.profile-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+  border-color: #22c55e;
+}
+
+.profile-stat-icon {
+  width: 46px;
+  height: 46px;
+
+  flex-shrink: 0;
+
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 20px;
+}
+
+.profile-stat-label {
+  font-size: 12px;
+  font-weight: 600;
+
+  color: #6b7280;
+
+  margin-bottom: 4px;
+}
+
+html.dark .profile-stat-label {
+  color: #94a3b8;
+}
+
+.profile-stat-value {
+  font-size: 25px;
+  font-weight: 900;
+
+  color: #111827;
+}
+
+html.dark .profile-stat-value {
+  color: white;
+}
+
+
+/* =========================================
+   SECTION CARD
+========================================= */
+
+.profile-section-card {
+  background-color: white;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 24px;
+
+  padding: 24px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+html.dark .profile-section-card {
+  background-color: #151f30;
+  border-color: #334155;
+}
+
+
+/* =========================================
+   INFO CARDS
+========================================= */
+
+.profile-info-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 17px;
+
+  border-radius: 17px;
+
+  background-color: #f9fafb;
+
+  border: 1px solid #e5e7eb;
+
+  transition: all 0.3s ease;
+}
+
+html.dark .profile-info-card {
+  background-color: #101a2a;
+  border-color: #334155;
+}
+
+.profile-info-card:hover {
+  transform: translateY(-2px);
+
+  border-color: #22c55e;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+}
+
+.profile-info-icon {
+  width: 43px;
+  height: 43px;
+
+  flex-shrink: 0;
+
+  border-radius: 13px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: white;
+
+  border: 1px solid #e5e7eb;
+
+  font-size: 18px;
+}
+
+html.dark .profile-info-icon {
+  background-color: #1e293b;
+  border-color: #475569;
+}
+
+.profile-info-label {
+  font-size: 11px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.08em;
+
+  font-weight: 700;
+
+  color: #9ca3af;
+}
+
+.profile-info-value {
+  margin-top: 3px;
+
+  font-size: 15px;
+
+  font-weight: 800;
+
+  color: #111827;
+}
+
+html.dark .profile-info-value {
+  color: white;
+}
+
+
+/* =========================================
+   QUICK ACTIONS
+========================================= */
+
+.profile-action-card {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  width: 100%;
+
+  padding: 14px;
+
+  border-radius: 15px;
+
+  background-color: #f9fafb;
+
+  border: 1px solid #e5e7eb;
+
+  color: #111827;
+
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+}
+
+html.dark .profile-action-card {
+  background-color: #101a2a;
+  border-color: #334155;
+  color: white;
+}
+
+.profile-action-card:hover {
+  transform: translateX(4px);
+
+  border-color: #22c55e;
+
+  background-color: #f0fdf4;
+}
+
+html.dark .profile-action-card:hover {
+  background-color: #123020;
+}
+
+.profile-action-card-button {
+  appearance: none;
+  font-family: inherit;
+  font-size: inherit;
+  text-align: left;
+}
+
+.profile-action-icon {
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+
+  border-radius: 11px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #dcfce7;
+
+  font-size: 17px;
+}
+
+html.dark .profile-action-icon {
+  background-color: #14532d;
+}
+
+.profile-security-card {
+  background: #050b16;
+
+  border: 1px solid #1e293b;
+
+  border-radius: 24px;
+
+  padding: 25px;
+
+  color: white;
+
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.profile-password-button {
+  background-color: transparent !important;
+
+  color: white !important;
+
+  border: 1px solid #475569 !important;
+}
+
+.profile-password-button:hover {
+  background-color: white !important;
+
+  color: #111827 !important;
+
+  border-color: white !important;
+
+  transform: translateY(-2px);
+}
+
+
+.profile-logout-card {
+  background-color: white;
+
+  border: 1px solid #fecaca;
+
+  border-radius: 22px;
+
+  padding: 22px;
+}
+
+html.dark .profile-logout-card {
+  background-color: #151f30;
+
+  border-color: #7f1d1d;
+}
+
+.profile-logout-button {
+  background-color: transparent !important;
+
+  color: #dc2626 !important;
+
+  border: 1px solid #fca5a5 !important;
+}
+
+.profile-logout-button:hover {
+  background-color: #dc2626 !important;
+
+  color: white !important;
+
+  border-color: #dc2626 !important;
+
+  transform: translateY(-2px);
+}
+
+
+.profile-cta-button {
+  background-color: white !important;
+
+  color: #15803d !important;
+
+  border: none !important;
+}
+
+.profile-cta-button:hover {
+  background-color: #f0fdf4 !important;
+
+  color: #166534 !important;
+
+  transform: translateY(-3px);
+
+  box-shadow: 0 15px 30px rgba(0,0,0,0.18);
 }

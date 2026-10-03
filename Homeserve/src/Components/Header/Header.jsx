@@ -1,31 +1,58 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell} from "@fortawesome/free-solid-svg-icons";
+import { faBell } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../assets/FIX.jpg";
-function Header() {
-  return (
-    <header className="bg-black border-b border-gray-200 shadow-sm rounded-[30px] mt-1 ml-6 mr-6 zoom-animation zoomanimation">
+import useTheme from "../../context/theme";
 
+function Header() {
+  const { themeMode, lightTheme, darkTheme } = useTheme();
+
+  const handleTheme = () => {
+    if (themeMode === "light") {
+      darkTheme();
+    } else {
+      lightTheme();
+    }
+  };
+
+  return (
+    <header
+      className="
+        bg-white dark:bg-gray-900
+        border-b border-gray-200 dark:border-gray-700
+        shadow-sm
+        rounded-[30px]
+        mt-1 ml-6 mr-6
+        zoom-animation zoomanimation
+        transition-colors duration-300
+      "
+    >
       <div className="max-w-7xl mx-auto px-6 py-4">
 
         <div className="flex items-center justify-between">
 
           {/* LOGO */}
 
-          <NavLink to="/home" className="flex items-center gap-2" > 
-          <img
-  src={logo}
-  alt="FixmaTe"
-  className="
-    w-10 h-10
-    transition-all duration-500
-    zoomanimation
-    hover:scale-110
-    hover:drop-shadow-[0_0_15px_rgba(34,197,94,0.8)]
-  "
-/>
-          <h1 className="text-2xl font-bold text-green-700">Fixma🔨e</h1> 
+          <NavLink
+            to="/home"
+            className="flex items-center gap-2"
+          >
+            <img
+              src={logo}
+              alt="FixmaTe"
+              className="
+                w-10 h-10
+                transition-all duration-500
+                zoomanimation
+                hover:scale-110
+                hover:drop-shadow-[0_0_15px_rgba(34,197,94,0.8)]
+              "
+            />
+
+            <h1 className="text-2xl font-bold text-green-700">
+              Fixma🔨e
+            </h1>
           </NavLink>
 
 
@@ -38,7 +65,7 @@ function Header() {
               className={({ isActive }) =>
                 isActive
                   ? "text-green-600 font-semibold"
-                  : "text hover:text-green-600 text-white"
+                  : "text-gray-700 dark:text-gray-200 hover:text-green-600"
               }
             >
               Home
@@ -49,7 +76,7 @@ function Header() {
               className={({ isActive }) =>
                 isActive
                   ? "text-green-600 font-semibold"
-                  : "text hover:text-green-600 text-white"
+                  : "text-gray-700 dark:text-gray-200 hover:text-green-600"
               }
             >
               Services
@@ -60,7 +87,7 @@ function Header() {
               className={({ isActive }) =>
                 isActive
                   ? "text-green-600 font-semibold"
-                  : "text hover:text-green-600 text-white"
+                  : "text-gray-700 dark:text-gray-200 hover:text-green-600"
               }
             >
               Bookings
@@ -68,30 +95,78 @@ function Header() {
 
           </nav>
 
-          <button
-  className="relative text-gray-600 hover:text-green-600 transition mt-1"
->
-  <FontAwesomeIcon
-    icon={faBell}
-    className="text-xl"
-  />
 
-  {/* Notification dot */}
-  <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full"></span>
-</button>
+          {/* NOTIFICATION */}
+
+          <Link
+            to="#"
+            className="
+              relative
+              text-gray-600 dark:text-gray-300
+              hover:text-green-600
+              transition
+              mt-1
+            "
+          >
+            <FontAwesomeIcon
+              icon={faBell}
+              className="text-xl"
+            />
+
+            {/* Notification dot */}
+
+            <span
+              className="
+                absolute
+                -top-1
+                -right-1
+                w-2.5
+                h-2.5
+                bg-red-500
+                rounded-full
+              "
+            ></span>
+          </Link>
+
 
           {/* PROFILE */}
 
-          <NavLink
+          <Link
             to="/profile"
-            className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-700 font-bold hover:bg-green-200"
+            className="
+              w-10 h-10
+              bg-green-100 dark:bg-green-900
+              rounded-full
+              flex items-center justify-center
+              text-green-700 dark:text-green-300
+              font-bold
+              transition-colors
+            "
           >
             P
-          </NavLink>
+          </Link>
+
+
+          {/* THEME BUTTON */}
+
+          <button
+            onClick={handleTheme}
+            className="
+              px-4 py-2
+              rounded-lg
+              bg-gray-200 dark:bg-gray-700
+              text-black dark:text-white
+              hover:bg-gray-300 dark:hover:bg-gray-600
+              transition-colors
+              zoomanimation
+            "
+          >
+            {themeMode === "light" ? "🌙" : "☀️"}
+          </button>
+
         </div>
 
       </div>
-
     </header>
   );
 }

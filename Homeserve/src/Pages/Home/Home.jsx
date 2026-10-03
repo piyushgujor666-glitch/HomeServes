@@ -57,7 +57,6 @@ function Home() {
       {/* ================= HERO ================= */}
 
       <section className="max-w-7xl mx-auto px-6 pt-8 pb-16">
-
         <div
           className="relative overflow-hidden rounded-[2rem] min-h-[520px] bg-cover bg-center shadow-2xl"
           style={{ backgroundImage: `url(${image})` }}
