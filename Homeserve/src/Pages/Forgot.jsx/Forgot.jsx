@@ -72,17 +72,14 @@ function Forgot() {
 
       </div>
 
-      {/* Main Card */}
       <div className="w-full max-w-md bg-white rounded-3xl shadow-xl p-6 sm:p-8">
 
-        {/* ================= LOGO ================= */}
         <div className="flex justify-center mb-5">
           <div className="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center">
             <KeyRound className="w-7 h-7 text-green-600" />
           </div>
         </div>
 
-        {/* ================= HEADING ================= */}
         <div className="text-center mb-7">
 
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
@@ -95,11 +92,9 @@ function Forgot() {
 
         </div>
 
-        {/* ================= EMAIL / MOBILE TABS ================= */}
         <div className="grid grid-cols-2 gap-2 bg-gray-100 p-1 rounded-xl mb-6">
 
-          {/* EMAIL TAB */}
-          <button
+          <NavLink
             type="button"
             onClick={() => handleMethodChange("email")}
             className={`flex items-center justify-center gap-2 py-3 rounded-lg text-sm font-semibold transition ${
@@ -110,10 +105,8 @@ function Forgot() {
           >
             <Mail size={18} />
             Email
-          </button>
-
-          {/* MOBILE TAB */}
-          <button
+          </NavLink>
+          <NavLink
             type="button"
             onClick={() => handleMethodChange("mobile")}
             className={`flex items-center justify-center gap-2 py-3 rounded-lg text-sm font-semibold transition ${
@@ -124,16 +117,10 @@ function Forgot() {
           >
             <Phone size={18} />
             Mobile
-          </button>
+          </NavLink>
 
         </div>
-
-        {/* ================= FORM ================= */}
         <form onSubmit={handleSubmit}>
-
-          {/* ================================================= */}
-          {/* EMAIL SECTION */}
-          {/* ================================================= */}
 
           {method === "email" && (
             <div>
@@ -142,7 +129,6 @@ function Forgot() {
                 Email Address
               </label>
 
-              {/* Email Input */}
               <div className="relative">
 
                 <Mail
@@ -167,21 +153,13 @@ function Forgot() {
             </div>
           )}
 
-          {/* ================================================= */}
-          {/* MOBILE SECTION */}
-          {/* ================================================= */}
-
           {method === "mobile" && (
             <div>
 
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Mobile Number
               </label>
-
-              {/* Mobile Input */}
               <div className="flex w-full">
-
-                {/* Country Code */}
                 <select
                   value={countryCode}
                   onChange={(e) => setCountryCode(e.target.value)}
@@ -195,7 +173,6 @@ function Forgot() {
                   <option value="+65">🇸🇬 +65</option>
                 </select>
 
-                {/* Phone Icon */}
                 <div className="relative flex-1">
 
                   <Phone
@@ -223,19 +200,11 @@ function Forgot() {
             </div>
           )}
 
-          {/* ================================================= */}
-          {/* MESSAGE */}
-          {/* ================================================= */}
-
           {message && (
             <div className="mt-4 p-3 rounded-xl bg-green-50 border border-green-100 text-green-700 text-sm">
               {message}
             </div>
           )}
-
-          {/* ================================================= */}
-          {/* SUBMIT BUTTON */}
-          {/* ================================================= */}
 
           <button
             type="submit"
@@ -248,7 +217,6 @@ function Forgot() {
 
         </form>
 
-        {/* ================= BACK TO LOGIN ================= */}
 
         <div className="text-center mt-6">
 

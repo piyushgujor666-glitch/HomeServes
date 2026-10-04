@@ -196,6 +196,7 @@ export default function LoginForm() {
                       hover:text-gray-700
                       transition
                       bg-white
+                      rounded-2xl
                     "
                     aria-label={
                       isVisible

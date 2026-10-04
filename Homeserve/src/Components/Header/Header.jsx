@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../assets/FIX.jpg";
 import useTheme from "../../context/theme";
+import { Phone } from "lucide-react";
 
 function Header() {
   const { themeMode, lightTheme, darkTheme } = useTheme();
@@ -147,7 +148,7 @@ function Header() {
           </Link>
 
 
-          {/* THEME BUTTON */}
+          <div>
 
           <button
             onClick={handleTheme}
@@ -163,6 +164,17 @@ function Header() {
           >
             {themeMode === "light" ? "🌙" : "☀️"}
           </button>
+          <NavLink
+  to="tel:+919998091751"
+  className="fixed bottom-20 right-6 z-50 flex items-center gap-3 
+             rounded-full bg-red-600 px-5 py-3 text-white 
+             font-semibold shadow-lg hover:bg-red-700 
+             hover:scale-105 transition-all duration-300"
+>
+  <Phone size={20} />
+  <span>24/7 Helpline</span>
+</NavLink>
+          </div>
 
         </div>
 

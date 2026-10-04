@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-
 import * as PhoneInputModule from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-
 import logo from "../../assets/FIX.jpg";
 import backgroundimage from "../../assets/Signup_image.png";
 
@@ -20,10 +18,6 @@ export default function SignupForm() {
   return (
     <main className="min-h-screen relative overflow-hidden bg-gradient-to-br from-white via-[#F8FAFC] to-[#ECFDF5] bg-cover"
     style={{backgroundImage:`url(${backgroundimage})`}}>
-
-      {/* =====================================================
-          TOP LEFT BRAND
-          ===================================================== */}
 
       <div className="absolute top-6 left-6 sm:top-8 sm:left-10 z-20">
         <NavLink
@@ -43,21 +37,15 @@ export default function SignupForm() {
       </div>
 
 
-      {/* =====================================================
-          SIGNUP AREA
-          ===================================================== */}
 
       <div className="min-h-screen flex items-center justify-center px-4 py-24 sm:py-20">
 
         <div className="w-full max-w-md">
 
-          {/* =================================================
-              SIGNUP CARD
-              ================================================= */}
+
 
           <div className="bg-white rounded-2xl border border-gray-100 shadow-xl shadow-gray-200/50 px-6 py-8 sm:px-8 sm:py-9">
 
-            {/* Header */}
 
             <div className="text-center mb-7">
 
@@ -71,16 +59,8 @@ export default function SignupForm() {
 
             </div>
 
-
-            {/* =================================================
-                SIGNUP FORM
-                ================================================= */}
-
             <form className="space-y-4">
 
-              {/* =================================================
-                  FULL NAME
-                  ================================================= */}
 
               <div>
 
@@ -120,10 +100,6 @@ export default function SignupForm() {
               </div>
 
 
-              {/* =================================================
-                  EMAIL
-                  ================================================= */}
-
               <div>
 
                 <label
@@ -162,9 +138,6 @@ export default function SignupForm() {
               </div>
 
 
-              {/* =================================================
-                  PHONE NUMBER
-                  ================================================= */}
 
               <div>
 
@@ -216,10 +189,6 @@ export default function SignupForm() {
               </div>
 
 
-              {/* =================================================
-                  PASSWORD
-                  ================================================= */}
-
               <div>
 
                 <label
@@ -270,6 +239,7 @@ export default function SignupForm() {
                       hover:text-gray-700
                       transition
                       bg-white
+                      rounded-4xl
                     "
                     aria-label={
                       showPassword
@@ -285,9 +255,6 @@ export default function SignupForm() {
               </div>
 
 
-              {/* =================================================
-                  CONFIRM PASSWORD
-                  ================================================= */}
 
               <div>
 
@@ -341,6 +308,7 @@ export default function SignupForm() {
                       hover:text-gray-700
                       transition
                       bg - white
+                      rounded-4xl
                     "
                     aria-label={
                       showConfirmPassword
@@ -355,10 +323,6 @@ export default function SignupForm() {
 
               </div>
 
-
-              {/* =================================================
-                  TERMS
-                  ================================================= */}
 
               <div className="flex items-start gap-2 pt-1">
 
@@ -387,12 +351,6 @@ export default function SignupForm() {
                 </label>
 
               </div>
-
-
-              {/* =================================================
-                  CREATE ACCOUNT
-                  ================================================= */}
-
               <button
                 type="submit"
                 className="
@@ -418,10 +376,6 @@ export default function SignupForm() {
             </form>
 
 
-            {/* =================================================
-                SOCIAL SIGNUP DIVIDER
-                ================================================= */}
-
             <div className="flex items-center gap-3 my-6">
 
               <div className="h-px bg-gray-200 flex-1"></div>
@@ -433,11 +387,6 @@ export default function SignupForm() {
               <div className="h-px bg-gray-200 flex-1"></div>
 
             </div>
-
-
-            {/* =================================================
-                GOOGLE
-                ================================================= */}
 
             <button
               type="button"
@@ -468,10 +417,6 @@ export default function SignupForm() {
               </span>
             </button>
 
-
-            {/* =================================================
-                FACEBOOK
-                ================================================= */}
 
             <button
               type="button"
@@ -517,10 +462,6 @@ export default function SignupForm() {
             </button>
 
 
-            {/* =================================================
-                APPLE
-                ================================================= */}
-
             <button
               type="button"
               className="
@@ -552,9 +493,6 @@ export default function SignupForm() {
             </button>
 
 
-            {/* =================================================
-                LOGIN
-                ================================================= */}
 
             <p className="text-center text-sm text-gray-500 mt-7">
 
@@ -577,10 +515,6 @@ export default function SignupForm() {
 
           </div>
 
-
-          {/* =================================================
-              FOOTER
-              ================================================= */}
 
           <p className="text-center text-xs text-black-500 mt-6">
             © 2026 FixMate · Home services made simple
