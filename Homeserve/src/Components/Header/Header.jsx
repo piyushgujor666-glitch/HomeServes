@@ -1,186 +1,96 @@
-import React, { useEffect, useState } from "react";
-import { NavLink, Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell } from "@fortawesome/free-solid-svg-icons";
+import { Bell, CalendarDays, Home, Moon, Settings, Sun, Wrench } from "lucide-react";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/FIX.jpg";
-import useTheme from "../../context/theme";
-import { Phone } from "lucide-react";
+import useTheme from "../../context/theme.jsx";
 
-function Header() {
-  const { themeMode, lightTheme, darkTheme } = useTheme();
+const navItems = [
+  { to: "/home", label: "Home", icon: Home },
+  { to: "/services", label: "Services", icon: Wrench },
+  { to: "/bookings", label: "Bookings", icon: CalendarDays },
+];
 
-  const handleTheme = () => {
-    if (themeMode === "light") {
-      darkTheme();
-    } else {
-      lightTheme();
-    }
-  };
+const navClass = ({ isActive }) => `fix-nav-link ${isActive ? "active" : ""}`;
+
+export default function Header() {
+  const { themeMode, toggleTheme } = useTheme();
 
   return (
-    <header
-      className="
-        bg-white dark:bg-gray-900
-        border-b border-gray-200 dark:border-gray-700
-        shadow-sm
-        rounded-[30px]
-        mt-1 ml-6 mr-6
-        zoom-animation zoomanimation
-        transition-colors duration-300
-      "
-    >
-      <div className="max-w-7xl mx-auto px-6 py-4">
+    <>
+      <header className="fix-header">
+        <div className="fix-container fix-nav">
+          <Link to="/home" className="fix-logo" aria-label="FixMate home">
+            <img src={logo} alt="FixMate" />
+            <span>
+              Fix<span className="brand-accent">Mate</span>
+            </span>
+          </Link>
 
-        <div className="flex items-center justify-between">
-
-          {/* LOGO */}
-
-          <NavLink
-            to="/home"
-            className="flex items-center gap-2"
-          >
-            <img
-              src={logo}
-              alt="FixmaTe"
-              className="
-                w-10 h-10
-                transition-all duration-500
-                zoomanimation
-                hover:scale-110
-                hover:drop-shadow-[0_0_15px_rgba(34,197,94,0.8)]
-              "
-            />
-
-            <h1 className="text-2xl font-bold text-green-700">
-              Fixma🔨e
-            </h1>
-          </NavLink>
-
-
-          {/* NAVIGATION */}
-
-          <nav className="hidden md:flex items-center gap-8 ml-50">
-
-            <NavLink
-              to="/home"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-green-600 font-semibold"
-                  : "text-gray-700 dark:text-gray-200 hover:text-green-600"
-              }
-            >
-              Home
+          <nav className="fix-nav-links" aria-label="Primary navigation">
+            {navItems.map(({ to, label }) => (
+              <NavLink key={to} to={to} className={navClass}>
+                {label}
+              </NavLink>
+            ))}
+            <NavLink to="/profile" className={navClass}>
+              Profile
             </NavLink>
-
-            <NavLink
-              to="/services"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-green-600 font-semibold"
-                  : "text-gray-700 dark:text-gray-200 hover:text-green-600"
-              }
-            >
-              Services
-            </NavLink>
-
-            <NavLink
-              to="/bookings"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-green-600 font-semibold"
-                  : "text-gray-700 dark:text-gray-200 hover:text-green-600"
-              }
-            >
-              Bookings
-            </NavLink>
-
           </nav>
 
+          <div className="header-actions">
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="icon-btn"
+              aria-label={`Switch to ${themeMode === "dark" ? "light" : "dark"} mode`}
+              title={`Switch to ${themeMode === "dark" ? "light" : "dark"} mode`}
+            >
+              {themeMode === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
 
-          {/* NOTIFICATION */}
+            <Link
+              to="/notifications"
+              className="icon-btn notification-button"
+              aria-label="Notifications"
+              title="Notifications"
+            >
+              <Bell size={18} />
+              <span>2</span>
+            </Link>
 
-          <Link
-            to="#"
-            className="
-              relative
-              text-gray-600 dark:text-gray-300
-              hover:text-green-600
-              transition
-              mt-1
-            "
-          >
-            <FontAwesomeIcon
-              icon={faBell}
-              className="text-xl"
-            />
-
-            {/* Notification dot */}
-
-            <span
-              className="
-                absolute
-                -top-1
-                -right-1
-                w-2.5
-                h-2.5
-                bg-red-500
-                rounded-full
-              "
-            ></span>
-          </Link>
-
-
-          {/* PROFILE */}
-
-          <Link
-            to="/profile"
-            className="
-              w-10 h-10
-              bg-green-100 dark:bg-green-900
-              rounded-full
-              flex items-center justify-center
-              text-green-700 dark:text-green-300
-              font-bold
-              transition-colors
-            "
-          >
-            P
-          </Link>
-
-
-          <div>
-
-          <button
-            onClick={handleTheme}
-            className="
-              px-4 py-2
-              rounded-lg
-              bg-gray-200 dark:bg-gray-700
-              text-black dark:text-white
-              hover:bg-gray-300 dark:hover:bg-gray-600
-              transition-colors
-              zoomanimation
-            "
-          >
-            {themeMode === "light" ? "🌙" : "☀️"}
-          </button>
-          <NavLink
-  to="tel:+919998091751"
-  className="fixed bottom-20 right-6 z-50 flex items-center gap-3 
-             rounded-full bg-red-600 px-5 py-3 text-white 
-             font-semibold shadow-lg hover:bg-red-700 
-             hover:scale-105 transition-all duration-300"
->
-  <Phone size={20} />
-  <span>24/7 Helpline</span>
-</NavLink>
+            <Link to="/profile" className="profile-chip">
+              <span className="profile-avatar">P</span>
+              <span className="profile-name">Piyush</span>
+            </Link>
           </div>
-
         </div>
+      </header>
 
-      </div>
-    </header>
+      <nav className="fix-mobile-nav" aria-label="Mobile navigation">
+        <NavLink to="/home">
+          <Home size={16} />
+          <span>Home</span>
+        </NavLink>
+        <NavLink to="/services">
+          <Wrench size={16} />
+          <span>Services</span>
+        </NavLink>
+        <NavLink to="/book-service">
+          <span style={{ fontSize: 20, lineHeight: 1 }}>+</span>
+          <span>Book</span>
+        </NavLink>
+        <NavLink to="/bookings">
+          <CalendarDays size={16} />
+          <span>Bookings</span>
+        </NavLink>
+        <NavLink to="/notifications">
+          <Bell size={16} />
+          <span>Alerts</span>
+        </NavLink>
+        <NavLink to="/profile">
+          <Settings size={16} />
+          <span>Profile</span>
+        </NavLink>
+      </nav>
+    </>
   );
 }
-
-export default Header;

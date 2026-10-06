@@ -1,446 +1,193 @@
-import React from "react";
-import { NavLink,useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
+import {
+  ArrowRight,
+  CalendarDays,
+  CheckCircle2,
+  ChevronRight,
+  Clock3,
+  MapPin,
+  ShieldCheck,
+  Star,
+  Wrench,
+} from "lucide-react";
 import Layout from "../../Components/Layout.jsx";
 
-function Bookings() {
-  const navigate = useNavigate();
+const bookings = [
+  {
+    id: "FM-1048",
+    service: "AC Repair",
+    date: "18 Oct 2026",
+    slot: "11:00 AM – 01:00 PM",
+    status: "Confirmed",
+    price: "₹499",
+    provider: "Aarav Services",
+  },
+  {
+    id: "FM-1036",
+    service: "Plumbing",
+    date: "07 Oct 2026",
+    slot: "05:00 PM – 07:00 PM",
+    status: "Completed",
+    price: "₹399",
+    provider: "Ravi Home Care",
+  },
+];
+
+export default function Bookings() {
   return (
     <Layout>
+      <main className="min-h-screen bg-slate-50 text-slate-900 dark:bg-[#07110e] dark:text-white">
 
-<div className="pointer-events-none fixed inset-x-0 bottom-6 z-50 flex items-center justify-between px-4 md:px-6">
+        {/* HEADER */}
 
-  {/* Back */}
-  <button
-    type="button"
-    onClick={() => navigate("/services")}
-    className="pointer-events-auto rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#16302B] shadow-lg ring-1 ring-black/10 transition hover:bg-[#16302B] hover:text-white"
-  >
-    ← Back
-  </button>
-</div>
+        <section className="mx-auto max-w-7xl px-4 pb-8 pt-8 sm:px-6 lg:px-8 lg:pt-12">
 
-      <div className="min-h-screen bg-gray-50">
-
-        {/* =====================================================
-            HEADER
-        ===================================================== */}
-
-        <section className="max-w-7xl mx-auto px-6 pt-10">
-
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
 
             <div>
 
-              <p className="text-green-600 font-bold text-sm uppercase tracking-wider">
-                Dashboard
-              </p>
+              <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-emerald-700 dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-400">
+                <Wrench size={12} />
+                My FixMate
+              </div>
 
-              <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mt-2">
-                My Bookings
+              <h1 className="text-4xl font-black tracking-[-0.055em] text-slate-950 dark:text-white sm:text-5xl">
+                Your bookings
               </h1>
 
-              <p className="text-gray-500 mt-2">
-                Track and manage your home service bookings.
+              <p className="mt-3 max-w-xl text-sm leading-6 text-slate-500 dark:text-slate-400 sm:text-base">
+                Keep track of upcoming services and see your previous FixMate
+                visits in one place.
               </p>
 
             </div>
 
-
-            <NavLink
+            <Link
               to="/services"
-              className="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl font-bold text-sm transition-all duration-300 hover:-translate-y-0.5 shadow-lg shadow-green-600/20"
+              className="group inline-flex min-h-[52px] items-center justify-center gap-3 rounded-2xl bg-[#087f68] px-6 text-sm font-black text-white shadow-[0_12px_30px_rgba(8,127,104,0.20)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#066d5a] hover:shadow-[0_18px_38px_rgba(8,127,104,0.28)] dark:bg-emerald-400 dark:text-emerald-950 dark:hover:bg-emerald-300"
             >
-              + Book New Service
-            </NavLink>
+              Book a service
+
+              <ArrowRight
+                size={17}
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              />
+            </Link>
 
           </div>
 
         </section>
 
+        {/* QUICK SUMMARY */}
 
+        <section className="mx-auto max-w-7xl px-4 pb-8 sm:px-6 lg:px-8">
 
-        {/* =====================================================
-            BOOKING SUMMARY
-        ===================================================== */}
+          <div className="grid gap-4 sm:grid-cols-3">
 
-        <section className="max-w-7xl mx-auto px-6 mt-8">
+            <SummaryCard
+              icon={CalendarDays}
+              label="Upcoming"
+              value="1"
+              text="Service scheduled"
+            />
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <SummaryCard
+              icon={CheckCircle2}
+              label="Completed"
+              value="1"
+              text="Service completed"
+            />
 
-            {/* Total */}
-
-            <div className="bg-white border border-gray-200 rounded-2xl p-5">
-
-              <div className="flex items-center justify-between">
-
-                <div className="w-11 h-11 rounded-xl bg-gray-100 flex items-center justify-center text-xl">
-                  📋
-                </div>
-
-                <span className="text-xs text-gray-400">
-                  TOTAL
-                </span>
-
-              </div>
-
-              <h3 className="text-2xl font-extrabold text-gray-900 mt-4">
-                1
-              </h3>
-
-              <p className="text-sm text-gray-500 mt-1">
-                Total bookings
-              </p>
-
-            </div>
-
-
-            {/* Pending */}
-
-            <div className="bg-white border border-gray-200 rounded-2xl p-5">
-
-              <div className="flex items-center justify-between">
-
-                <div className="w-11 h-11 rounded-xl bg-yellow-100 flex items-center justify-center text-xl">
-                  ⏳
-                </div>
-
-                <span className="text-xs text-yellow-600 font-bold">
-                  WAITING
-                </span>
-
-              </div>
-
-              <h3 className="text-2xl font-extrabold text-gray-900 mt-4">
-                1
-              </h3>
-
-              <p className="text-sm text-gray-500 mt-1">
-                Pending bookings
-              </p>
-
-            </div>
-
-
-            {/* Completed */}
-
-            <div className="bg-white border border-gray-200 rounded-2xl p-5">
-
-              <div className="flex items-center justify-between">
-
-                <div className="w-11 h-11 rounded-xl bg-green-100 flex items-center justify-center text-xl">
-                  ✓
-                </div>
-
-                <span className="text-xs text-green-600 font-bold">
-                  DONE
-                </span>
-
-              </div>
-
-              <h3 className="text-2xl font-extrabold text-gray-900 mt-4">
-                0
-              </h3>
-
-              <p className="text-sm text-gray-500 mt-1">
-                Completed services
-              </p>
-
-            </div>
-
-
-            {/* Spent */}
-
-            <div className="bg-white border border-gray-200 rounded-2xl p-5">
-
-              <div className="flex items-center justify-between">
-
-                <div className="w-11 h-11 rounded-xl bg-blue-100 flex items-center justify-center text-xl">
-                  ₹
-                </div>
-
-                <span className="text-xs text-blue-600 font-bold">
-                  SPENT
-                </span>
-
-              </div>
-
-              <h3 className="text-2xl font-extrabold text-gray-900 mt-4">
-                ₹299
-              </h3>
-
-              <p className="text-sm text-gray-500 mt-1">
-                Total booking value
-              </p>
-
-            </div>
+            <SummaryCard
+              icon={ShieldCheck}
+              label="FixMate care"
+              value="4.8"
+              text="Average service rating"
+            />
 
           </div>
 
         </section>
 
+        {/* BOOKINGS */}
 
+        <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
 
-        {/* =====================================================
-            BOOKING SECTION
-        ===================================================== */}
-
-        <section className="max-w-7xl mx-auto px-6 py-10">
-
-          <div className="flex items-center justify-between mb-5">
+          <div className="mb-5 flex items-center justify-between">
 
             <div>
 
-              <h2 className="text-xl font-extrabold text-gray-900">
-                Upcoming Booking
+              <h2 className="text-lg font-black tracking-[-0.03em]">
+                Recent bookings
               </h2>
 
-              <p className="text-sm text-gray-500 mt-1">
-                Your next scheduled service.
+              <p className="mt-1 text-xs text-slate-400">
+                Your service history
               </p>
 
             </div>
 
-          </div>
-
-
-          {/* BOOKING CARD */}
-
-          <div className="bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300">
-
-            {/* Top status bar */}
-
-            <div className="px-6 py-4 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-
-              <div className="flex items-center gap-2">
-
-                <span className="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
-
-                <span className="text-sm font-bold text-gray-700">
-                  Booking #FM-001
-                </span>
-
-              </div>
-
-
-              <span className="inline-flex items-center gap-1.5 bg-yellow-100 text-yellow-700 px-4 py-1.5 rounded-full text-xs font-bold">
-
-                ⏳ Pending
-
-              </span>
-
-            </div>
-
-
-
-            {/* Main content */}
-
-            <div className="p-6 md:p-8">
-
-              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
-
-
-                {/* SERVICE */}
-
-                <div className="flex items-start gap-4">
-
-                  <div className="w-16 h-16 shrink-0 rounded-2xl bg-green-100 flex items-center justify-center text-3xl">
-                    🔧
-                  </div>
-
-
-                  <div>
-
-                    <p className="text-xs uppercase tracking-wider font-bold text-gray-400">
-                      Home Service
-                    </p>
-
-                    <h3 className="text-2xl font-extrabold text-gray-900 mt-1">
-                      Plumbing
-                    </h3>
-
-                    <p className="text-sm text-gray-500 mt-1">
-                      Professional plumbing service
-                    </p>
-
-                  </div>
-
-                </div>
-
-
-
-                {/* PRICE */}
-
-                <div className="lg:text-right">
-
-                  <p className="text-xs text-gray-400 uppercase font-bold">
-                    Estimated Price
-                  </p>
-
-                  <p className="text-3xl font-extrabold text-green-600 mt-1">
-                    ₹299
-                  </p>
-
-                </div>
-
-              </div>
-
-
-
-              {/* DETAILS */}
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 pt-7 border-t border-gray-100">
-
-
-                {/* DATE */}
-
-                <div className="bg-gray-50 rounded-2xl p-4">
-
-                  <div className="flex items-center gap-3">
-
-                    <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-sm">
-                      📅
-                    </div>
-
-                    <div>
-
-                      <p className="text-xs text-gray-400 font-semibold">
-                        DATE
-                      </p>
-
-                      <p className="text-sm font-bold text-gray-800 mt-1">
-                        15 September 2026
-                      </p>
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-
-
-                {/* TIME */}
-
-                <div className="bg-gray-50 rounded-2xl p-4">
-
-                  <div className="flex items-center gap-3">
-
-                    <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-sm">
-                      🕐
-                    </div>
-
-                    <div>
-
-                      <p className="text-xs text-gray-400 font-semibold">
-                        TIME
-                      </p>
-
-                      <p className="text-sm font-bold text-gray-800 mt-1">
-                        10:00 AM
-                      </p>
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-
-
-                {/* ADDRESS */}
-
-                <div className="bg-gray-50 rounded-2xl p-4">
-
-                  <div className="flex items-center gap-3">
-
-                    <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-sm">
-                      📍
-                    </div>
-
-                    <div>
-
-                      <p className="text-xs text-gray-400 font-semibold">
-                        LOCATION
-                      </p>
-
-                      <p className="text-sm font-bold text-gray-800 mt-1">
-                        Your home address
-                      </p>
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-
-
-              {/* ACTIONS */}
-
-              <div className="flex flex-col sm:flex-row gap-3 mt-7">
-
-                <button
-                  type="button"
-                  className="flex-1 py-3 rounded-xl border border-gray-200 text-gray-700 font-bold text-sm hover:bg-gray-50 transition"
-                >
-                  View Details
-                </button>
-
-                <button
-                  type="button"
-                  className="flex-1 py-3 rounded-xl border border-red-200 text-red-600 font-bold text-sm hover:bg-red-50 transition"
-                >
-                  Cancel Booking
-                </button>
-
-              </div>
-
-            </div>
+            <span className="rounded-full bg-white px-3 py-1.5 text-[10px] font-black text-slate-500 shadow-sm ring-1 ring-slate-200 dark:bg-[#111b18] dark:text-slate-400 dark:ring-slate-800">
+              {bookings.length} bookings
+            </span>
 
           </div>
 
-        </section>
+          <div className="space-y-5">
 
+            {bookings.map((booking) => (
+              <BookingCard
+                key={booking.id}
+                booking={booking}
+              />
+            ))}
 
+          </div>
 
-        {/* =====================================================
-            EMPTY / QUICK BOOKING
-        ===================================================== */}
+          {/* BOTTOM CTA */}
 
-        <section className="max-w-7xl mx-auto px-6 pb-16">
+          <div className="relative mt-8 overflow-hidden rounded-[30px] bg-[#092c24] p-7 text-white shadow-[0_20px_50px_rgba(9,44,36,0.15)] sm:p-9">
 
-          <div className="relative overflow-hidden bg-gray-900 rounded-3xl p-8 md:p-10 text-white">
+            <div className="absolute -right-24 -top-28 h-72 w-72 rounded-full bg-emerald-300/10" />
 
-            <div className="absolute -right-20 -top-20 w-72 h-72 bg-green-500/20 rounded-full blur-3xl"></div>
+            <div className="absolute -bottom-32 -left-20 h-64 w-64 rounded-full border-[45px] border-white/[0.03]" />
 
-            <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-7">
+            <div className="relative flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
 
               <div>
 
-                <p className="text-green-400 text-sm font-bold uppercase tracking-wider">
-                  Need another service?
-                </p>
+                <div className="mb-3 flex items-center gap-2 text-emerald-300">
 
-                <h2 className="text-2xl md:text-3xl font-extrabold mt-2">
-                  Your home has needs. We've got you covered.
+                  <Wrench size={16} />
+
+                  <span className="text-[10px] font-black uppercase tracking-[0.16em]">
+                    Need something else?
+                  </span>
+
+                </div>
+
+                <h2 className="text-2xl font-black tracking-[-0.04em] sm:text-3xl">
+                  Something needs fixing?
                 </h2>
 
-                <p className="text-gray-400 mt-2">
-                  Choose from plumbing, cleaning, electrical and more.
+                <p className="mt-2 max-w-lg text-sm leading-6 text-slate-300">
+                  Find a service, choose a convenient time and get your home
+                  sorted.
                 </p>
 
               </div>
 
-
-              <NavLink
+              <Link
                 to="/services"
-                className="shrink-0 inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-500 px-7 py-3.5 rounded-xl font-bold transition-all hover:scale-105"
+                className="group inline-flex min-h-[54px] shrink-0 items-center justify-center gap-3 rounded-2xl bg-emerald-300 px-6 text-sm font-black text-emerald-950 transition-all duration-300 hover:-translate-y-1 hover:bg-emerald-200 hover:shadow-[0_15px_35px_rgba(110,231,183,0.20)]"
               >
-                Explore Services →
-              </NavLink>
+                Explore services
+
+                <ArrowRight
+                  size={17}
+                  className="transition-transform duration-300 group-hover:translate-x-1"
+                />
+              </Link>
 
             </div>
 
@@ -448,10 +195,326 @@ function Bookings() {
 
         </section>
 
-      </div>
-
+      </main>
     </Layout>
   );
 }
 
-export default Bookings;
+/* ============================================================
+   SUMMARY CARD
+============================================================ */
+
+function SummaryCard({
+  icon: Icon,
+  label,
+  value,
+  text,
+}) {
+  return (
+    <div className="group rounded-[24px] border border-slate-200 bg-white p-5 shadow-[0_8px_30px_rgba(15,23,42,0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-[0_15px_35px_rgba(15,23,42,0.08)] dark:border-slate-800 dark:bg-[#111b18] dark:hover:border-emerald-500/30">
+
+      <div className="flex items-center justify-between">
+
+        <div className="grid h-11 w-11 place-items-center rounded-2xl bg-emerald-50 text-emerald-700 transition-transform duration-300 group-hover:scale-105 dark:bg-emerald-500/10 dark:text-emerald-400">
+          <Icon size={19} />
+        </div>
+
+        <span className="text-2xl font-black tracking-[-0.04em]">
+          {value}
+        </span>
+
+      </div>
+
+      <div className="mt-5">
+
+        <p className="text-xs font-black">
+          {label}
+        </p>
+
+        <p className="mt-1 text-[11px] text-slate-400">
+          {text}
+        </p>
+
+      </div>
+
+    </div>
+  );
+}
+
+/* ============================================================
+   BOOKING CARD
+============================================================ */
+
+function BookingCard({ booking }) {
+  const completed = booking.status === "Completed";
+
+  return (
+    <article className="group overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-[0_10px_35px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-[0_20px_50px_rgba(15,23,42,0.09)] dark:border-slate-800 dark:bg-[#111b18] dark:hover:border-emerald-500/30">
+
+      {/* TOP */}
+
+      <div className="p-5 sm:p-7">
+
+        <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+
+          <div className="flex items-start gap-4">
+
+            <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-emerald-50 text-emerald-700 transition-all duration-300 group-hover:scale-105 group-hover:bg-emerald-100 dark:bg-emerald-500/10 dark:text-emerald-400 dark:group-hover:bg-emerald-500/15">
+              <Wrench size={23} />
+            </div>
+
+            <div>
+
+              <div className="flex flex-wrap items-center gap-2">
+
+                <span className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-400">
+                  {booking.id}
+                </span>
+
+                <span className="h-1 w-1 rounded-full bg-slate-300 dark:bg-slate-700" />
+
+                <span
+                  className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[9px] font-black ${
+                    completed
+                      ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400"
+                      : "bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400"
+                  }`}
+                >
+                  <span
+                    className={`h-1.5 w-1.5 rounded-full ${
+                      completed
+                        ? "bg-emerald-500"
+                        : "bg-amber-500"
+                    }`}
+                  />
+
+                  {booking.status}
+                </span>
+
+              </div>
+
+              <h2 className="mt-2 text-xl font-black tracking-[-0.035em] sm:text-2xl">
+                {booking.service}
+              </h2>
+
+              <p className="mt-1 text-xs text-slate-400">
+                {booking.provider}
+              </p>
+
+            </div>
+
+          </div>
+
+          <div className="sm:text-right">
+
+            <p className="text-[9px] font-black uppercase tracking-[0.12em] text-slate-400">
+              Service price
+            </p>
+
+            <p className="mt-1 text-xl font-black">
+              {booking.price}
+            </p>
+
+          </div>
+
+        </div>
+
+        {/* DETAILS */}
+
+        <div className="mt-7 grid gap-3 sm:grid-cols-3">
+
+          <BookingDetail
+            icon={CalendarDays}
+            label="Date"
+            value={booking.date}
+          />
+
+          <BookingDetail
+            icon={Clock3}
+            label="Time slot"
+            value={booking.slot}
+          />
+
+          <BookingDetail
+            icon={MapPin}
+            label="Location"
+            value="Home address"
+          />
+
+        </div>
+
+      </div>
+
+      {/* STATUS */}
+
+      <div className="border-t border-slate-100 px-5 py-5 dark:border-slate-800 sm:px-7">
+
+        <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+
+          {/* TIMELINE */}
+
+          <div className="flex items-center">
+
+            <StatusPoint
+              active
+              completed={completed}
+              label="Booked"
+            />
+
+            <StatusLine active />
+
+            <StatusPoint
+              active={!completed}
+              completed={completed}
+              label={completed ? "Completed" : "Confirmed"}
+            />
+
+            <StatusLine active={completed} />
+
+            <StatusPoint
+              active={completed}
+              completed={completed}
+              label="Done"
+            />
+
+          </div>
+
+          {/* ACTION */}
+
+          <div className="flex items-center justify-between gap-4 sm:justify-end">
+
+            {completed ? (
+              <div className="flex items-center gap-2 text-xs font-black text-slate-500 dark:text-slate-400">
+
+                <Star
+                  size={15}
+                  fill="#f4b942"
+                  color="#f4b942"
+                />
+
+                4.8 rated
+
+              </div>
+            ) : (
+              <span className="flex items-center gap-2 text-xs font-semibold text-slate-400">
+
+                <Clock3 size={14} />
+
+                Upcoming service
+
+              </span>
+            )}
+
+            <Link
+              to="/bookings"
+              className="group/track inline-flex items-center gap-1 text-xs font-black text-emerald-700 transition-all duration-300 hover:gap-2 dark:text-emerald-400"
+            >
+              {completed ? "View booking" : "Track booking"}
+
+              <ChevronRight
+                size={15}
+                className="transition-transform duration-300 group-hover/track:translate-x-0.5"
+              />
+
+            </Link>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </article>
+  );
+}
+
+/* ============================================================
+   BOOKING DETAIL
+============================================================ */
+
+function BookingDetail({
+  icon: Icon,
+  label,
+  value,
+}) {
+  return (
+    <div className="group/detail rounded-2xl bg-slate-50 p-4 transition-all duration-300 hover:bg-emerald-50/60 dark:bg-[#18221f] dark:hover:bg-emerald-500/5">
+
+      <div className="flex items-center gap-2">
+
+        <Icon
+          size={16}
+          className="text-emerald-600 dark:text-emerald-400"
+        />
+
+        <span className="text-[9px] font-black uppercase tracking-[0.1em] text-slate-400">
+          {label}
+        </span>
+
+      </div>
+
+      <p className="mt-2 text-xs font-black leading-5 text-slate-700 dark:text-slate-200">
+        {value}
+      </p>
+
+    </div>
+  );
+}
+
+/* ============================================================
+   STATUS POINT
+============================================================ */
+
+function StatusPoint({
+  active,
+  completed,
+  label,
+}) {
+  return (
+    <div className="flex flex-col items-center gap-2">
+
+      <div
+        className={`grid h-7 w-7 place-items-center rounded-full transition-all duration-300 ${
+          active
+            ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/20 dark:bg-emerald-400 dark:text-emerald-950"
+            : "bg-slate-100 text-slate-300 dark:bg-slate-800 dark:text-slate-600"
+        }`}
+      >
+        {active ? (
+          <CheckCircle2 size={14} />
+        ) : (
+          <span className="h-1.5 w-1.5 rounded-full bg-current" />
+        )}
+      </div>
+
+      <span
+        className={`text-[8px] font-black uppercase tracking-wide ${
+          active
+            ? "text-slate-600 dark:text-slate-300"
+            : "text-slate-400"
+        }`}
+      >
+        {label}
+      </span>
+
+    </div>
+  );
+}
+
+/* ============================================================
+   STATUS LINE
+============================================================ */
+
+function StatusLine({ active }) {
+  return (
+    <div className="mx-2 mb-5 h-[2px] w-8 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800 sm:w-14">
+
+      <div
+        className={`h-full rounded-full bg-emerald-500 transition-all duration-500 ${
+          active ? "w-full" : "w-0"
+        }`}
+      />
+
+    </div>
+  );
+}

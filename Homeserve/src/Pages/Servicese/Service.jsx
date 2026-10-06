@@ -1,238 +1,194 @@
-import React from "react";
-import { NavLink,useNavigate } from "react-router-dom";
+import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  Search,
+  SlidersHorizontal,
+  Star,
+  ArrowRight,
+  Sparkles,
+  CheckCircle2,
+} from "lucide-react";
+
 import Layout from "../../Components/Layout.jsx";
 
-import plumbing from "../../assets/Plumber.png";
+import plumber from "../../assets/Plumber.png";
 import cleaning from "../../assets/cleaning.png";
-import electrical from "../../assets/electrician.png";
-import repair from "../../assets/Painting.png";
-import Acrepair from "../../assets/Acrepair.png";
-import Crpantry from "../../assets/Crpantry.png";
-import repairappliance from "../../assets/repairappliance.png";
-import PestControl from "../../assets/PestControl.png";
-import WaterPurifierService from "../../assets/WaterPurifierService.png";
-import Locksmith from "../../assets/Locksmith.png";
-import backgroundimage from "../../assets/service_background.jpg";
+import electrician from "../../assets/electrician.png";
+import painting from "../../assets/Painting.png";
+import ac from "../../assets/Acrepair.png";
+import carpentry from "../../assets/Crpantry.png";
+import appliance from "../../assets/repairappliance.png";
+import pest from "../../assets/PestControl.png";
+import purifier from "../../assets/WaterPurifierService.png";
+import locksmith from "../../assets/Locksmith.png";
 
-function Service() {
-  const navigate = useNavigate();
-  const services = [
-    {
-      id: 1,
-      title: "Plumbing",
-      description:
-        "Professional plumbing services for leaks, taps and pipes.",
-      price: "₹299",
-      image: plumbing,
-      icon: "🚰",
-    },
-    {
-      id: 2,
-      title: "Cleaning",
-      description:
-        "Reliable cleaning services to keep your home fresh.",
-      price: "₹399",
-      image: cleaning,
-      icon: "🧹",
-    },
-    {
-      id: 3,
-      title: "Electrical",
-      description:
-        "Safe electrical repair and installation services.",
-      price: "₹349",
-      image: electrical,
-      icon: "⚡",
-    },
-    {
-      id: 4,
-      title: "Painting",
-      description:
-        "Give your home a fresh look with professional painting.",
-      price: "₹299",
-      image: repair,
-      icon: "🎨",
-    },
-    {
-      id: 5,
-      title: "AC Repair & Service",
-      description:
-        "AC repair, servicing, installation and maintenance.",
-      price: "₹599",
-      image: Acrepair,
-      icon: "❄️",
-    },
-    {
-      id: 6,
-      title: "Carpentry",
-      description:
-        "Furniture repair, doors, cabinets, shelves and custom woodwork.",
-      price: "₹899",
-      image: Crpantry,
-      icon: "🪚",
-    },
-    {
-      id: 7,
-      title: "Appliance Repair",
-      description:
-        "Repair services for refrigerators, washing machines and appliances.",
-      price: "₹499",
-      image: repairappliance,
-      icon: "🔧",
-    },
-    {
-      id: 8,
-      title: "Pest Control",
-      description:
-        "Protect your home from cockroaches, ants, termites and pests.",
-      price: "₹399",
-      image: PestControl,
-      icon: "🦟",
-    },
-    {
-      id: 9,
-      title: "RO / Water Purifier",
-      description:
-        "RO servicing, filter replacement, repair and maintenance.",
-      price: "₹699",
-      image: WaterPurifierService,
-      icon: "💧",
-    },
-    {
-      id: 10,
-      title: "Locksmith",
-      description:
-        "Lock repair, replacement, key duplication and door access.",
-      price: "₹199",
-      image: Locksmith,
-      icon: "🔐",
-    },
-  ];
+const services = [
+  {
+    name: "Plumbing",
+    img: plumber,
+    desc: "Leaks, taps, pipes, fittings and common water issues.",
+    price: "₹299",
+    rating: "4.8",
+    tag: "Most booked",
+  },
+  {
+    name: "Cleaning",
+    img: cleaning,
+    desc: "Deep cleaning, kitchen, bathroom and regular home cleaning.",
+    price: "₹399",
+    rating: "4.7",
+    tag: "Popular",
+  },
+  {
+    name: "Electrical",
+    img: electrician,
+    desc: "Switches, fans, lights, wiring and home electrical repairs.",
+    price: "₹249",
+    rating: "4.8",
+    tag: "Verified",
+  },
+  {
+    name: "Painting",
+    img: painting,
+    desc: "Room painting, touch-ups and clean professional finishes.",
+    price: "₹699",
+    rating: "4.6",
+    tag: "",
+  },
+  {
+    name: "AC Repair",
+    img: ac,
+    desc: "AC service, cooling problems, installation and maintenance.",
+    price: "₹499",
+    rating: "4.8",
+    tag: "Popular",
+  },
+  {
+    name: "Carpentry",
+    img: carpentry,
+    desc: "Furniture repair, shelves, doors and custom woodwork.",
+    price: "₹349",
+    rating: "4.6",
+    tag: "",
+  },
+  {
+    name: "Appliance Repair",
+    img: appliance,
+    desc: "Repair support for common household appliances.",
+    price: "₹299",
+    rating: "4.5",
+    tag: "",
+  },
+  {
+    name: "Pest Control",
+    img: pest,
+    desc: "Home pest treatment designed for everyday household needs.",
+    price: "₹599",
+    rating: "4.7",
+    tag: "",
+  },
+  {
+    name: "Water Purifier",
+    img: purifier,
+    desc: "RO/purifier service, filter checks and maintenance.",
+    price: "₹299",
+    rating: "4.7",
+    tag: "",
+  },
+  {
+    name: "Locksmith",
+    img: locksmith,
+    desc: "Lock repair, replacement and urgent access support.",
+    price: "₹249",
+    rating: "4.6",
+    tag: "",
+  },
+];
+
+export default function Service() {
+  const [q, setQ] = useState("");
+  const [sort, setSort] = useState("recommended");
+
+  const filtered = useMemo(() => {
+    const result = services.filter((service) =>
+      service.name.toLowerCase().includes(q.toLowerCase())
+    );
+
+    if (sort === "price") {
+      return [...result].sort(
+        (a, b) =>
+          Number(a.price.replace("₹", "")) -
+          Number(b.price.replace("₹", ""))
+      );
+    }
+
+    if (sort === "rating") {
+      return [...result].sort(
+        (a, b) => Number(b.rating) - Number(a.rating)
+      );
+    }
+
+    return result;
+  }, [q, sort]);
 
   return (
     <Layout>
+      <main className="min-h-screen bg-[#f7f9f8] text-slate-900 dark:bg-[#07110e] dark:text-white">
 
-      <div className="pointer-events-none fixed inset-x-0 bottom-6 z-50 flex items-center justify-between px-4 md:px-6">
+        {/* ================= HEADER ================= */}
 
-  {/* Back */}
-  <button
-    type="button"
-    onClick={() => navigate("/home")}
-    className="pointer-events-auto rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#16302B] shadow-lg ring-1 ring-black/10 transition hover:bg-[#16302B] hover:text-white"
-  >
-    ← Back
-  </button>
+        <section className="mx-auto max-w-7xl px-4 pb-8 pt-8 sm:px-6 lg:px-8 lg:pb-12 lg:pt-12">
 
-  {/* Next */}
-  <button
-    type="button"
-    onClick={() => navigate("/bookings")}
-    className="pointer-events-auto rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#16302B] shadow-lg ring-1 ring-black/10 transition hover:bg-[#16302B] hover:text-white"
-  >
-    Next →
-  </button>
+          <div className="grid gap-8 lg:grid-cols-[1fr_360px] lg:items-end">
 
-</div>
+            {/* Heading */}
 
-      {/* =====================================================
-          HERO
-      ===================================================== */}
+            <div>
 
-      <section className="max-w-7xl mx-auto px-6 pt-8 pb-12">
+              <div className="mb-4 inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-emerald-700 dark:text-emerald-400">
 
-        <div
-          className="relative overflow-hidden rounded-[2rem] min-h-[430px] bg-cover bg-center shadow-2xl"
-          style={{
-            backgroundImage: `url(${backgroundimage})`,
-          }}
-        >
+                <span className="h-px w-7 bg-emerald-500" />
 
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-black/60"></div>
-
-          {/* Decorative glow */}
-          <div className="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-green-500/20 blur-3xl"></div>
-
-          <div className="relative z-10 min-h-[430px] flex items-center">
-
-            <div className="px-8 md:px-14 max-w-3xl text-white">
-
-              {/* Badge */}
-
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-sm mb-6">
-
-                <span className="w-2 h-2 bg-green-400 rounded-full"></span>
-
-                10+ Home Services Available
+                FixMate Services
 
               </div>
 
+              <h1 className="max-w-3xl text-[42px] font-black leading-[.98] tracking-[-0.06em] text-slate-950 dark:text-white sm:text-6xl">
 
-              <p className="text-green-300 font-bold tracking-widest text-sm uppercase">
-                Fixmate Services
-              </p>
-
-
-              <h1 className="text-4xl md:text-6xl font-extrabold mt-4 leading-tight">
-
-                Everything your home
-                <br />
-
-                <span className="text-amber-400">
-                  needs. One place.
+                Find the right service
+                <span className="block text-emerald-600 dark:text-emerald-400">
+                  for your home.
                 </span>
 
               </h1>
 
+              <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-500 dark:text-slate-400 sm:text-base">
 
-              <p className="mt-6 text-gray-200 text-base md:text-lg leading-relaxed max-w-xl">
-
-                From everyday maintenance to unexpected repairs,
-                find trusted professionals and book the service you need.
+                From quick repairs to regular home maintenance, choose a
+                service and book it when it works for you.
 
               </p>
 
+            </div>
 
-              {/* Hero stats */}
+            {/* Small trust card */}
 
-              <div className="flex flex-wrap gap-8 mt-8">
+            <div className="hidden rounded-[24px] border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-[#111b18] lg:block">
 
-                <div>
+              <div className="flex items-center gap-3">
 
-                  <p className="text-2xl font-extrabold">
-                    10+
-                  </p>
-
-                  <p className="text-xs text-gray-300">
-                    Services
-                  </p>
-
+                <div className="grid h-11 w-11 place-items-center rounded-2xl bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300">
+                  <CheckCircle2 size={20} />
                 </div>
 
-
                 <div>
-
-                  <p className="text-2xl font-extrabold">
-                    ₹199+
+                  <p className="text-sm font-black">
+                    Simple, clear booking
                   </p>
 
-                  <p className="text-xs text-gray-300">
-                    Starting Price
+                  <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                    Choose a service and tell us what you need.
                   </p>
-
-                </div>
-
-
-                <div>
-
-                  <p className="text-2xl font-extrabold">
-                    ⭐ 4.8
-                  </p>
-
-                  <p className="text-xs text-gray-300">
-                    Customer Rating
-                  </p>
-
                 </div>
 
               </div>
@@ -241,309 +197,296 @@ function Service() {
 
           </div>
 
-        </div>
+          {/* ================= SEARCH BAR ================= */}
 
-      </section>
+          <div className="mt-8 rounded-[24px] border border-slate-200 bg-white p-2 shadow-[0_12px_35px_rgba(15,23,42,.06)] dark:border-slate-800 dark:bg-[#111b18]">
 
+            <div className="flex flex-col gap-2 lg:flex-row">
 
+              {/* Search */}
 
-      {/* =====================================================
-          SECTION HEADER
-      ===================================================== */}
+              <div className="relative flex-1">
 
-      <section className="max-w-7xl mx-auto px-6 pt-6">
-
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-
-          <div>
-
-            <p className="text-green-600 font-bold text-sm uppercase tracking-wider">
-              Our Services
-            </p>
-
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mt-2">
-              What does your home need?
-            </h2>
-
-            <p className="text-gray-500 mt-2">
-              Choose a service and let our professionals handle the rest.
-            </p>
-
-          </div>
-
-
-          <div className="hidden md:flex items-center gap-2 text-sm text-gray-500">
-
-            <span className="w-2 h-2 rounded-full bg-green-500"></span>
-
-            {services.length} services available
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-
-      {/* =====================================================
-          SERVICES GRID
-      ===================================================== */}
-
-      <section className="max-w-7xl mx-auto px-6 py-10">
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-
-          {services.map((service) => (
-
-            <div
-              key={service.id}
-              className="group bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
-            >
-
-              {/* IMAGE */}
-
-              <div className="relative h-52 overflow-hidden">
-
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                <Search
+                  size={19}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
                 />
 
-                {/* Image overlay */}
-
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-
-
-                {/* Service number */}
-
-                <div className="absolute top-4 left-4 w-9 h-9 rounded-xl bg-white/90 backdrop-blur-md flex items-center justify-center text-xs font-extrabold text-gray-700">
-
-                  {String(service.id).padStart(2, "0")}
-
-                </div>
-
-
-                {/* Icon */}
-
-                <div className="absolute bottom-4 left-4 w-11 h-11 rounded-xl bg-white/95 flex items-center justify-center text-xl shadow-lg">
-
-                  {service.icon}
-
-                </div>
+                <input
+                  value={q}
+                  onChange={(e) => setQ(e.target.value)}
+                  placeholder="Search plumbing, cleaning, AC..."
+                  className="h-14 w-full rounded-[18px] border-0 bg-slate-50 pl-12 pr-4 text-sm font-semibold text-slate-900 outline-none transition placeholder:text-slate-400 focus:bg-emerald-50/60 dark:bg-[#18221f] dark:text-white dark:placeholder:text-slate-500 dark:focus:bg-emerald-500/5"
+                />
 
               </div>
 
+              {/* Sort */}
 
+              <div className="relative lg:w-[210px]">
 
-              {/* CONTENT */}
+                <SlidersHorizontal
+                  size={17}
+                  className="pointer-events-none absolute left-4 top-1/2 z-10 -translate-y-1/2 text-slate-400"
+                />
 
-              <div className="p-5">
+                <select
+                  value={sort}
+                  onChange={(e) => setSort(e.target.value)}
+                  className="h-14 w-full appearance-none rounded-[18px] border-0 bg-slate-50 pl-11 pr-4 text-sm font-bold text-slate-800 outline-none transition focus:bg-emerald-50/60 dark:bg-[#18221f] dark:text-white dark:focus:bg-emerald-500/5"
+                >
+                  <option value="recommended">
+                    Recommended
+                  </option>
 
-                <div className="flex items-start justify-between gap-3">
+                  <option value="price">
+                    Lowest price
+                  </option>
 
-                  <h3 className="text-xl font-extrabold text-gray-900 leading-tight">
+                  <option value="rating">
+                    Top rated
+                  </option>
+                </select>
 
-                    {service.title}
+              </div>
 
-                  </h3>
+            </div>
 
-                </div>
+          </div>
 
+          {/* Results count */}
 
-                <p className="text-gray-500 text-sm mt-3 leading-6 min-h-[72px]">
+          <div className="mt-6 flex items-center justify-between">
 
-                  {service.description}
+            <p className="text-xs font-bold text-slate-500 dark:text-slate-400">
+              {filtered.length}{" "}
+              {filtered.length === 1 ? "service" : "services"} available
+            </p>
 
-                </p>
+            {q && (
+              <button
+                onClick={() => setQ("")}
+                className="text-xs font-black text-emerald-700 transition hover:text-emerald-500 dark:text-emerald-400"
+              >
+                Clear search
+              </button>
+            )}
 
+          </div>
 
-                {/* Price */}
+        </section>
 
-                <div className="flex items-end justify-between mt-4">
+        {/* ================= SERVICE GRID ================= */}
 
-                  <div>
+        <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
 
-                    <p className="text-xs text-gray-400">
-                      Starting from
-                    </p>
+          {filtered.length > 0 ? (
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
 
-                    <p className="text-xl font-extrabold text-green-600">
-                      {service.price}
-                    </p>
+              {filtered.map((service, index) => (
+
+                <div
+                  key={service.name}
+                  className="group overflow-hidden rounded-[26px] border border-slate-200 bg-white p-2 shadow-[0_8px_30px_rgba(15,23,42,.04)] transition duration-300 hover:-translate-y-2 hover:border-emerald-200 hover:shadow-[0_24px_50px_rgba(15,23,42,.10)] dark:border-slate-800 dark:bg-[#111b18] dark:hover:border-emerald-500/30"
+                >
+
+                  {/* ================= IMAGE ================= */}
+
+                  <div className="relative overflow-hidden rounded-[21px] bg-slate-100 dark:bg-[#18221f]">
+
+                    <img
+                      src={service.img}
+                      alt={service.name}
+                      className="h-[230px] w-full object-cover transition duration-700 ease-out group-hover:scale-110"
+                    />
+
+                    {/* Overlay */}
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-50 transition duration-300 group-hover:opacity-80" />
+
+                    {/* Tag */}
+
+                    {service.tag && (
+                      <span className="absolute left-4 top-4 rounded-full border border-white/50 bg-white/95 px-3 py-1.5 text-[9px] font-black uppercase tracking-wide text-emerald-800 shadow-lg backdrop-blur-md dark:bg-[#111b18]/95 dark:text-emerald-300">
+                        {service.tag}
+                      </span>
+                    )}
+
+                    {/* Number */}
+
+                    <span className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full border border-white/30 bg-black/20 text-[10px] font-black text-white backdrop-blur-md">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+
+                    {/* Hover arrow */}
+
+                    <div className="absolute bottom-4 right-4 grid h-11 w-11 translate-y-3 place-items-center rounded-full bg-white text-slate-900 opacity-0 shadow-xl transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                      <ArrowRight size={18} />
+                    </div>
 
                   </div>
 
-                  <span className="text-xs text-gray-400">
-                    ⭐ 4.8
-                  </span>
+                  {/* ================= CONTENT ================= */}
+
+                  <div className="px-3 pb-3 pt-5">
+
+                    <div className="flex items-start justify-between gap-4">
+
+                      <div>
+
+                        <h2 className="text-lg font-black tracking-[-0.02em] text-slate-950 dark:text-white">
+                          {service.name}
+                        </h2>
+
+                        <div className="mt-2 flex items-center gap-2">
+
+                          <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 px-2 py-1 text-[10px] font-black text-amber-700 dark:bg-amber-500/10 dark:text-amber-300">
+
+                            <Star
+                              size={11}
+                              fill="currentColor"
+                            />
+
+                            {service.rating}
+
+                          </span>
+
+                          <span className="text-[10px] font-semibold text-slate-400">
+                            Customer rating
+                          </span>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                    <p className="mt-3 min-h-[42px] text-xs leading-5 text-slate-500 dark:text-slate-400">
+                      {service.desc}
+                    </p>
+
+                    {/* Bottom */}
+
+                    <div className="mt-5 flex items-center justify-between border-t border-slate-100 pt-4 dark:border-slate-800">
+
+                      <div>
+
+                        <p className="text-[9px] font-black uppercase tracking-[0.14em] text-slate-400">
+                          Starting from
+                        </p>
+
+                        <p className="mt-1 text-lg font-black text-slate-950 dark:text-white">
+                          {service.price}
+                        </p>
+
+                      </div>
+
+                      <Link
+                        to={`/book-service?service=${encodeURIComponent(
+                          service.name
+                        )}`}
+                        className="group/book inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-xs font-black text-white transition duration-300 hover:-translate-y-0.5 hover:bg-emerald-700 hover:shadow-lg dark:bg-emerald-400 dark:text-emerald-950 dark:hover:bg-emerald-300"
+                      >
+                        Book now
+
+                        <ArrowRight
+                          size={14}
+                          className="transition duration-300 group-hover/book:translate-x-1"
+                        />
+                      </Link>
+
+                    </div>
+
+                  </div>
 
                 </div>
 
-
-                {/* Button */}
-
-                <NavLink
-                  to="/book-service"
-                  className="group/button mt-5 w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gray-900 text-white font-bold text-sm hover:bg-green-600 transition-all duration-300"
-                >
-
-                  Book Now
-
-                  <span className="group-hover/button:translate-x-1 transition-transform">
-                    →
-                  </span>
-
-                </NavLink>
-
-              </div>
+              ))}
 
             </div>
+          ) : (
 
-          ))}
+            /* ================= EMPTY STATE ================= */
 
-        </div>
+            <div className="mx-auto max-w-xl rounded-[28px] border border-dashed border-slate-300 bg-white px-6 py-14 text-center dark:border-slate-700 dark:bg-[#111b18]">
 
-      </section>
-
-
-
-      {/* =====================================================
-          HOW IT WORKS
-      ===================================================== */}
-
-      <section className="bg-gray-50 border-y border-gray-200 mt-10">
-
-        <div className="max-w-7xl mx-auto px-6 py-16">
-
-          <div className="text-center">
-
-            <p className="text-green-600 font-bold text-sm uppercase tracking-wider">
-              Simple Process
-            </p>
-
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mt-2">
-              Book a service in 3 easy steps
-            </h2>
-
-          </div>
-
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-
-
-            {/* STEP 1 */}
-
-            <div className="text-center">
-
-              <div className="mx-auto w-16 h-16 rounded-2xl bg-green-100 text-green-600 flex items-center justify-center text-2xl font-extrabold">
-                01
+              <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300">
+                <Search size={23} />
               </div>
 
-              <h3 className="mt-5 text-xl font-bold text-gray-900">
-                Choose a Service
-              </h3>
-
-              <p className="mt-2 text-gray-500 max-w-xs mx-auto">
-                Select the service that your home needs.
-              </p>
-
-            </div>
-
-
-            {/* STEP 2 */}
-
-            <div className="text-center">
-
-              <div className="mx-auto w-16 h-16 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center text-2xl font-extrabold">
-                02
-              </div>
-
-              <h3 className="mt-5 text-xl font-bold text-gray-900">
-                Pick a Convenient Time
-              </h3>
-
-              <p className="mt-2 text-gray-500 max-w-xs mx-auto">
-                Choose a time that works best for you.
-              </p>
-
-            </div>
-
-
-            {/* STEP 3 */}
-
-            <div className="text-center">
-
-              <div className="mx-auto w-16 h-16 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-2xl font-extrabold">
-                03
-              </div>
-
-              <h3 className="mt-5 text-xl font-bold text-gray-900">
-                Relax
-              </h3>
-
-              <p className="mt-2 text-gray-500 max-w-xs mx-auto">
-                Our professional takes care of the rest.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-
-      {/* =====================================================
-          CTA
-      ===================================================== */}
-
-      <section className="max-w-7xl mx-auto px-6 py-16">
-
-        <div className="relative overflow-hidden rounded-[2rem] bg-gray-900 px-8 md:px-14 py-12 text-white">
-
-          {/* Background decoration */}
-
-          <div className="absolute -right-20 -top-20 w-72 h-72 rounded-full bg-green-500/20 blur-3xl"></div>
-
-
-          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-
-            <div>
-
-              <p className="text-green-400 font-bold text-sm uppercase tracking-wider">
-                Need help at home?
-              </p>
-
-              <h2 className="text-3xl md:text-4xl font-extrabold mt-2">
-                Don't let a small problem become a big one.
+              <h2 className="mt-5 text-xl font-black text-slate-950 dark:text-white">
+                No service found
               </h2>
 
-              <p className="text-gray-400 mt-3">
-                Find a professional and get it sorted today.
+              <p className="mx-auto mt-2 max-w-sm text-sm leading-6 text-slate-500 dark:text-slate-400">
+                We couldn't find a service matching your search. Try another
+                service name.
               </p>
+
+              <button
+                onClick={() => setQ("")}
+                className="mt-6 inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 text-xs font-black text-white transition hover:bg-emerald-700 dark:bg-emerald-400 dark:text-emerald-950 dark:hover:bg-emerald-300"
+              >
+                Show all services
+                <ArrowRight size={15} />
+              </button>
 
             </div>
 
+          )}
 
-            <NavLink
-              to="/book-service"
-              className="shrink-0 bg-green-600 hover:bg-green-500 text-white px-8 py-4 rounded-xl font-bold hover:scale-105 transition-all duration-300"
-            >
-              Book a Service →
-            </NavLink>
+        </section>
 
+        {/* ================= BOTTOM CTA ================= */}
+
+        <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
+
+          <div className="group relative overflow-hidden rounded-[30px] bg-[#0b2b23] px-6 py-9 text-white shadow-[0_20px_50px_rgba(7,40,31,.15)] sm:px-10 sm:py-11">
+
+            {/* Decorative glow */}
+
+            <div className="absolute -right-20 -top-24 h-64 w-64 rounded-full bg-emerald-300/10 transition duration-700 group-hover:scale-125" />
+
+            <div className="absolute -bottom-24 left-1/3 h-52 w-52 rounded-full border-[30px] border-emerald-300/[0.04]" />
+
+            <div className="relative z-10 flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between">
+
+              <div>
+
+                <div className="flex items-center gap-2 text-xs font-black text-emerald-300">
+                  <Sparkles size={15} />
+                  Can't decide where to start?
+                </div>
+
+                <h2 className="mt-3 text-3xl font-black tracking-[-0.04em] sm:text-4xl">
+                  Tell us what needs fixing.
+                </h2>
+
+                <p className="mt-2 max-w-xl text-sm leading-6 text-slate-300">
+                  Choose a service, share the problem and pick a convenient
+                  time.
+                </p>
+
+              </div>
+
+              <Link
+                    to="/book-service"
+                    className="group/btn inline-flex items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-black px-6 py-3.5 text-sm font-black text-slate-900 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:bg-emerald-50 hover:shadow-lg dark:border-white/15 dark:bg-white/10 dark:text-white dark:hover:border-emerald-300/40 dark:hover:bg-white/15"
+                  >
+                    Start Booking
+
+                    <ArrowRight
+                      size={17}
+                      className="transition duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1"
+                    />
+                  </Link>
+
+            </div>
           </div>
 
-        </div>
+        </section>
 
-      </section>
-
+      </main>
     </Layout>
   );
 }
-
-export default Service;

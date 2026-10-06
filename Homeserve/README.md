@@ -1,16 +1,38 @@
-# React + Vite
+# FixMate Customer Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A polished, responsive React/Vite frontend for the FixMate home-services experience.
 
-Currently, two official plugins are available:
+## Run locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+## Build
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm run build
+```
 
-## Expanding the ESLint configuration
+## Routes
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- `/login`
+- `/signup`
+- `/forgot`
+- `/home`
+- `/services`
+- `/book-service`
+- `/bookings`
+- `/notifications`
+- `/profile`
+
+## Location data
+
+The booking form loads Indian States/UTs, districts and postal localities dynamically from the public India Pincode API. This keeps the frontend lightweight instead of bundling a very large geography file into the project. The source publishes state/district data and district-level postal offices with PIN codes, and is sourced from Department of Posts data via data.gov.in.
+
+The booking form uses those postal localities as the `Village / Locality` selector and automatically fills the PIN code when an area is selected. A PIN lookup is also available when the user enters a six-digit PIN.
+
+## Scope
+
+This is a frontend/demo application. Login, booking confirmation, notifications and profile controls are UI flows until a backend/database is connected.

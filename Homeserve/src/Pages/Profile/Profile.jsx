@@ -1,1037 +1,581 @@
-import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link,NavLink } from "react-router-dom";
+import {
+  ArrowRight,
+  Bell,
+  CalendarDays,
+  Check,
+  ChevronRight,
+  Home,
+  LogOut,
+  MapPin,
+  Pencil,
+  Phone,
+  ShieldCheck,
+  UserRound,
+} from "lucide-react";
 import Layout from "../../Components/Layout.jsx";
 
-function Profile() {
-  const navigate = useNavigate();
+const contactDetails = [
+  ["Full name", "Piyush Gujor"],
+  ["Mobile", "+91 99980 91751"],
+  ["Email", "piyush@example.com"],
+  ["Member since", "2026"],
+];
 
+const homeAddress = [
+  ["State", "Gujarat"],
+  ["City / District", "Palanpur"],
+  ["Village / Area", "Palanpur Village"],
+  ["PIN code", "385001"],
+];
+
+export default function Profile() {
   return (
     <Layout>
+      <main className="min-h-screen bg-slate-50 text-slate-900 dark:bg-[#07110e] dark:text-white">
 
-      {/* =========================
-          FLOATING BACK BUTTON
-      ========================= */}
-      <div className="fixed bottom-6 left-6 z-50">
+        {/* PAGE */}
 
-        <button
-          type="button"
-          onClick={() => navigate("/services")}
-          className="
-            profile-back-button
-            zoomanimation
-            flex items-center gap-2
-            px-5 py-3
-            rounded-full
-            font-semibold
-            text-sm
-            shadow-xl
-            transition-all duration-300
-          "
-        >
-          ← Back
-        </button>
+        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-10">
 
-      </div>
+          {/* PROFILE HERO */}
 
+          <section className="relative overflow-hidden rounded-[32px] bg-[#092c24] text-white shadow-[0_20px_60px_rgba(9,44,36,0.16)]">
 
-      {/* =========================
-          MAIN PAGE
-      ========================= */}
-      <div className="
-        min-h-screen
-        bg-gray-50 dark:bg-[#0b1220]
-        text-gray-900 dark:text-white
-        transition-colors duration-300
-      ">
+            <div className="absolute -right-24 -top-28 h-80 w-80 rounded-full bg-emerald-300/10" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div className="absolute -bottom-36 left-[35%] h-80 w-80 rounded-full border-[60px] border-white/[0.035]" />
 
+            <div className="absolute right-[22%] top-1/2 h-32 w-32 rounded-full bg-teal-300/5 blur-3xl" />
 
-          {/* =========================
-              PAGE INTRO
-          ========================= */}
-          <div className="mb-8">
+            <div className="relative p-6 sm:p-8 lg:p-10">
 
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
-
-              <div>
-
-                <div className="flex items-center gap-2 mb-2">
-
-                  <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-
-                  <p className="
-                    text-sm
-                    font-bold
-                    uppercase
-                    tracking-[0.18em]
-                    text-green-600
-                  ">
-                    Account
-                  </p>
-
-                </div>
-
-                <h1 className="
-                  text-3xl
-                  sm:text-4xl
-                  lg:text-5xl
-                  font-black
-                  tracking-tight
-                  text-gray-900 dark:text-white
-                ">
-                  My Profile
-                </h1>
-
-                <p className="
-                  mt-3
-                  text-gray-500 dark:text-gray-400
-                  max-w-xl
-                ">
-                  Manage your personal information, bookings and
-                  account security from one place.
-                </p>
-
-              </div>
-
-
-              {/* ACTIVE STATUS */}
-
-              <div className="
-                inline-flex
-                items-center
-                gap-3
-                self-start
-                lg:self-auto
-                px-4 py-3
-                rounded-2xl
-                bg-white dark:bg-[#151f30]
-                border border-gray-200 dark:border-gray-700
-                shadow-sm
-              ">
-
-                <span className="
-                  flex items-center justify-center
-                  w-9 h-9
-                  rounded-xl
-                  bg-green-100 dark:bg-green-900/30
-                ">
-                  🟢
-                </span>
-
-                <div>
-
-                  <p className="text-xs text-gray-400 uppercase tracking-wider">
-                    Status
-                  </p>
-
-                  <p className="text-sm font-bold text-gray-900 dark:text-white">
-                    Account Active
-                  </p>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-          {/* =========================
-              PROFILE HERO
-          ========================= */}
-          <div className="
-            relative
-            overflow-hidden
-            rounded-[2rem]
-            bg-white dark:bg-[#151f30]
-            border border-gray-200 dark:border-gray-700
-            shadow-xl
-            mb-8
-          ">
-
-            {/* Banner */}
-
-            <div className="
-              relative
-              h-44
-              sm:h-52
-              bg-gradient-to-br
-              from-gray-950
-              via-gray-900
-              to-green-950
-              overflow-hidden
-            ">
-
-              {/* Glow */}
-
-              <div className="
-                absolute
-                -right-20
-                -top-32
-                w-96 h-96
-                rounded-full
-                bg-green-500/20
-                blur-3xl
-              "></div>
-
-              <div className="
-                absolute
-                right-20
-                bottom-[-120px]
-                w-80 h-80
-                rounded-full
-                bg-green-400/10
-                blur-2xl
-              "></div>
-
-              {/* Grid pattern */}
-
-              <div className="
-                absolute inset-0
-                opacity-[0.08]
-                profile-grid
-              "></div>
-
-              {/* Banner text */}
-
-              <div className="
-                absolute
-                top-7
-                left-7
-                sm:left-10
-                text-white
-              ">
-
-                <p className="
-                  text-xs
-                  font-bold
-                  uppercase
-                  tracking-[0.2em]
-                  text-green-300
-                ">
-                  FixMate
-                </p>
-
-                <p className="
-                  mt-2
-                  text-lg
-                  sm:text-xl
-                  font-bold
-                ">
-                  Your home service account
-                </p>
-
-              </div>
-
-            </div>
-
-
-            {/* PROFILE INFORMATION */}
-
-            <div className="
-              relative
-              px-5
-              sm:px-8
-              lg:px-10
-              pb-8
-            ">
-
-              <div className="
-                flex
-                flex-col
-                lg:flex-row
-                lg:items-end
-                lg:justify-between
-                gap-6
-              ">
-
+              <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
 
                 {/* USER */}
 
-                <div className="
-                  flex
-                  flex-col
-                  sm:flex-row
-                  sm:items-end
-                  gap-5
-                  -mt-16
-                  relative
-                  z-10
-                ">
+                <div className="flex items-center gap-5">
 
-                  {/* AVATAR */}
+                  <div className="relative">
 
-                  <div className="
-                    w-28 h-28
-                    sm:w-32 sm:h-32
-                    shrink-0
-                    rounded-[2rem]
-                    bg-gradient-to-br
-                    from-green-500
-                    to-green-700
-                    border-[6px]
-                    border-white dark:border-[#151f30]
-                    shadow-2xl
-                    flex items-center justify-center
-                    text-5xl
-                    sm:text-6xl
-                    font-black
-                    text-white
-                    zoomanimation
-                  ">
-                    P
+                    <div className="grid h-20 w-20 place-items-center rounded-[26px] bg-emerald-300 text-3xl font-black text-emerald-950 shadow-xl shadow-black/10 ring-4 ring-white/10 sm:h-24 sm:w-24 sm:text-4xl">
+                      P
+                    </div>
+
+                    <div className="absolute -bottom-1 -right-1 grid h-7 w-7 place-items-center rounded-full border-4 border-[#092c24] bg-emerald-400 text-emerald-950">
+                      <Check size={13} strokeWidth={3} />
+                    </div>
+
                   </div>
 
+                  <div>
 
-                  {/* USER DETAILS */}
+                    <div className="flex flex-wrap items-center gap-2">
 
-                  <div className="pb-1">
+                      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-300">
+                        FixMate customer
+                      </span>
 
-                    <div className="
-                      flex
-                      flex-wrap
-                      items-center
-                      gap-3
-                    ">
-
-                      <h2 className="
-                        text-3xl
-                        font-black
-                        text-gray-900 dark:text-white
-                      ">
-                        Piyush
-                      </h2>
-
-                      <span className="
-                        px-3 py-1
-                        rounded-full
-                        bg-green-100 dark:bg-green-900/30
-                        text-green-700 dark:text-green-300
-                        text-xs
-                        font-bold
-                      ">
-                        Customer
+                      <span className="rounded-full bg-white/10 px-2.5 py-1 text-[9px] font-black text-emerald-100 ring-1 ring-white/10">
+                        VERIFIED
                       </span>
 
                     </div>
 
-                    <p className="
-                      mt-1
-                      text-gray-500 dark:text-gray-400
-                    ">
-                      FixMate Customer Account
+                    <h1 className="mt-2 text-3xl font-black tracking-[-0.05em] sm:text-4xl">
+                      Piyush Gujor
+                    </h1>
+
+                    <p className="mt-2 max-w-md text-xs leading-5 text-slate-300">
+                      Manage your personal details, service address and FixMate
+                      activity from one place.
                     </p>
 
                   </div>
 
                 </div>
 
+                {/* ACTIONS */}
 
-                {/* EDIT */}
+                <div className="flex flex-col gap-3 sm:flex-row">
 
-                <button
-                  type="button"
-                  className="
-                    profile-edit-button
-                    zoomanimation
-                    w-full
-                    lg:w-auto
-                    px-6 py-3
-                    rounded-xl
-                    font-bold
-                    transition-all duration-300
-                    shadow-lg
-                  "
-                >
-                  ✏️ Edit Profile
-                </button>
+                  <Link
+                    to="/bookings"
+                    className="group/btn inline-flex items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-black px-6 py-3.5 text-sm font-black text-slate-900 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:bg-emerald-50 hover:shadow-lg dark:border-white/15 dark:bg-white/10 dark:text-white dark:hover:border-emerald-300/40 dark:hover:bg-white/15"
+                  >
+                    My Bookings
+
+                    <ArrowRight
+                      size={17}
+                      className="transition duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1"
+                    />
+                  </Link>
+
+                  <Link
+                    to="/services"
+                    className="group inline-flex min-h-[50px] items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/10 px-5 text-xs font-black text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/15"
+                  >
+                    Book a service
+                    <ArrowRight
+                      size={15}
+                      className="transition-transform duration-300 group-hover:translate-x-1"
+                    />
+                  </Link>
+
+                </div>
 
               </div>
 
+              {/* HERO STATS */}
 
-              {/* DIVIDER */}
+              <div className="mt-8 grid gap-3 border-t border-white/10 pt-6 sm:grid-cols-3">
 
-              <div className="
-                border-t
-                border-gray-200 dark:border-gray-700
-                mt-8
-                pt-8
-              ">
+                <HeroStat
+                  icon={ShieldCheck}
+                  label="Account"
+                  value="Ready"
+                />
 
+                <HeroStat
+                  icon={MapPin}
+                  label="Service area"
+                  value="Palanpur"
+                />
 
-                {/* =========================
-                    STATS
-                ========================= */}
-
-                <div className="
-                  grid
-                  grid-cols-2
-                  lg:grid-cols-4
-                  gap-4
-                ">
-
-
-                  {/* BOOKINGS */}
-
-                  <div className="profile-stat-card">
-
-                    <div className="profile-stat-icon bg-blue-100 dark:bg-blue-900/30">
-                      📋
-                    </div>
-
-                    <div>
-
-                      <p className="profile-stat-label">
-                        Total Bookings
-                      </p>
-
-                      <p className="profile-stat-value">
-                        1
-                      </p>
-
-                    </div>
-
-                  </div>
-
-
-                  {/* COMPLETED */}
-
-                  <div className="profile-stat-card">
-
-                    <div className="profile-stat-icon bg-green-100 dark:bg-green-900/30">
-                      ✓
-                    </div>
-
-                    <div>
-
-                      <p className="profile-stat-label">
-                        Completed
-                      </p>
-
-                      <p className="profile-stat-value text-green-600">
-                        0
-                      </p>
-
-                    </div>
-
-                  </div>
-
-
-                  {/* PENDING */}
-
-                  <div className="profile-stat-card">
-
-                    <div className="profile-stat-icon bg-orange-100 dark:bg-orange-900/30">
-                      ⏳
-                    </div>
-
-                    <div>
-
-                      <p className="profile-stat-label">
-                        Pending
-                      </p>
-
-                      <p className="profile-stat-value text-orange-500">
-                        1
-                      </p>
-
-                    </div>
-
-                  </div>
-
-
-                  {/* MEMBER */}
-
-                  <div className="profile-stat-card">
-
-                    <div className="profile-stat-icon bg-purple-100 dark:bg-purple-900/30">
-                      ⭐
-                    </div>
-
-                    <div>
-
-                      <p className="profile-stat-label">
-                        Member Since
-                      </p>
-
-                      <p className="profile-stat-value text-lg">
-                        2026
-                      </p>
-
-                    </div>
-
-                  </div>
-
-                </div>
+                <HeroStat
+                  icon={CalendarDays}
+                  label="Member since"
+                  value="2026"
+                />
 
               </div>
 
             </div>
 
-          </div>
+          </section>
 
+          {/* CONTENT */}
 
-          {/* =========================
-              TWO COLUMN SECTION
-          ========================= */}
+          <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_350px]">
 
-          <div className="
-            grid
-            lg:grid-cols-3
-            gap-8
-            mb-8
-          ">
+            {/* LEFT */}
 
+            <div className="space-y-6">
 
-            {/* =========================
-                PERSONAL INFORMATION
-            ========================= */}
+              {/* CONTACT */}
 
-            <div className="
-              lg:col-span-2
-              profile-section-card
-            ">
+              <section className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_10px_40px_rgba(15,23,42,0.045)] dark:border-slate-800 dark:bg-[#111b18]">
 
-              <div className="mb-6">
+                <div className="flex flex-col gap-4 border-b border-slate-100 p-6 dark:border-slate-800 sm:flex-row sm:items-center sm:justify-between">
 
-                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-4">
 
-                  <div className="
-                    w-11 h-11
-                    rounded-xl
-                    bg-green-100 dark:bg-green-900/30
-                    flex items-center justify-center
-                    text-xl
-                  ">
-                    👤
+                    <div className="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">
+                      <UserRound size={20} />
+                    </div>
+
+                    <div>
+
+                      <p className="text-[10px] font-black uppercase tracking-[0.16em] text-emerald-700 dark:text-emerald-400">
+                        Personal details
+                      </p>
+
+                      <h2 className="mt-1 text-lg font-black tracking-[-0.03em]">
+                        Contact information
+                      </h2>
+
+                    </div>
+
                   </div>
 
-                  <div>
+                  <button
+                    type="button"
+                    className="inline-flex min-h-10 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 text-xs font-black text-slate-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-700 dark:border-slate-700 dark:bg-[#18221f] dark:text-slate-300 dark:hover:border-emerald-500/30 dark:hover:bg-emerald-500/10 dark:hover:text-emerald-400"
+                  >
+                    <Pencil size={13} />
+                    Edit details
+                  </button>
 
-                    <h3 className="
-                      text-xl
-                      font-black
-                      text-gray-900 dark:text-white
-                    ">
-                      Personal Information
-                    </h3>
+                </div>
 
-                    <p className="
-                      text-sm
-                      text-gray-500 dark:text-gray-400
-                    ">
-                      Your basic account information.
-                    </p>
+                <div className="p-5 sm:p-6">
+
+                  <div className="grid gap-3 sm:grid-cols-2">
+
+                    {contactDetails.map(([label, value]) => (
+                      <ContactCard
+                        key={label}
+                        label={label}
+                        value={value}
+                      />
+                    ))}
 
                   </div>
 
                 </div>
 
-              </div>
+              </section>
 
+              {/* ADDRESS */}
 
-              <div className="
-                grid
-                sm:grid-cols-2
-                gap-4
-              ">
+              <section className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_10px_40px_rgba(15,23,42,0.045)] dark:border-slate-800 dark:bg-[#111b18]">
 
+                <div className="flex flex-col gap-4 border-b border-slate-100 p-6 dark:border-slate-800 sm:flex-row sm:items-center sm:justify-between">
 
-                {/* NAME */}
+                  <div className="flex items-center gap-4">
 
-                <div className="profile-info-card">
+                    <div className="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">
+                      <Home size={20} />
+                    </div>
 
-                  <div className="profile-info-icon">
-                    👤
+                    <div>
+
+                      <p className="text-[10px] font-black uppercase tracking-[0.16em] text-emerald-700 dark:text-emerald-400">
+                        Service address
+                      </p>
+
+                      <h2 className="mt-1 text-lg font-black tracking-[-0.03em]">
+                        Your home
+                      </h2>
+
+                    </div>
+
                   </div>
 
-                  <div className="min-w-0">
+                  <button
+                    type="button"
+                    className="inline-flex min-h-10 items-center justify-center gap-2 rounded-xl bg-emerald-50 px-4 text-xs font-black text-emerald-700 transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-100 dark:bg-emerald-500/10 dark:text-emerald-400 dark:hover:bg-emerald-500/15"
+                  >
+                    <Pencil size={13} />
+                    Edit address
+                  </button>
 
-                    <p className="profile-info-label">
-                      Full Name
-                    </p>
+                </div>
 
-                    <p className="profile-info-value">
-                      Piyush
-                    </p>
+                <div className="p-5 sm:p-6">
+
+                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+
+                    {homeAddress.map(([label, value]) => (
+                      <AddressCard
+                        key={label}
+                        label={label}
+                        value={value}
+                      />
+                    ))}
+
+                  </div>
+
+                  <div className="mt-4 rounded-2xl border border-emerald-100 bg-emerald-50/70 p-5 dark:border-emerald-500/15 dark:bg-emerald-500/5">
+
+                    <div className="flex items-start gap-4">
+
+                      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white text-emerald-700 shadow-sm dark:bg-[#18221f] dark:text-emerald-400">
+                        <MapPin size={18} />
+                      </div>
+
+                      <div className="min-w-0">
+
+                        <div className="flex flex-wrap items-center gap-2">
+
+                          <p className="text-[10px] font-black uppercase tracking-[0.14em] text-emerald-700 dark:text-emerald-400">
+                            Home address
+                          </p>
+
+                          <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-[8px] font-black text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">
+                            PRIMARY
+                          </span>
+
+                        </div>
+
+                        <p className="mt-2 text-sm font-bold leading-6 text-slate-700 dark:text-slate-200">
+                          Add your house or flat number, building, street and a
+                          useful landmark from the booking form.
+                        </p>
+
+                      </div>
+
+                    </div>
 
                   </div>
 
                 </div>
 
-
-                {/* EMAIL */}
-
-                <div className="profile-info-card">
-
-                  <div className="profile-info-icon">
-                    ✉️
-                  </div>
-
-                  <div className="min-w-0">
-
-                    <p className="profile-info-label">
-                      Email Address
-                    </p>
-
-                    <p className="profile-info-value truncate">
-                      user@example.com
-                    </p>
-
-                  </div>
-
-                </div>
-
-
-                {/* PHONE */}
-
-                <div className="profile-info-card">
-
-                  <div className="profile-info-icon">
-                    📱
-                  </div>
-
-                  <div>
-
-                    <p className="profile-info-label">
-                      Phone Number
-                    </p>
-
-                    <p className="profile-info-value">
-                      +91 98765 43210
-                    </p>
-
-                  </div>
-
-                </div>
-
-
-                {/* LOCATION */}
-
-                <div className="profile-info-card">
-
-                  <div className="profile-info-icon">
-                    📍
-                  </div>
-
-                  <div>
-
-                    <p className="profile-info-label">
-                      Location
-                    </p>
-
-                    <p className="profile-info-value">
-                      India
-                    </p>
-
-                  </div>
-
-                </div>
-
-              </div>
+              </section>
 
             </div>
 
+            {/* RIGHT */}
 
-            {/* =========================
-                QUICK ACTIONS
-            ========================= */}
+            <aside className="space-y-6">
 
-            <div className="profile-section-card">
+              {/* ACCOUNT CARD */}
 
-              <div className="mb-6">
+              <section className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_10px_40px_rgba(15,23,42,0.045)] dark:border-slate-800 dark:bg-[#111b18]">
 
-                <h3 className="
-                  text-xl
-                  font-black
-                  text-gray-900 dark:text-white
-                ">
-                  Quick Actions
-                </h3>
+                <div className="bg-gradient-to-br from-emerald-50 to-white p-6 dark:from-emerald-500/10 dark:to-[#111b18]">
 
-                <p className="
-                  text-sm
-                  text-gray-500 dark:text-gray-400
-                  mt-1
-                ">
-                  Manage your account quickly.
-                </p>
+                  <div className="flex items-center justify-between">
 
-              </div>
+                    <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white text-emerald-700 shadow-sm dark:bg-[#18221f] dark:text-emerald-400">
+                      <ShieldCheck size={21} />
+                    </div>
 
-
-              <div className="space-y-3">
-
-
-                <NavLink
-                  to="/bookings"
-                  className="profile-action-card"
-                >
-
-                  <span className="profile-action-icon">
-                    📅
-                  </span>
-
-                  <span className="flex-1">
-
-                    <span className="block font-bold">
-                      My Bookings
-                    </span>
-
-                    <span className="block text-xs opacity-60">
-                      View your service bookings
-                    </span>
-
-                  </span>
-
-                  <span>→</span>
-
-                </NavLink>
-
-
-                <NavLink
-                  to="/services"
-                  className="profile-action-card"
-                >
-
-                  <span className="profile-action-icon">
-                    🔧
-                  </span>
-
-                  <span className="flex-1">
-
-                    <span className="block font-bold">
-                      Find a Service
-                    </span>
-
-                    <span className="block text-xs opacity-60">
-                      Browse FixMate services
-                    </span>
-
-                  </span>
-
-                  <span>→</span>
-
-                </NavLink>
-
-
-                <button
-                  type="button"
-                  className="profile-action-card profile-action-card-button"
-                >
-
-                  <span className="profile-action-icon">
-                    🔐
-                  </span>
-
-                  <span className="flex-1 text-left">
-
-                    <span className="block font-bold">
-                      Security
-                    </span>
-
-                    <span className="block text-xs opacity-60">
-                      Manage your password
-                    </span>
-
-                  </span>
-
-                  <span>→</span>
-
-                </button>
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-          {/* =========================
-              SECURITY
-          ========================= */}
-
-          <div className="
-            profile-security-card
-            mb-8
-          ">
-
-            <div className="
-              flex
-              flex-col
-              md:flex-row
-              md:items-center
-              md:justify-between
-              gap-6
-            ">
-
-              <div className="flex items-start gap-4">
-
-                <div className="
-                  w-12 h-12
-                  shrink-0
-                  rounded-2xl
-                  bg-green-500/15
-                  flex items-center justify-center
-                  text-xl
-                ">
-                  🔒
-                </div>
-
-                <div>
-
-                  <div className="flex flex-wrap items-center gap-3">
-
-                    <h3 className="text-xl font-black">
-                      Account Security
-                    </h3>
-
-                    <span className="
-                      px-2.5 py-1
-                      rounded-full
-                      bg-green-500/15
-                      text-green-400
-                      text-xs
-                      font-bold
-                    ">
-                      Protected
+                    <span className="flex items-center gap-1.5 rounded-full bg-emerald-100 px-3 py-1.5 text-[9px] font-black text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                      READY
                     </span>
 
                   </div>
 
-                  <p className="
-                    text-gray-400
-                    text-sm
-                    mt-2
-                    max-w-2xl
-                  ">
-                    Keep your account secure by regularly updating
-                    your password and protecting your login credentials.
+                  <h2 className="mt-5 text-xl font-black tracking-[-0.03em]">
+                    Account ready
+                  </h2>
+
+                  <p className="mt-2 text-xs leading-6 text-slate-500 dark:text-slate-400">
+                    Your profile contains the important details needed for a
+                    smoother service booking.
                   </p>
 
                 </div>
 
-              </div>
+                <div className="space-y-3 p-5">
 
+                  <StatusItem
+                    icon={UserRound}
+                    text="Personal details"
+                  />
+
+                  <StatusItem
+                    icon={Phone}
+                    text="Mobile number"
+                  />
+
+                  <StatusItem
+                    icon={MapPin}
+                    text="Service location"
+                  />
+
+                </div>
+
+              </section>
+
+              {/* QUICK ACTIONS */}
+
+              <section>
+
+                <p className="mb-3 px-1 text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">
+                  Quick actions
+                </p>
+
+                <div className="space-y-3">
+
+                  <ActionCard
+                    to="/bookings"
+                    icon={CalendarDays}
+                    title="My bookings"
+                    text="Check upcoming and completed services."
+                  />
+
+                  <ActionCard
+                    to="/notifications"
+                    icon={Bell}
+                    title="Notifications"
+                    text="See your latest FixMate updates."
+                  />
+
+                </div>
+
+              </section>
+
+              {/* SIGN OUT */}
 
               <button
                 type="button"
-                className="
-                  profile-password-button
-                  shrink-0
-                  px-5 py-3
-                  rounded-xl
-                  font-bold
-                  transition-all duration-300
-                "
+                className="group flex w-full items-center gap-4 rounded-[22px] border border-red-100 bg-red-50 p-5 text-left transition-all duration-300 hover:-translate-y-1 hover:border-red-200 hover:bg-red-100 hover:shadow-md dark:border-red-500/15 dark:bg-red-500/5 dark:hover:border-red-500/25 dark:hover:bg-red-500/10"
               >
-                🔑 Change Password
-              </button>
 
-            </div>
-
-          </div>
-
-
-          {/* =========================
-              LOGOUT
-          ========================= */}
-
-          <div className="
-            profile-logout-card
-            mb-8
-          ">
-
-            <div className="
-              flex
-              flex-col
-              md:flex-row
-              md:items-center
-              md:justify-between
-              gap-5
-            ">
-
-              <div className="flex items-start gap-4">
-
-                <div className="
-                  w-11 h-11
-                  rounded-xl
-                  bg-red-100 dark:bg-red-900/20
-                  flex items-center justify-center
-                ">
-                  🚪
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white text-red-600 shadow-sm dark:bg-red-500/10 dark:text-red-400">
+                  <LogOut size={18} />
                 </div>
 
-                <div>
+                <div className="flex-1">
+                  <NavLink
+                  to="/login">
 
-                  <h3 className="
-                    font-black
-                    text-gray-900 dark:text-white
-                  ">
-                    Sign out of your account
-                  </h3>
-
-                  <p className="
-                    text-sm
-                    text-gray-500 dark:text-gray-400
-                    mt-1
-                  ">
-                    You can sign back in anytime using your account credentials.
+                  <p className="text-sm font-black text-red-700 dark:text-red-400">
+                    Sign out
                   </p>
 
+                  <p className="mt-1 text-[10px] text-red-600/60 dark:text-red-300/60">
+                    Leave this FixMate account.
+                  </p>
+
+                  </NavLink>
+
                 </div>
 
-              </div>
+                <ChevronRight
+                  size={17}
+                  className="text-red-400 transition-transform duration-300 group-hover:translate-x-1"
+                />
 
+              </button>
 
-              <NavLink
-                onClick={(e) => {
-
-                  const confirmlogout = window.confirm(
-                    "Are you sure you want to log out? 🥺\nWe’ll miss having you around! Your next order is just one click away. ❤️"
-                  );
-
-                  if (!confirmlogout) {
-                    e.preventDefault();
-                  }
-
-                }}
-                to="/login"
-                className="
-                  profile-logout-button
-                  inline-flex
-                  items-center
-                  justify-center
-                  gap-2
-                  px-6 py-3
-                  rounded-xl
-                  font-bold
-                  transition-all duration-300
-                "
-              >
-                Logout
-                →
-              </NavLink>
-
-            </div>
+            </aside>
 
           </div>
-
-
-          {/* =========================
-              CTA
-          ========================= */}
-
-          <div className="
-            relative
-            overflow-hidden
-            rounded-[2rem]
-            bg-gradient-to-r
-            from-green-600
-            via-green-500
-            to-emerald-500
-            p-7
-            sm:p-9
-            text-white
-            shadow-xl
-          ">
-
-            {/* Background decoration */}
-
-            <div className="
-              absolute
-              -right-20
-              -top-28
-              w-80 h-80
-              rounded-full
-              bg-white/10
-            "></div>
-
-            <div className="
-              absolute
-              -right-10
-              -bottom-40
-              w-96 h-96
-              rounded-full
-              bg-white/5
-            "></div>
-
-
-            <div className="
-              relative z-10
-              flex
-              flex-col
-              md:flex-row
-              md:items-center
-              md:justify-between
-              gap-6
-            ">
-
-              <div>
-
-                <p className="
-                  text-green-100
-                  text-xs
-                  font-bold
-                  uppercase
-                  tracking-[0.2em]
-                ">
-                  Need a service?
-                </p>
-
-                <h2 className="
-                  text-2xl
-                  sm:text-3xl
-                  lg:text-4xl
-                  font-black
-                  mt-2
-                ">
-                  Your home deserves the best.
-                </h2>
-
-                <p className="
-                  text-green-50
-                  mt-2
-                  max-w-xl
-                ">
-                  Book a trusted professional with FixMate today.
-                </p>
-
-              </div>
-
-
-              <NavLink
-                to="/services"
-                className="
-                  profile-cta-button
-                  inline-flex
-                  items-center
-                  justify-center
-                  gap-2
-                  px-6 py-3
-                  rounded-xl
-                  font-black
-                  transition-all duration-300
-                  shadow-xl
-                "
-              >
-                Explore Services
-                →
-              </NavLink>
-
-            </div>
-
-          </div>
-
 
         </div>
 
-      </div>
-
+      </main>
     </Layout>
   );
 }
 
-export default Profile;
+/* ============================================================
+   HERO STAT
+============================================================ */
+
+function HeroStat({
+  icon: Icon,
+  label,
+  value,
+}) {
+  return (
+    <div className="flex items-center gap-3 rounded-2xl bg-white/[0.06] p-4 transition-all duration-300 hover:bg-white/[0.10]">
+
+      <div className="grid h-10 w-10 place-items-center rounded-xl bg-white/10 text-emerald-300">
+        <Icon size={17} />
+      </div>
+
+      <div>
+
+        <p className="text-[9px] font-black uppercase tracking-[0.12em] text-slate-400">
+          {label}
+        </p>
+
+        <p className="mt-1 text-sm font-black">
+          {value}
+        </p>
+
+      </div>
+
+    </div>
+  );
+}
+
+/* ============================================================
+   CONTACT CARD
+============================================================ */
+
+function ContactCard({
+  label,
+  value,
+}) {
+  return (
+    <div className="group rounded-2xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-200 hover:bg-emerald-50/40 hover:shadow-sm dark:border-slate-800 dark:bg-[#18221f] dark:hover:border-emerald-500/25 dark:hover:bg-emerald-500/5">
+
+      <p className="text-[9px] font-black uppercase tracking-[0.12em] text-slate-400">
+        {label}
+      </p>
+
+      <p className="mt-2 break-words text-sm font-black text-slate-800 dark:text-slate-100">
+        {value}
+      </p>
+
+    </div>
+  );
+}
+
+/* ============================================================
+   ADDRESS CARD
+============================================================ */
+
+function AddressCard({
+  label,
+  value,
+}) {
+  return (
+    <div className="group rounded-2xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-200 hover:bg-emerald-50/40 hover:shadow-sm dark:border-slate-800 dark:bg-[#18221f] dark:hover:border-emerald-500/25 dark:hover:bg-emerald-500/5">
+
+      <p className="text-[9px] font-black uppercase tracking-[0.1em] text-slate-400">
+        {label}
+      </p>
+
+      <p className="mt-2 break-words text-sm font-black text-slate-800 dark:text-slate-100">
+        {value}
+      </p>
+
+    </div>
+  );
+}
+
+/* ============================================================
+   STATUS ITEM
+============================================================ */
+
+function StatusItem({
+  icon: Icon,
+  text,
+}) {
+  return (
+    <div className="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50 px-4 py-3 dark:border-slate-800 dark:bg-[#18221f]">
+
+      <div className="grid h-8 w-8 place-items-center rounded-lg bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">
+        <Icon size={14} />
+      </div>
+
+      <span className="flex-1 text-xs font-bold text-slate-700 dark:text-slate-300">
+        {text}
+      </span>
+
+      <Check
+        size={15}
+        className="text-emerald-600 dark:text-emerald-400"
+      />
+
+    </div>
+  );
+}
+
+/* ============================================================
+   ACTION CARD
+============================================================ */
+
+function ActionCard({
+  to,
+  icon: Icon,
+  title,
+  text,
+}) {
+  return (
+    <Link
+      to={to}
+      className="group flex items-center gap-4 rounded-[22px] border border-slate-200 bg-white p-4 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-[0_12px_30px_rgba(15,23,42,0.07)] dark:border-slate-800 dark:bg-[#111b18] dark:hover:border-emerald-500/30"
+    >
+
+      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-emerald-50 text-emerald-700 transition-transform duration-300 group-hover:scale-105 dark:bg-emerald-500/10 dark:text-emerald-400">
+        <Icon size={18} />
+      </div>
+
+      <div className="min-w-0 flex-1">
+
+        <p className="text-sm font-black">
+          {title}
+        </p>
+
+        <p className="mt-1 text-[10px] leading-5 text-slate-400">
+          {text}
+        </p>
+
+      </div>
+
+      <ChevronRight
+        size={17}
+        className="shrink-0 text-slate-400 transition-all duration-300 group-hover:translate-x-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400"
+      />
+
+    </Link>
+  );
+}

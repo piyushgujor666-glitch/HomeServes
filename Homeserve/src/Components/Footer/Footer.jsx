@@ -1,134 +1,23 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import Logo from "../../assets/Logo.jpeg"
+import { Link } from "react-router-dom";
+import { ArrowUpRight, Mail, PhoneCall } from "lucide-react";
+import logo from "../../assets/FIX.jpg";
 
-function Footer() {
+export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300 hover:scale-102
-             hover:drop-shadow-[0_0_20px_rgba(255,0,0,0.8)] rounded-[20px] ml-10 mr-10 mb-10 zoomanimation">
-
-      <div className="max-w-7xl mx-auto px-6 py-10">
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-
-          {/* LOGO */}
-
+    <footer className="fix-footer">
+      <div className="fix-container" style={{padding:"48px 0 28px"}}>
+        <div style={{display:"grid",gridTemplateColumns:"1.5fr 1fr 1fr 1fr",gap:32}} className="footer-grid">
           <div>
-
-            <NavLink to="/home" className="flex items-center gap-3 " > 
-              <img src={Logo} alt="Fixma🔨e Logo" className="w-15 transition-all duration-300
-             hover:scale-110 zoom-animation transition-all duration-100
-             hover:drop-shadow-[0_0_15px_rgba(34,197,94,0.8)] height-10 " /> 
-              <h1 className="text-2xl font-bold text-green-700"> Fixma🔨e </h1> 
-            </NavLink>
-
-            <p className="mt-4 text-sm text-gray-400">
-              Reliable home services,
-              <br />
-              just a click away.
-            </p>
-
+            <Link to="/home" className="fix-logo" style={{color:"#fff"}}><img src={logo} alt="FixMate"/><span>FixMate</span></Link>
+            <p style={{maxWidth:330,lineHeight:1.7,color:"#9db1aa",marginTop:16}}>Reliable home services with clear pricing, trusted professionals and a booking experience that stays simple.</p>
+            <Link to="/services" className="fix-btn fix-btn-soft" style={{marginTop:14}}>Book a service <ArrowUpRight size={16}/></Link>
           </div>
-
-
-          {/* QUICK LINKS */}
-
-          <div>
-
-            <h3 className="text-white font-semibold mb-4">
-              Quick Links
-            </h3>
-
-            <div className="flex flex-col gap-3 text-sm">
-
-              <NavLink
-                to="/home"
-                className="hover:text-green-400"
-              >
-                Home
-              </NavLink>
-
-              <NavLink
-                to="/services"
-                className="hover:text-green-400"
-              >
-                Services
-              </NavLink>
-
-              <NavLink
-                to="/bookings"
-                className="hover:text-green-400"
-              >
-                Bookings
-              </NavLink>
-
-              <NavLink
-                to="/profile"
-                className="hover:text-green-400"
-              >
-                Profile
-              </NavLink>
-
-            </div>
-
-          </div>
-
-
-          {/* SERVICES */}
-
-          <div>
-
-            <h3 className="text-white font-semibold mb-4">
-              Our Services
-            </h3>
-
-            <div className="flex flex-col gap-3 text-sm text-gray-400">
-
-              <p>🔧 Home Repair</p>
-              <p>🧹 Cleaning</p>
-              <p>⚡ Electrical</p>
-              <p>🚰 Plumbing</p>
-
-            </div>
-
-          </div>
-
-
-          {/* CONTACT */}
-
-          <div>
-
-            <h3 className="text-white font-semibold mb-4">
-              Contact Us
-            </h3>
-
-            <div className="flex flex-col gap-3 text-sm text-gray-400">
-
-              <p>📧 support@homeserve.com</p>
-              <p>📞 +91 98765 43210</p>
-              <p>📍 India</p>
-
-            </div>
-
-          </div>
-
+          <div><strong style={{color:"#fff"}}>Explore</strong><div style={{display:"grid",gap:10,marginTop:15,color:"#9db1aa"}}><Link to="/home">Home</Link><Link to="/services">Services</Link><Link to="/bookings">Bookings</Link><Link to="/profile">Profile</Link></div></div>
+          <div><strong style={{color:"#fff"}}>Popular services</strong><div style={{display:"grid",gap:10,marginTop:15,color:"#9db1aa"}}><span>Plumbing</span><span>AC Repair</span><span>Cleaning</span><span>Electrical</span></div></div>
+          <div><strong style={{color:"#fff"}}>Need help?</strong><div style={{display:"grid",gap:12,marginTop:15,color:"#9db1aa"}}><span style={{display:"flex",gap:8,alignItems:"center"}}><PhoneCall size={16}/> +91 99980 91751</span><span style={{display:"flex",gap:8,alignItems:"center"}}><Mail size={16}/> support@fixmate.in</span><span>Mon–Sun · 24/7 support</span></div></div>
         </div>
-
-
-        {/* COPYRIGHT */}
-
-        <div className="border-t border-gray-700 mt-10 pt-6 text-center">
-
-          <p className="text-sm text-gray-500">
-            © 2026 Fixma🔨e. All rights reserved.
-          </p>
-
-        </div>
-
+        <div style={{marginTop:40,paddingTop:18,borderTop:"1px solid #28433b",display:"flex",justifyContent:"space-between",gap:15,flexWrap:"wrap",color:"#71877f",fontSize:13}}><span>© 2026 FixMate. All rights reserved.</span><span>Your Home. Our Care.</span></div>
       </div>
-
     </footer>
   );
 }
-
-export default Footer;

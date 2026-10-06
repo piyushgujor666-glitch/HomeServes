@@ -1,578 +1,629 @@
+import { Link } from "react-router-dom";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  CalendarCheck2,
+  CheckCircle2,
+  Clock3,
+  MapPin,
+  Search,
+  ShieldCheck,
+  Sparkles,
+  Star,
+  Wrench,
+} from "lucide-react";
 
-import React from "react";
-import { NavLink,useNavigate } from "react-router-dom";
 import Layout from "../../Components/Layout.jsx";
-import image from "../../assets/Home_background.png";
-import logo  from "../../assets/FIX.jpg"
 
-function Home() {
-  const navigate = useNavigate();
-  const services = [
-    {
-      number: "01",
-      icon: "🎨",
-      title: "Painting",
-      description: "Give your home a fresh look with skilled painters.",
-      bg: "bg-orange-50",
-    },
-    {
-      number: "02",
-      icon: "🧹",
-      title: "Cleaning",
-      description: "Professional cleaning that makes your home shine.",
-      bg: "bg-blue-50",
-    },
-    {
-      number: "03",
-      icon: "⚡",
-      title: "Electrical",
-      description: "Safe electrical repairs and installation at home.",
-      bg: "bg-yellow-50",
-    },
-    {
-      number: "04",
-      icon: "🚰",
-      title: "Plumbing",
-      description: "Quick solutions for leaks, pipes and water issues.",
-      bg: "bg-cyan-50",
-    },
-  ];
+import hero from "../../assets/Home_background.png";
+import plumber from "../../assets/Plumber.png";
+import cleaning from "../../assets/cleaning.png";
+import electrician from "../../assets/electrician.png";
+import ac from "../../assets/Acrepair.png";
 
+const featuredServices = [
+  ["Plumbing", plumber, "Leaks, taps & pipes", "₹299"],
+  ["Cleaning", cleaning, "Deep & regular cleaning", "₹399"],
+  ["Electrical", electrician, "Repairs & installation", "₹249"],
+  ["AC Repair", ac, "Cooling & service", "₹499"],
+];
+
+const quickPicks = [
+  [
+    "Need it today",
+    "Fast help for an urgent home problem",
+    "/book-service?service=Electrical",
+    "Today",
+    Clock3,
+  ],
+  [
+    "Under ₹500",
+    "Everyday fixes without a big starting price",
+    "/services",
+    "Budget",
+    Wrench,
+  ],
+  [
+    "Most booked",
+    "Reliable services customers request often",
+    "/services",
+    "Popular",
+    Search,
+  ],
+];
+
+const steps = [
+  [
+    "01",
+    "Choose a service",
+    "Pick the service that matches the job at home.",
+  ],
+  [
+    "02",
+    "Share the details",
+    "Tell us your location, problem and preferred slot.",
+  ],
+  [
+    "03",
+    "Get it sorted",
+    "Your request is ready for a FixMate professional.",
+  ],
+];
+
+export default function Home() {
   return (
     <Layout>
+      <main className="overflow-hidden bg-[#f7f9f8] text-slate-900 dark:bg-[#07110e] dark:text-white">
 
-      {/* Back / Next Navigation */}
-<div className="pointer-events-none fixed inset-x-0 bottom-6 z-50 flex items-center justify-between px-4 md:px-6">
-  {/* Next */}
-  <button
-    type="button"
-    onClick={() => navigate("/services")}
-    className="pointer-events-auto rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#16302B] shadow-lg ring-1 ring-black/10 transition hover:bg-[#16302B] hover:text-white"
-  >
-    Next →
-  </button>
+        {/* ================= HERO ================= */}
 
-</div>
-
-      {/* ================= HERO ================= */}
-
-      <section className="max-w-7xl mx-auto px-6 pt-8 pb-16">
-        <div
-          className="relative overflow-hidden rounded-[2rem] min-h-[520px] bg-cover bg-center shadow-2xl"
-          style={{ backgroundImage: `url(${image})` }}
-        >
-
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-black/55"></div>
-
-          {/* Decorative circles */}
-          <div className="absolute -right-20 -top-20 w-72 h-72 rounded-full bg-green-500/20 blur-2xl"></div>
-          <div className="absolute right-20 bottom-0 w-52 h-52 rounded-full bg-yellow-400/10 blur-3xl"></div>
-
-          <div className="relative z-10 flex items-center min-h-[520px] px-8 md:px-16 py-14">
-
-            <div className="max-w-3xl">
-
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 text-sm text-white mb-6">
-                <span className="w-2 h-2 bg-green-400 rounded-full"></span>
-                Trusted home services
-              </div>
-
-              <p className="text-green-300 font-semibold tracking-widest text-sm uppercase">
-                Welcome to Fixma🔨e
-              </p>
-
-              <h1 className="mt-4 text-4xl md:text-6xl font-extrabold leading-tight text-white">
-                Your home.
-                <br />
-                <span className="text-amber-400">
-                  Our expertise.
-                </span>
-              </h1>
-
-              <p className="mt-6 text-gray-200 text-base md:text-lg max-w-xl leading-relaxed">
-                From a leaking tap to a complete home makeover,
-                connect with trusted professionals and get the job
-                done without the hassle.
-              </p>
-
-              <div className="mt-9 flex flex-col sm:flex-row gap-4">
-
-                <NavLink
-                  to="/services"
-                  className="group inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 hover:scale-105"
-                >
-                  Book a Service
-                  <span className="group-hover:translate-x-1 transition">
-                    →
-                  </span>
-                </NavLink>
-
-                <NavLink
-                  to="/services"
-                  className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300"
-                >
-                  Explore Services
-                </NavLink>
-
-              </div>
-
-              {/* Mini trust info */}
-              <div className="mt-10 flex flex-wrap gap-6 text-sm text-gray-200">
-
-                <div className="flex items-center gap-2">
-                  <span className="text-green-400">✓</span>
-                  Verified Professionals
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <span className="text-green-400">✓</span>
-                  Easy Booking
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <span className="text-green-400">✓</span>
-                  Reliable Service
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-
-      {/* ================= STATS ================= */}
-
-      <section className="max-w-7xl mx-auto px-6 -mt-2 mb-16">
-
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 grid grid-cols-2 md:grid-cols-4 overflow-hidden">
-
-          <div className="p-6 text-center border-b md:border-b-0 md:border-r border-gray-100">
-            <h3 className="text-3xl font-extrabold text-green-600">
-              500+
-            </h3>
-            <p className="text-gray-500 text-sm mt-1">
-              Services Completed
-            </p>
-          </div>
-
-          <div className="p-6 text-center border-b md:border-b-0 md:border-r border-gray-100">
-            <h3 className="text-3xl font-extrabold text-green-600">
-              100+
-            </h3>
-            <p className="text-gray-500 text-sm mt-1">
-              Professionals
-            </p>
-          </div>
-
-          <div className="p-6 text-center border-r border-gray-100">
-            <h3 className="text-3xl font-extrabold text-green-600">
-              4.8
-            </h3>
-            <p className="text-gray-500 text-sm mt-1">
-              Average Rating ⭐
-            </p>
-          </div>
-
-          <div className="p-6 text-center">
-            <h3 className="text-3xl font-extrabold text-green-600">
-              24/7
-            </h3>
-            <p className="text-gray-500 text-sm mt-1">
-              Booking Available
-            </p>
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* ================= SERVICES ================= */}
-
-      <section className="max-w-7xl mx-auto px-6 py-10">
-
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
-
-          <div>
-
-            <p className="text-green-600 font-bold text-sm uppercase tracking-wider">
-              What we offer
-            </p>
-
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mt-2">
-              Services made simple.
-            </h2>
-
-            <p className="text-gray-500 mt-2">
-              Everything your home needs, all in one place.
-            </p>
-
-          </div>
-
-          <NavLink
-            to="/services"
-            className="text-green-600 font-bold hover:text-green-800 transition"
+        <section className="mx-auto w-full max-w-[1440px] px-3 pt-3 sm:px-5 lg:px-7 lg:pt-5">
+          <div
+            className="group relative min-h-[620px] overflow-hidden rounded-[32px] bg-[#09241d] bg-cover bg-center shadow-[0_25px_70px_rgba(8,35,28,.18)] sm:min-h-[650px] lg:min-h-[680px]"
+            style={{
+              backgroundImage: `url("${hero}")`,
+            }}
           >
-            View all services →
-          </NavLink>
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,25,20,.98)_0%,rgba(3,25,20,.91)_34%,rgba(3,25,20,.52)_62%,rgba(3,25,20,.12)_100%)]" />
 
-        </div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_25%,rgba(95,231,185,.16),transparent_28%)]" />
 
+            <div className="absolute bottom-0 right-0 hidden h-[68%] w-[44%] rounded-tl-[100px] bg-gradient-to-t from-[#061b15]/50 to-transparent lg:block" />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="relative z-10 flex min-h-[620px] items-center px-5 py-12 sm:min-h-[650px] sm:px-10 lg:min-h-[680px] lg:px-16">
+              <div className="max-w-[680px]">
 
-          {services.map((service) => (
+                {/* Badge */}
 
-            <div
-              key={service.number}
-              className="group relative bg-white border border-gray-200 rounded-2xl p-6 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 overflow-hidden"
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.08] px-4 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-emerald-100 backdrop-blur-xl transition duration-300 group-hover:border-emerald-300/30">
+                  <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_14px_rgba(110,231,183,.8)]" />
+
+                  Home services, made simple
+                </div>
+
+                {/* Heading */}
+
+                <h1 className="mt-6 max-w-3xl text-[43px] font-black leading-[.96] tracking-[-0.06em] text-white sm:text-6xl lg:text-[78px]">
+                  Your home needs help.
+
+                  <span className="mt-2 block text-emerald-300">
+                    We make it easy.
+                  </span>
+                </h1>
+
+                {/* Description */}
+
+                <p className="mt-6 max-w-xl text-sm leading-7 text-slate-200 sm:text-base">
+                  Book trusted home services with clear details, convenient
+                  slots and one simple request from start to finish.
+                </p>
+
+                {/* Buttons */}
+
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+
+                  {/* Explore Services */}
+
+                  <Link
+                    to="/services"
+                    className="group/btn inline-flex items-center justify-center gap-3 rounded-2xl bg-emerald-500 px-6 py-3.5 text-sm font-black text-white shadow-[0_12px_30px_rgba(16,185,129,.18)] transition duration-300 hover:-translate-y-1 hover:bg-emerald-600 hover:shadow-[0_18px_40px_rgba(16,185,129,.28)] dark:bg-emerald-400 dark:text-emerald-950 dark:hover:bg-emerald-300"
+                  >
+                    Explore services
+
+                    <ArrowRight
+                      size={17}
+                      className="transition duration-300 group-hover/btn:translate-x-1"
+                    />
+                  </Link>
+
+                  {/* Book Directly */}
+
+                  <Link
+                    to="/book-service"
+                    className="group/btn inline-flex items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white px-6 py-3.5 text-sm font-black text-slate-900 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:bg-emerald-50 hover:shadow-lg dark:border-white/15 dark:bg-white/10 dark:text-white dark:hover:border-emerald-300/40 dark:hover:bg-white/15"
+                  >
+                    Book directly
+
+                    <ArrowUpRight
+                      size={17}
+                      className="transition duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1"
+                    />
+                  </Link>
+
+                </div>
+
+                {/* Trust Points */}
+
+                <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-[11px] font-semibold text-slate-300">
+
+                  <span className="inline-flex items-center gap-2">
+                    <CheckCircle2
+                      size={15}
+                      className="text-emerald-300"
+                    />
+                    Clear booking details
+                  </span>
+
+                  <span className="inline-flex items-center gap-2">
+                    <ShieldCheck
+                      size={15}
+                      className="text-emerald-300"
+                    />
+                    Service-first experience
+                  </span>
+
+                  <span className="inline-flex items-center gap-2">
+                    <Star
+                      size={15}
+                      className="text-emerald-300"
+                      fill="currentColor"
+                    />
+                    4.8 customer rating
+                  </span>
+
+                </div>
+              </div>
+            </div>
+
+            {/* ================= FLOATING BOOKING BAR ================= */}
+
+            <div className="absolute bottom-4 left-4 right-4 z-20 sm:bottom-6 sm:left-8 sm:right-8 lg:left-1/2 lg:right-8 lg:-translate-x-0">
+
+              <div className="overflow-hidden rounded-[22px] border border-white/50 bg-white/95 p-2 shadow-[0_20px_50px_rgba(0,0,0,.2)] backdrop-blur-xl dark:border-slate-700 dark:bg-[#111b18]/95">
+
+                <div className="grid lg:grid-cols-[1.4fr_1fr_1fr_auto]">
+
+                  {/* Service */}
+
+                  <div className="flex items-center gap-3 rounded-2xl px-3 py-3.5 transition hover:bg-emerald-50 dark:hover:bg-emerald-500/10">
+
+                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300">
+                      <Search size={18} />
+                    </span>
+
+                    <div className="min-w-0">
+                      <p className="text-xs font-black text-slate-900 dark:text-white">
+                        What needs fixing?
+                      </p>
+
+                      <p className="truncate text-[11px] text-slate-500 dark:text-slate-400">
+                        Plumbing, cleaning, electrical...
+                      </p>
+                    </div>
+
+                  </div>
+
+                  {/* Location */}
+
+                  <div className="flex items-center gap-3 border-t border-slate-100 px-3 py-3.5 transition hover:bg-emerald-50 dark:border-slate-800 dark:hover:bg-emerald-500/10 lg:border-l lg:border-t-0">
+
+                    <MapPin
+                      size={18}
+                      className="shrink-0 text-emerald-700 dark:text-emerald-300"
+                    />
+
+                    <div>
+                      <p className="text-xs font-black text-slate-900 dark:text-white">
+                        Your area
+                      </p>
+
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                        Choose during booking
+                      </p>
+                    </div>
+
+                  </div>
+
+                  {/* Time */}
+
+                  <div className="flex items-center gap-3 border-t border-slate-100 px-3 py-3.5 transition hover:bg-emerald-50 dark:border-slate-800 dark:hover:bg-emerald-500/10 lg:border-l lg:border-t-0">
+
+                    <Clock3
+                      size={18}
+                      className="shrink-0 text-emerald-700 dark:text-emerald-300"
+                    />
+
+                    <div>
+                      <p className="text-xs font-black text-slate-900 dark:text-white">
+                        Preferred time
+                      </p>
+
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                        Pick a slot that works
+                      </p>
+                    </div>
+
+                  </div>
+
+                  {/* Start Booking */}
+
+                  <Link
+                    to="/services"
+                    className="group/start flex items-center justify-center gap-3 rounded-2xl bg-[#087f61] px-6 py-4 text-sm font-black text-white transition duration-300 hover:bg-[#066c53] lg:m-1"
+                  >
+                    Start booking
+
+                    <ArrowRight
+                      size={17}
+                      className="transition group-hover/start:translate-x-1"
+                    />
+                  </Link>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        {/* ================= SERVICES ================= */}
+
+        <section className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+
+            <div>
+
+              <div className="mb-3 inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.18em] text-emerald-700 dark:text-emerald-400">
+                <span className="h-px w-7 bg-emerald-500" />
+                Popular right now
+              </div>
+
+              <h2 className="max-w-3xl text-3xl font-black tracking-[-0.05em] text-slate-950 dark:text-white sm:text-5xl">
+                Start with the jobs people book most.
+              </h2>
+
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-500 dark:text-slate-400">
+                A focused set of everyday services. Need something else?
+                The full service list is one tap away.
+              </p>
+
+            </div>
+
+            <Link
+              to="/services"
+              className="group inline-flex items-center gap-2 text-sm font-black text-emerald-700 transition hover:text-emerald-600 dark:text-emerald-400"
             >
+              View all services
 
-              {/* Number */}
-              <span className="absolute top-5 right-5 text-xs font-bold text-gray-300">
-                {service.number}
-              </span>
-
-              <div
-                className={`w-16 h-16 ${service.bg} rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform duration-300`}
-              >
-                {service.icon}
-              </div>
-
-              <h3 className="mt-6 text-xl font-bold text-gray-900">
-                {service.title}
-              </h3>
-
-              <p className="mt-2 text-gray-500 text-sm leading-relaxed">
-                {service.description}
-              </p>
-
-              <NavLink
-                to="/services"
-                className="inline-flex items-center gap-1 mt-6 text-green-600 font-bold text-sm group-hover:gap-3 transition-all"
-              >
-                Book now
-                <span>→</span>
-              </NavLink>
-
-            </div>
-
-          ))}
-
-        </div>
-
-      </section>
-
-
-      {/* ================= HOW IT WORKS ================= */}
-
-      <section className="bg-gray-50 mt-20 border-y border-gray-200">
-
-        <div className="max-w-7xl mx-auto px-6 py-16">
-
-          <div className="text-center max-w-2xl mx-auto">
-
-            <p className="text-green-600 font-bold text-sm uppercase tracking-wider">
-              How it works
-            </p>
-
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mt-2">
-              Get your problem solved in 3 steps
-            </h2>
-
-            <p className="text-gray-500 mt-3">
-              No complicated process. Just choose, book and relax.
-            </p>
+              <ArrowRight
+                size={16}
+                className="transition group-hover:translate-x-1"
+              />
+            </Link>
 
           </div>
 
+          {/* Service Cards */}
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+          <div className="mt-9 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
 
-            {/* STEP 1 */}
-            <div className="relative text-center">
+            {featuredServices.map(
+              ([name, image, description, price], index) => (
+                <Link
+                  key={name}
+                  to={`/book-service?service=${encodeURIComponent(name)}`}
+                  className="group relative overflow-hidden rounded-[24px] border border-slate-200 bg-white p-2 shadow-[0_8px_30px_rgba(15,23,42,.04)] transition duration-300 hover:-translate-y-2 hover:border-emerald-200 hover:shadow-[0_22px_45px_rgba(15,23,42,.10)] dark:border-slate-800 dark:bg-[#111b18] dark:hover:border-emerald-500/30"
+                >
 
-              <div className="mx-auto w-16 h-16 rounded-full bg-green-600 text-white flex items-center justify-center text-xl font-bold shadow-lg">
-                01
+                  <div className="relative overflow-hidden rounded-[19px] bg-slate-100 dark:bg-[#18221f]">
+
+                    <img
+                      src={image}
+                      alt={name}
+                      className="h-48 w-full object-cover transition duration-700 group-hover:scale-110"
+                    />
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-60 transition group-hover:opacity-80" />
+
+                    <span className="absolute left-3 top-3 rounded-full border border-white/60 bg-white/90 px-3 py-1.5 text-[9px] font-black text-slate-800 shadow-sm backdrop-blur-md dark:bg-[#111b18]/90 dark:text-white">
+                      From {price}
+                    </span>
+
+                    <span className="absolute bottom-3 right-3 grid h-10 w-10 translate-y-2 place-items-center rounded-full bg-white text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                      <ArrowUpRight size={17} />
+                    </span>
+
+                  </div>
+
+                  <div className="px-2 pb-3 pt-4">
+
+                    <div className="flex items-start justify-between gap-3">
+
+                      <div>
+
+                        <span className="mb-1 block text-[9px] font-black uppercase tracking-[0.16em] text-emerald-600">
+                          0{index + 1}
+                        </span>
+
+                        <h3 className="text-base font-black text-slate-950 dark:text-white">
+                          {name}
+                        </h3>
+
+                      </div>
+
+                      <ArrowRight
+                        size={16}
+                        className="mt-2 shrink-0 text-slate-300 transition duration-300 group-hover:translate-x-1 group-hover:text-emerald-500"
+                      />
+
+                    </div>
+
+                    <p className="mt-1 text-xs leading-5 text-slate-500 dark:text-slate-400">
+                      {description}
+                    </p>
+
+                  </div>
+
+                </Link>
+              )
+            )}
+
+          </div>
+        </section>
+
+        {/* ================= QUICK PICKS ================= */}
+
+        <section className="border-y border-slate-200 bg-[#edf3f0] dark:border-slate-800 dark:bg-[#0c1713]">
+
+          <div className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
+
+            <div className="flex items-end justify-between gap-4">
+
+              <div>
+
+                <div className="mb-3 inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.18em] text-emerald-700 dark:text-emerald-400">
+                  <Sparkles size={14} />
+                  Quick picks
+                </div>
+
+                <h2 className="text-3xl font-black tracking-[-0.045em] text-slate-950 dark:text-white sm:text-4xl">
+                  Choose by what you need today.
+                </h2>
+
               </div>
-
-              <h3 className="mt-5 text-xl font-bold text-gray-900">
-                Choose a Service
-              </h3>
-
-              <p className="mt-2 text-gray-500">
-                Select the home service you need from our list.
-              </p>
 
             </div>
 
+            <div className="mt-7 grid gap-4 md:grid-cols-3">
 
-            {/* STEP 2 */}
-            <div className="relative text-center">
+              {quickPicks.map(
+                ([title, description, link, tag, Icon]) => (
+                  <Link
+                    key={title}
+                    to={link}
+                    className="group relative overflow-hidden rounded-[24px] border border-slate-200 bg-white p-6 transition duration-300 hover:-translate-y-1.5 hover:border-emerald-200 hover:shadow-[0_20px_40px_rgba(15,23,42,.08)] dark:border-slate-800 dark:bg-[#111b18] dark:hover:border-emerald-500/30"
+                  >
 
-              <div className="mx-auto w-16 h-16 rounded-full bg-blue-600 text-white flex items-center justify-center text-xl font-bold shadow-lg">
-                02
-              </div>
+                    <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-emerald-100/70 transition duration-500 group-hover:scale-150 dark:bg-emerald-500/10" />
 
-              <h3 className="mt-5 text-xl font-bold text-gray-900">
-                Book a Professional
-              </h3>
+                    <div className="relative z-10">
 
-              <p className="mt-2 text-gray-500">
-                Pick a convenient time and book your professional.
-              </p>
+                      <div className="flex items-start justify-between">
+
+                        <span className="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-50 text-emerald-700 transition duration-300 group-hover:rotate-[-6deg] group-hover:scale-105 dark:bg-emerald-500/10 dark:text-emerald-300">
+                          <Icon size={20} />
+                        </span>
+
+                        <span className="rounded-full bg-slate-100 px-3 py-1.5 text-[9px] font-black uppercase tracking-wide text-slate-600 dark:bg-slate-800 dark:text-slate-300">
+                          {tag}
+                        </span>
+
+                      </div>
+
+                      <div className="mt-9">
+
+                        <div className="flex items-center justify-between gap-3">
+
+                          <h3 className="text-lg font-black text-slate-950 dark:text-white">
+                            {title}
+                          </h3>
+
+                          <ArrowRight
+                            size={17}
+                            className="text-slate-300 transition duration-300 group-hover:translate-x-1 group-hover:text-emerald-500"
+                          />
+
+                        </div>
+
+                        <p className="mt-2 max-w-sm text-xs leading-5 text-slate-500 dark:text-slate-400">
+                          {description}
+                        </p>
+
+                      </div>
+
+                    </div>
+
+                  </Link>
+                )
+              )}
 
             </div>
+          </div>
+        </section>
 
+        {/* ================= WHY FIXMATE ================= */}
 
-            {/* STEP 3 */}
-            <div className="relative text-center">
+        <section className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
 
-              <div className="mx-auto w-16 h-16 rounded-full bg-amber-500 text-white flex items-center justify-center text-xl font-bold shadow-lg">
-                03
+          <div className="grid gap-5 lg:grid-cols-[.82fr_1.18fr]">
+
+            {/* Why FixMate */}
+
+            <div className="group relative overflow-hidden rounded-[30px] bg-[#0d2b23] p-7 text-white shadow-[0_20px_50px_rgba(7,40,31,.14)] sm:p-9">
+
+              <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-emerald-300/10 transition duration-700 group-hover:scale-125" />
+
+              <div className="absolute bottom-0 right-0 h-32 w-32 rounded-tl-full bg-emerald-300/5" />
+
+              <div className="relative z-10">
+
+                <div className="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-300 text-emerald-950 transition duration-300 group-hover:rotate-6 group-hover:scale-105">
+                  <Wrench size={21} />
+                </div>
+
+                <p className="mt-9 text-[10px] font-black uppercase tracking-[0.18em] text-emerald-300">
+                  Why FixMate
+                </p>
+
+                <h2 className="mt-3 max-w-md text-4xl font-black leading-[1.02] tracking-[-0.05em] sm:text-5xl">
+                  Less searching.
+
+                  <span className="block text-emerald-300">
+                    More fixing.
+                  </span>
+                </h2>
+
+                <p className="mt-5 max-w-md text-sm leading-7 text-slate-300">
+                  The booking flow keeps your service, location, problem and
+                  preferred time together so the request is clear.
+                </p>
+
+                <Link
+                  to="/services"
+                  className="group/link mt-8 inline-flex items-center gap-2 text-sm font-black text-white transition hover:text-emerald-300"
+                >
+                  See every service
+
+                  <ArrowRight
+                    size={16}
+                    className="transition group-hover/link:translate-x-1"
+                  />
+                </Link>
+
+              </div>
+            </div>
+
+            {/* How It Works */}
+
+            <div>
+
+              <div className="mb-5">
+
+                <p className="text-[10px] font-black uppercase tracking-[0.18em] text-emerald-700 dark:text-emerald-400">
+                  How it works
+                </p>
+
+                <h2 className="mt-2 text-3xl font-black tracking-[-0.045em] text-slate-950 dark:text-white sm:text-4xl">
+                  Simple from the first click.
+                </h2>
+
               </div>
 
-              <h3 className="mt-5 text-xl font-bold text-gray-900">
-                Sit Back & Relax
-              </h3>
+              <div className="grid gap-3 sm:grid-cols-3">
 
-              <p className="mt-2 text-gray-500">
-                Let our professional take care of the rest.
-              </p>
+                {steps.map(
+                  ([number, title, description], index) => (
+                    <div
+                      key={number}
+                      className="group relative min-h-[220px] overflow-hidden rounded-[22px] border border-slate-200 bg-white p-5 transition duration-300 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-[0_18px_35px_rgba(15,23,42,.07)] dark:border-slate-800 dark:bg-[#111b18] dark:hover:border-emerald-500/30"
+                    >
 
+                      <div className="flex items-center justify-between">
+
+                        <span className="text-xs font-black text-emerald-700 dark:text-emerald-400">
+                          {number}
+                        </span>
+
+                        <span className="text-[10px] font-bold text-slate-300 dark:text-slate-600">
+                          0{index + 1}
+                        </span>
+
+                      </div>
+
+                      <div className="mt-14">
+
+                        <h3 className="text-base font-black text-slate-950 dark:text-white">
+                          {title}
+                        </h3>
+
+                        <p className="mt-2 text-xs leading-5 text-slate-500 dark:text-slate-400">
+                          {description}
+                        </p>
+
+                      </div>
+
+                      <div className="absolute bottom-0 left-0 h-1 w-0 bg-emerald-400 transition-all duration-500 group-hover:w-full" />
+
+                    </div>
+                  )
+                )}
+
+              </div>
             </div>
 
           </div>
+        </section>
 
-        </div>
+        {/* ================= FINAL CTA ================= */}
 
-      </section>
+        <section className="mx-auto w-full max-w-7xl px-4 pb-16 sm:px-6 lg:px-8 lg:pb-20">
 
+          <div className="group relative overflow-hidden rounded-[30px] bg-[#07805f] px-6 py-9 text-white shadow-[0_20px_50px_rgba(7,128,95,.18)] sm:px-10 sm:py-11">
 
-      {/* ================= WHY US ================= */}
+            <div className="absolute -right-20 -top-24 h-64 w-64 rounded-full bg-white/10 transition duration-700 group-hover:scale-125" />
 
-      <section className="max-w-7xl mx-auto px-6 py-20">
+            <div className="absolute -bottom-28 left-1/3 h-60 w-60 rounded-full border-[35px] border-white/[0.04]" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="relative z-10 flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between">
 
-          <div>
+              <div>
 
-            <p className="text-green-600 font-bold text-sm uppercase tracking-wider">
-              Why Fixmate?
-            </p>
-
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mt-3 leading-tight">
-              Home maintenance shouldn't
-              <span className="text-green-600">
-                {" "}feel like a headache.
-              </span>
-            </h2>
-
-            <p className="mt-5 text-gray-500 leading-relaxed">
-              We make it easier to find dependable professionals,
-              schedule services and keep your home running smoothly.
-            </p>
-
-            <div className="mt-8 space-y-5">
-
-              <div className="flex gap-4">
-
-                <div className="w-11 h-11 shrink-0 rounded-xl bg-green-100 flex items-center justify-center text-green-600 font-bold">
-                  ✓
+                <div className="flex items-center gap-2 text-xs font-black">
+                  <CalendarCheck2 size={15} />
+                  Ready when your home needs us.
                 </div>
 
-                <div>
-                  <h3 className="font-bold text-gray-900">
-                    Verified Professionals
-                  </h3>
+                <h2 className="mt-3 text-3xl font-black tracking-[-0.04em] sm:text-4xl">
+                  Need a service today?
+                </h2>
 
-                  <p className="text-sm text-gray-500 mt-1">
-                    Connect with professionals you can rely on.
-                  </p>
-                </div>
-
-              </div>
-
-
-              <div className="flex gap-4">
-
-                <div className="w-11 h-11 shrink-0 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 font-bold">
-                  ⚡
-                </div>
-
-                <div>
-                  <h3 className="font-bold text-gray-900">
-                    Fast & Convenient
-                  </h3>
-
-                  <p className="text-sm text-gray-500 mt-1">
-                    Book a service whenever it works for you.
-                  </p>
-                </div>
-
-              </div>
-
-
-              <div className="flex gap-4">
-
-                <div className="w-11 h-11 shrink-0 rounded-xl bg-yellow-100 flex items-center justify-center text-yellow-600 font-bold">
-                  ⭐
-                </div>
-
-                <div>
-                  <h3 className="font-bold text-gray-900">
-                    Quality Comes First
-                  </h3>
-
-                  <p className="text-sm text-gray-500 mt-1">
-                    We focus on making every service experience better.
-                  </p>
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-          {/* RIGHT FEATURE CARD */}
-
-          <div className="relative">
-
-            <div className="bg-gray-900 rounded-[2rem] p-8 md:p-10 text-white shadow-2xl">
-
-              <div className="flex items-center justify-between">
-
-                <span className="text-sm text-gray-400">
-                  YOUR HOME SERVICE
-                </span>
-
-                <span className="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-xs font-bold">
-                  EASY
-                </span>
-
-              </div>
-
-              <div className="mt-10">
-
-                <img src={logo} alt="logo" className="h-20 rounded-2xl"/>
-
-                <h3 className="text-3xl font-extrabold mt-5">
-                  One place.
-                  <br />
-                  Every home service.
-                </h3>
-
-                <p className="text-gray-400 mt-4 leading-relaxed">
-                  From everyday maintenance to unexpected repairs,
-                  Fixmate helps you find the right service quickly.
+                <p className="mt-2 max-w-xl text-sm leading-6 text-emerald-50">
+                  Browse all FixMate services and choose the one that fits the
+                  job.
                 </p>
 
               </div>
 
-              <NavLink
-                to="/services"
-                className="inline-block mt-8 bg-white text-gray-900 px-6 py-3 rounded-xl font-bold hover:bg-green-500 hover:text-white transition"
-              >
-                Find a Service →
-              </NavLink>
+              {/* Fixed CTA button */}
+
+              <Link
+                    to="/book-service"
+                    className="group/btn inline-flex items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-black px-6 py-3.5 text-sm font-black text-slate-900 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:bg-emerald-50 hover:shadow-lg dark:border-white/15 dark:bg-white/10 dark:text-white dark:hover:border-emerald-300/40 dark:hover:bg-white/15"
+                  >
+                    View All Services
+
+                    <ArrowUpRight
+                      size={17}
+                      className="transition duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1"
+                    />
+                  </Link>
 
             </div>
-
           </div>
+        </section>
 
-        </div>
-
-      </section>
-
-
-      {/* ================= BOOKINGS ================= */}
-
-      <section className="max-w-7xl mx-auto px-6 pb-16">
-
-        <div className="bg-green-600 rounded-[2rem] px-8 md:px-14 py-12 text-white flex flex-col md:flex-row items-center justify-between gap-8">
-
-          <div>
-
-            <p className="text-green-200 text-sm font-bold uppercase tracking-wider">
-              Ready when you are
-            </p>
-
-            <h2 className="text-3xl md:text-4xl font-extrabold mt-2">
-              Need something fixed?
-            </h2>
-
-            <p className="text-green-100 mt-2">
-              Find the right professional for your home today.
-            </p>
-
-          </div>
-
-          <NavLink
-            to="/services"
-            className="shrink-0 bg-white text-green-700 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 hover:scale-105 transition-all"
-          >
-            Book Your Service →
-          </NavLink>
-
-        </div>
-
-      </section>
-
-
-      {/* ================= RECENT BOOKINGS ================= */}
-
-      <section className="max-w-7xl mx-auto px-6 pb-16">
-
-        <div className="flex justify-between items-center">
-
-          <div>
-
-            <h2 className="text-2xl font-extrabold text-gray-900">
-              Recent Bookings
-            </h2>
-
-            <p className="text-gray-500 mt-1">
-              Keep track of your home services.
-            </p>
-
-          </div>
-
-        </div>
-
-        <div className="mt-6 bg-white border border-gray-200 rounded-2xl p-10 text-center">
-
-          <div className="mx-auto w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center text-3xl">
-            📋
-          </div>
-
-          <h3 className="mt-5 text-xl font-bold text-gray-900">
-            No bookings yet
-          </h3>
-
-          <p className="mt-2 text-gray-500">
-            Your upcoming bookings will appear here.
-          </p>
-
-          <NavLink
-            to="/services"
-            className="inline-block mt-6 bg-gray-900 text-white px-7 py-3 rounded-xl font-semibold hover:bg-green-600 transition-all"
-          >
-            Book Your First Service
-          </NavLink>
-
-        </div>
-
-      </section>
-
+      </main>
     </Layout>
   );
 }
-
-export default Home;
