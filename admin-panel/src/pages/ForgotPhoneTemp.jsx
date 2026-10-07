@@ -2,272 +2,1198 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+
 import {
+  Mail,
   Phone,
   LockKeyhole,
   ArrowRight,
   ArrowLeft,
   ShieldCheck,
   CheckCircle2,
+  Sparkles,
 } from "lucide-react";
-import logo from "../assets/FIX.jpg"
-import image from "../assets/forgot_bg.png"
 
-const ForgotPhoneTemp = () => {
+import logo from "../assets/FIX.jpg";
+import image from "../assets/forgot_bg.png";
+
+const ForgotPassword = () => {
+  const [method, setMethod] = useState("email");
+
+  const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log("Phone:", phone);
+    setMessage("");
+    setLoading(true);
 
-    setMessage("OTP has been sent to your phone number.");
+    if (method === "email") {
+      console.log("Reset password for:", email);
+    } else {
+      console.log("OTP for:", phone);
+    }
+
+    setTimeout(() => {
+      setLoading(false);
+
+      if (method === "email") {
+        setMessage(
+          "Password reset link has been sent to your email address."
+        );
+      } else {
+        setMessage(
+          "OTP has been sent to your registered phone number."
+        );
+      }
+    }, 1200);
+  };
+
+  const changeMethod = (newMethod) => {
+    setMethod(newMethod);
+    setMessage("");
   };
 
   return (
-    <div className="min-h-screen bg-[#FBFAF7] bg-cover"
-    style={{backgroundImage:`url(${image})`}}>
+    <main
+      className="
+        relative
+        min-h-screen
+        overflow-hidden
+        bg-[#f6f9f7]
+        px-4
+        py-8
+        sm:px-6
+        lg:px-8
+      "
+    >
+      {/* =====================================================
+          BACKGROUND
+      ====================================================== */}
 
-      {/* Top Accent */}
-      <div className="h-1.5 bg-[#0E6B5C]" />
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          bg-cover
+          bg-center
+          bg-no-repeat
+          opacity-[0.14]
+        "
+        style={{
+          backgroundImage: `url(${image})`,
+        }}
+      />
 
-      <div className="flex min-h-[calc(100vh-6px)] items-center justify-center px-4 py-10">
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -left-40
+          -top-40
+          h-[420px]
+          w-[420px]
+          rounded-full
+          bg-[#dceee8]
+          blur-3xl
+          opacity-70
+        "
+      />
 
-        <div className="w-full max-w-md">
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -bottom-40
+          -right-40
+          h-[420px]
+          w-[420px]
+          rounded-full
+          bg-[#e7f1ed]
+          blur-3xl
+          opacity-80
+        "
+      />
 
-          {/* Logo */}
-          <div className="mb-7 text-center">
+      {/* =====================================================
+          CONTENT
+      ====================================================== */}
 
-            <Link
-              to="/login"
-              className="inline-flex flex-col items-center"
-            >
-              <div className="flex h-14 w-14 items-center justify-center bg-[#16302B] shadow-sm rounded-4xl">
-                <img
-                src={logo}
-                alt="logo"
-                className="rounded-2xl"
+      <div className="relative z-10 flex min-h-[calc(100vh-4rem)] items-center justify-center">
+
+        <div className="w-full max-w-[1040px]">
+
+          {/* =================================================
+              MAIN SHELL
+          ================================================== */}
+
+          <div
+            className="
+              overflow-hidden
+              rounded-[28px]
+              border
+              border-[#dfe8e4]
+              bg-white
+              shadow-[0_25px_70px_rgba(24,52,47,0.10)]
+            "
+          >
+
+            <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
+
+              {/* =================================================
+                  LEFT BRAND PANEL
+              ================================================== */}
+
+              <section
+                className="
+                  relative
+                  hidden
+                  overflow-hidden
+                  bg-[#173f36]
+                  p-10
+                  text-white
+                  lg:flex
+                  lg:min-h-[650px]
+                  lg:flex-col
+                  lg:justify-between
+                  xl:p-12
+                "
+              >
+
+                {/* Decorative circles */}
+
+                <div
+                  className="
+                    pointer-events-none
+                    absolute
+                    -right-32
+                    -top-32
+                    h-80
+                    w-80
+                    rounded-full
+                    border
+                    border-white/10
+                  "
                 />
-              </div>
 
-              <h1 className="mt-4 text-3xl font-bold tracking-tight text-[#16302B]">
-                FixmaTe
-              </h1>
-            </Link>
-
-            <p className="mt-1 text-sm font-medium text-[#8A8A82]">
-              Admin Panel
-            </p>
-
-          </div>
-
-          {/* Card */}
-          <div className="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-black/5 sm:p-8">
-
-            {/* Header */}
-            <div className="mb-7">
-
-              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-[#0E6B5C]/10">
-                <LockKeyhole
-                  size={20}
-                  className="text-[#0E6B5C]"
+                <div
+                  className="
+                    pointer-events-none
+                    absolute
+                    -bottom-32
+                    -left-32
+                    h-80
+                    w-80
+                    rounded-full
+                    border
+                    border-white/10
+                  "
                 />
-              </div>
 
-              <h2 className="text-2xl font-bold text-[#16302B]">
-                Forgot Password?
-              </h2>
+                <div
+                  className="
+                    pointer-events-none
+                    absolute
+                    right-10
+                    top-40
+                    h-24
+                    w-24
+                    rounded-full
+                    bg-[#0f7565]/40
+                    blur-2xl
+                  "
+                />
 
-              <p className="mt-2 text-sm leading-6 text-[#8A8A82]">
-                Enter your registered phone number and we'll send you an OTP
-                to reset your password.
-              </p>
+                {/* =================================================
+                    BRAND
+                ================================================== */}
 
-            </div>
+                <div className="relative z-10">
 
-            {/* Form */}
-            <form
-              onSubmit={handleSubmit}
-              className="space-y-5"
-            >
+                  <div className="flex items-center gap-3">
 
-              {/* Phone */}
-              <div>
+                    <div
+                      className="
+                        rounded-2xl
+                        bg-white
+                        p-1.5
+                        shadow-lg
+                      "
+                    >
+                      <img
+                        src={logo}
+                        alt="FixMate"
+                        className="
+                          h-12
+                          w-12
+                          rounded-xl
+                          object-cover
+                        "
+                      />
+                    </div>
 
-                <label
-                  htmlFor="phone"
-                  className="mb-2 block text-sm font-semibold text-[#3F4844]"
-                >
-                  Phone Number
-                </label>
+                    <div>
 
-                <div className="relative">
+                      <h2
+                        className="
+                          text-xl
+                          font-black
+                          tracking-[-0.04em]
+                        "
+                      >
+                        FixMate
+                      </h2>
 
-                  <Phone
-                    size={18}
-                    className="pointer-events-none absolute left-3 top-1/2 z-10 -translate-y-1/2 text-[#8A8A82]"
-                  />
+                      <p
+                        className="
+                          mt-1
+                          text-[9px]
+                          font-black
+                          uppercase
+                          tracking-[0.18em]
+                          text-white/50
+                        "
+                      >
+                        Admin Workspace
+                      </p>
 
-                  <PhoneInput
-                    id="phone"
-                    international
-                    defaultCountry="IN"
-                    value={phone}
-                    onChange={(value) => {
-                      setPhone(value || "");
-                      setMessage("");
-                    }}
-                    placeholder="Enter phone number"
-                    className="homeserve-phone-input"
-                  />
+                    </div>
+
+                  </div>
+
+                  {/* =================================================
+                      MESSAGE
+                  ================================================== */}
+
+                  <div className="mt-20 max-w-md">
+
+                    <div
+                      className="
+                        mb-5
+                        inline-flex
+                        items-center
+                        gap-2
+                        rounded-full
+                        border
+                        border-white/10
+                        bg-white/10
+                        px-3
+                        py-1.5
+                        text-[10px]
+                        font-bold
+                        text-[#b9e4d9]
+                      "
+                    >
+                      <Sparkles size={13} />
+
+                      Account recovery
+                    </div>
+
+                    <h1
+                      className="
+                        text-[42px]
+                        font-black
+                        leading-[1.05]
+                        tracking-[-0.05em]
+                        xl:text-[48px]
+                      "
+                    >
+                      Get back into your
+                      <span className="block text-[#79c9b5]">
+                        FixMate workspace.
+                      </span>
+                    </h1>
+
+                    <p
+                      className="
+                        mt-6
+                        max-w-sm
+                        text-sm
+                        leading-7
+                        text-white/60
+                      "
+                    >
+                      Choose your preferred recovery method and
+                      securely reset your FixMate admin password.
+                    </p>
+
+                  </div>
+
+                  {/* =================================================
+                      BENEFITS
+                  ================================================== */}
+
+                  <div className="mt-10 space-y-4">
+
+                    <RecoveryFeature
+                      title="Email recovery"
+                      description="Receive a secure password reset link."
+                    />
+
+                    <RecoveryFeature
+                      title="Phone recovery"
+                      description="Receive a one-time verification OTP."
+                    />
+
+                    <RecoveryFeature
+                      title="Secure verification"
+                      description="Your account information stays protected."
+                    />
+
+                  </div>
 
                 </div>
 
-                <p className="mt-2 text-xs text-[#A6A69C]">
-                  Select your country and enter your registered mobile number.
-                </p>
+                {/* Bottom */}
 
-              </div>
-
-              {/* Email Option */}
-              <div className="text-right">
-
-                <Link
-                  to="/forgot"
-                  className="inline-flex items-center gap-1 text-sm font-semibold text-[#0E6B5C] transition hover:text-[#16302B] hover:underline"
+                <div
+                  className="
+                    relative
+                    z-10
+                    border-t
+                    border-white/10
+                    pt-6
+                  "
                 >
-                  Using Email Address
-                  <ArrowRight size={14} />
-                </Link>
 
-              </div>
+                  <div className="flex items-center justify-between">
 
-              {/* Security Info */}
-              <div className="flex gap-3 rounded-xl bg-[#0E6B5C]/5 p-4">
+                    <div>
 
-                <ShieldCheck
-                  size={18}
-                  className="mt-0.5 shrink-0 text-[#0E6B5C]"
-                />
+                      <p
+                        className="
+                          text-[10px]
+                          font-bold
+                          text-white/40
+                        "
+                      >
+                        FIXMATE ADMIN
+                      </p>
 
-                <p className="text-xs leading-5 text-[#6B6B62]">
-                  We'll send a one-time password to verify your account before
-                  resetting your password.
-                </p>
+                      <p
+                        className="
+                          mt-1
+                          text-xs
+                          text-white/60
+                        "
+                      >
+                        Secure account recovery
+                      </p>
 
-              </div>
+                    </div>
 
-              {/* Button */}
-              <button
-                type="submit"
-                className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#16302B] px-4 py-3.5 text-sm font-semibold text-white transition hover:bg-[#0E6B5C]"
+                    <ShieldCheck
+                      size={24}
+                      className="text-[#79c9b5]"
+                    />
+
+                  </div>
+
+                </div>
+
+              </section>
+
+              {/* =================================================
+                  RECOVERY PANEL
+              ================================================== */}
+
+              <section
+                className="
+                  flex
+                  items-center
+                  bg-white
+                  p-6
+                  sm:p-10
+                  lg:p-12
+                "
               >
-                Send OTP
 
-                <ArrowRight
-                  size={17}
-                  className="transition-transform group-hover:translate-x-1"
-                />
-              </button>
+                <div className="mx-auto w-full max-w-[450px]">
 
-            </form>
+                  {/* =================================================
+                      MOBILE BRAND
+                  ================================================== */}
 
-            {/* Success Message */}
-            {message && (
-              <div className="mt-5 flex items-start gap-3 rounded-xl bg-green-50 p-4">
+                  <div
+                    className="
+                      mb-8
+                      flex
+                      items-center
+                      gap-3
+                      lg:hidden
+                    "
+                  >
 
-                <CheckCircle2
-                  size={18}
-                  className="mt-0.5 shrink-0 text-green-600"
-                />
+                    <img
+                      src={logo}
+                      alt="FixMate"
+                      className="
+                        h-11
+                        w-11
+                        rounded-xl
+                        object-cover
+                        shadow-sm
+                      "
+                    />
 
-                <p className="text-sm leading-5 font-medium text-green-700">
-                  {message}
-                </p>
+                    <div>
 
-              </div>
-            )}
+                      <p
+                        className="
+                          text-lg
+                          font-black
+                          tracking-[-0.04em]
+                          text-[#18342f]
+                        "
+                      >
+                        FixMate
+                      </p>
 
-            {/* Login */}
-            <div className="mt-7 border-t border-[#EEECE5] pt-6 text-center">
+                      <p
+                        className="
+                          text-[9px]
+                          font-black
+                          uppercase
+                          tracking-[0.16em]
+                          text-[#909b96]
+                        "
+                      >
+                        Admin Workspace
+                      </p>
 
-              <p className="text-sm text-[#8A8A82]">
-                Remember your password?
-              </p>
+                    </div>
 
-              <Link
-                to="/login"
-                className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-[#0E6B5C] transition hover:text-[#16302B] hover:underline"
-              >
-                <ArrowLeft size={15} />
-                Back to Login
-              </Link>
+                  </div>
+
+                  {/* =================================================
+                      HEADER
+                  ================================================== */}
+
+                  <div className="mb-7">
+
+                    <div
+                      className="
+                        mb-5
+                        grid
+                        h-11
+                        w-11
+                        place-items-center
+                        rounded-xl
+                        bg-[#eaf6f2]
+                        text-[#0f7565]
+                      "
+                    >
+                      <LockKeyhole size={20} />
+                    </div>
+
+                    <p
+                      className="
+                        text-[10px]
+                        font-black
+                        uppercase
+                        tracking-[0.18em]
+                        text-[#0f7565]
+                      "
+                    >
+                      Account recovery
+                    </p>
+
+                    <h1
+                      className="
+                        mt-2
+                        text-[32px]
+                        font-black
+                        tracking-[-0.045em]
+                        text-[#18342f]
+                        sm:text-[36px]
+                      "
+                    >
+                      Forgot password?
+                    </h1>
+
+                    <p
+                      className="
+                        mt-2
+                        text-sm
+                        leading-6
+                        text-[#89958f]
+                      "
+                    >
+                      Choose how you'd like to receive your
+                      password recovery instructions.
+                    </p>
+
+                  </div>
+
+                  {/* =================================================
+                      METHOD SELECTOR
+                  ================================================== */}
+
+                  <div
+                    className="
+                      mb-6
+                      grid
+                      grid-cols-2
+                      gap-2
+                      rounded-2xl
+                      bg-[#f4f8f6]
+                      p-1.5
+                    "
+                  >
+
+                    {/* Email */}
+
+                    <button
+                      type="button"
+                      onClick={() => changeMethod("email")}
+                      className={`
+                        flex
+                        h-12
+                        items-center
+                        justify-center
+                        gap-2
+                        rounded-xl
+                        text-xs
+                        font-black
+                        transition-all
+                        duration-200
+
+                        ${
+                          method === "email"
+                            ? "bg-white text-[#0f7565] shadow-sm"
+                            : "text-[#89958f] hover:text-[#18342f]"
+                        }
+                      `}
+                    >
+                      <Mail size={16} />
+
+                      Email
+                    </button>
+
+                    {/* Phone */}
+
+                    <button
+                      type="button"
+                      onClick={() => changeMethod("phone")}
+                      className={`
+                        flex
+                        h-12
+                        items-center
+                        justify-center
+                        gap-2
+                        rounded-xl
+                        text-xs
+                        font-black
+                        transition-all
+                        duration-200
+
+                        ${
+                          method === "phone"
+                            ? "bg-white text-[#0f7565] shadow-sm"
+                            : "text-[#89958f] hover:text-[#18342f]"
+                        }
+                      `}
+                    >
+                      <Phone size={16} />
+
+                      Phone
+                    </button>
+
+                  </div>
+
+                  {/* =================================================
+                      FORM
+                  ================================================== */}
+
+                  <form
+                    onSubmit={handleSubmit}
+                    className="space-y-5"
+                  >
+
+                    {/* =================================================
+                        EMAIL FORM
+                    ================================================== */}
+
+                    {method === "email" && (
+                      <div>
+
+                        <label
+                          htmlFor="email"
+                          className="
+                            mb-2
+                            block
+                            text-[12px]
+                            font-black
+                            text-[#35433e]
+                          "
+                        >
+                          Email address
+                        </label>
+
+                        <div className="group relative">
+
+                          <Mail
+                            size={18}
+                            strokeWidth={1.8}
+                            className="
+                              pointer-events-none
+                              absolute
+                              left-4
+                              top-1/2
+                              z-10
+                              -translate-y-1/2
+                              text-[#98a49f]
+                              transition-colors
+                              duration-200
+                              group-focus-within:text-[#0f7565]
+                            "
+                          />
+
+                          <input
+                            id="email"
+                            type="email"
+                            placeholder="you@example.com"
+                            value={email}
+                            onChange={(e) => {
+                              setEmail(e.target.value);
+                              setMessage("");
+                            }}
+                            required
+                            disabled={loading}
+                            className="
+                              h-[52px]
+                              w-full
+                              rounded-xl
+                              border
+                              border-[#dfe7e3]
+                              bg-[#fafcfb]
+                              pl-11
+                              pr-4
+                              text-sm
+                              font-medium
+                              text-[#18342f]
+                              outline-none
+                              transition-all
+                              duration-200
+                              placeholder:text-[#a4afaa]
+
+                              hover:border-[#bfd3cb]
+
+                              focus:border-[#0f7565]
+                              focus:bg-white
+                              focus:ring-4
+                              focus:ring-[#0f7565]/10
+
+                              disabled:cursor-not-allowed
+                              disabled:opacity-60
+                            "
+                          />
+
+                        </div>
+
+                        <p
+                          className="
+                            mt-2
+                            text-[10px]
+                            leading-5
+                            text-[#9aa49f]
+                          "
+                        >
+                          We'll send a secure password reset
+                          link to this email address.
+                        </p>
+
+                      </div>
+                    )}
+
+                    {/* =================================================
+                        PHONE FORM
+                    ================================================== */}
+
+                    {method === "phone" && (
+                      <div>
+
+                        <label
+                          htmlFor="phone"
+                          className="
+                            mb-2
+                            block
+                            text-[12px]
+                            font-black
+                            text-[#35433e]
+                          "
+                        >
+                          Phone number
+                        </label>
+
+                        <div className="relative">
+
+                          <Phone
+                            size={18}
+                            strokeWidth={1.8}
+                            className="
+                              pointer-events-none
+                              absolute
+                              left-4
+                              top-1/2
+                              z-20
+                              -translate-y-1/2
+                              text-[#98a49f]
+                            "
+                          />
+
+                          <PhoneInput
+                            id="phone"
+                            international
+                            defaultCountry="IN"
+                            value={phone}
+                            onChange={(value) => {
+                              setPhone(value || "");
+                              setMessage("");
+                            }}
+                            placeholder="Enter phone number"
+                            className="fixmate-phone-input"
+                            required
+                            disabled={loading}
+                          />
+
+                        </div>
+
+                        <p
+                          className="
+                            mt-2
+                            text-[10px]
+                            leading-5
+                            text-[#9aa49f]
+                          "
+                        >
+                          Select your country and enter your
+                          registered mobile number.
+                        </p>
+
+                      </div>
+                    )}
+
+                    {/* =================================================
+                        SECURITY
+                    ================================================== */}
+
+                    <div
+                      className="
+                        flex
+                        gap-3
+                        rounded-xl
+                        border
+                        border-[#dfece7]
+                        bg-[#f2f8f5]
+                        p-4
+                      "
+                    >
+
+                      <div
+                        className="
+                          grid
+                          h-8
+                          w-8
+                          shrink-0
+                          place-items-center
+                          rounded-lg
+                          bg-white
+                          text-[#0f7565]
+                          shadow-sm
+                        "
+                      >
+                        <ShieldCheck size={16} />
+                      </div>
+
+                      <div>
+
+                        <p
+                          className="
+                            text-[11px]
+                            font-black
+                            text-[#35514a]
+                          "
+                        >
+                          Secure recovery
+                        </p>
+
+                        <p
+                          className="
+                            mt-1
+                            text-[10px]
+                            leading-5
+                            text-[#71807a]
+                          "
+                        >
+                          {method === "email"
+                            ? "A secure reset link will be sent to your registered email."
+                            : "A one-time OTP will be sent to verify your phone number."}
+                        </p>
+
+                      </div>
+
+                    </div>
+
+                    {/* =================================================
+                        SUBMIT BUTTON
+                    ================================================== */}
+
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="
+                        group
+                        relative
+                        flex
+                        h-[53px]
+                        w-full
+                        items-center
+                        justify-center
+                        gap-2
+                        overflow-hidden
+                        rounded-xl
+                        bg-[#0f7565]
+                        text-sm
+                        font-black
+                        text-white
+                        shadow-[0_8px_20px_rgba(15,117,101,0.18)]
+                        transition-all
+                        duration-200
+
+                        hover:-translate-y-0.5
+                        hover:bg-[#0c6658]
+                        hover:shadow-[0_12px_25px_rgba(15,117,101,0.24)]
+
+                        active:translate-y-0
+
+                        disabled:cursor-not-allowed
+                        disabled:opacity-70
+                      "
+                    >
+
+                      {!loading && (
+                        <span
+                          className="
+                            absolute
+                            inset-y-0
+                            -left-full
+                            w-1/2
+                            skew-x-[-20deg]
+                            bg-white/10
+                            transition-all
+                            duration-500
+                            group-hover:left-[120%]
+                          "
+                        />
+                      )}
+
+                      {loading ? (
+                        <>
+                          <span
+                            className="
+                              h-5
+                              w-5
+                              animate-spin
+                              rounded-full
+                              border-2
+                              border-white/30
+                              border-t-white
+                            "
+                          />
+
+                          {method === "email"
+                            ? "Sending link..."
+                            : "Sending OTP..."}
+                        </>
+                      ) : (
+                        <>
+                          {method === "email"
+                            ? "Send reset link"
+                            : "Send OTP"}
+
+                          <ArrowRight
+                            size={18}
+                            className="
+                              transition-transform
+                              duration-200
+                              group-hover:translate-x-1
+                            "
+                          />
+                        </>
+                      )}
+
+                    </button>
+
+                  </form>
+
+                  {/* =================================================
+                      SUCCESS MESSAGE
+                  ================================================== */}
+
+                  {message && (
+                    <div
+                      className="
+                        mt-5
+                        flex
+                        items-start
+                        gap-3
+                        rounded-xl
+                        border
+                        border-[#cce8df]
+                        bg-[#effaf6]
+                        p-4
+                      "
+                    >
+
+                      <div
+                        className="
+                          grid
+                          h-8
+                          w-8
+                          shrink-0
+                          place-items-center
+                          rounded-lg
+                          bg-white
+                          text-[#16806b]
+                          shadow-sm
+                        "
+                      >
+                        <CheckCircle2 size={17} />
+                      </div>
+
+                      <div>
+
+                        <p
+                          className="
+                            text-[11px]
+                            font-black
+                            text-[#16806b]
+                          "
+                        >
+                          Request sent
+                        </p>
+
+                        <p
+                          className="
+                            mt-1
+                            text-[10px]
+                            leading-5
+                            text-[#4f756a]
+                          "
+                        >
+                          {message}
+                        </p>
+
+                      </div>
+
+                    </div>
+                  )}
+
+                  {/* =================================================
+                      LOGIN
+                  ================================================== */}
+
+                  <div
+                    className="
+                      mt-7
+                      border-t
+                      border-[#e9eeec]
+                      pt-6
+                      text-center
+                    "
+                  >
+
+                    <p className="text-xs text-[#89958f]">
+                      Remember your password?
+                    </p>
+
+                    <Link
+                      to="/login"
+                      className="
+                        group
+                        mt-2
+                        inline-flex
+                        items-center
+                        gap-1.5
+                        text-xs
+                        font-black
+                        text-[#0f7565]
+                        transition-colors
+                        hover:text-[#18342f]
+                      "
+                    >
+                      <ArrowLeft
+                        size={15}
+                        className="
+                          transition-transform
+                          duration-200
+                          group-hover:-translate-x-1
+                        "
+                      />
+
+                      Back to login
+                    </Link>
+
+                  </div>
+
+                  {/* =================================================
+                      FOOTER
+                  ================================================== */}
+
+                  <div className="mt-6 flex items-center justify-center gap-2">
+
+                    <ShieldCheck
+                      size={14}
+                      className="text-[#0f7565]"
+                    />
+
+                    <span
+                      className="
+                        text-[9px]
+                        font-bold
+                        text-[#8d9994]
+                      "
+                    >
+                      Your account information is protected
+                    </span>
+
+                  </div>
+
+                  <p
+                    className="
+                      mt-3
+                      text-center
+                      text-[9px]
+                      text-[#a0aaa6]
+                    "
+                  >
+                    © 2026 FixMate · All rights reserved
+                  </p>
+
+                </div>
+
+              </section>
 
             </div>
 
           </div>
-
-          {/* Bottom */}
-          <div className="mt-6 flex items-center justify-center gap-2 text-xs text-black">
-            <ShieldCheck size={14} />
-            <span>Your account information is protected.</span>
-          </div>
-
-          <p className="mt-3 text-center text-xs text-black">
-            © {new Date().getFullYear()} HomeServe. All rights reserved.
-          </p>
 
         </div>
 
       </div>
 
-      {/* Phone Input Styling */}
+      {/* =====================================================
+          PHONE INPUT STYLES
+      ====================================================== */}
+
       <style>{`
-        .homeserve-phone-input {
-          display: flex;
+        .fixmate-phone-input {
           width: 100%;
-          min-height: 50px;
-          border: 1px solid #E3E1DA;
+          min-height: 52px;
+          display: flex;
+          align-items: center;
+          padding-left: 48px;
+          padding-right: 14px;
+          background: #fafcfb;
+          border: 1px solid #dfe7e3;
           border-radius: 12px;
-          background: #FBFAF7;
-          padding-left: 38px;
           transition: all 0.2s ease;
         }
 
-        .homeserve-phone-input:focus-within {
-          border-color: #0E6B5C;
-          background: white;
-          box-shadow: 0 0 0 3px rgba(14, 107, 92, 0.1);
+        .fixmate-phone-input:hover {
+          border-color: #bfd3cb;
         }
 
-        .homeserve-phone-input .PhoneInputCountry {
-          margin-left: 8px;
+        .fixmate-phone-input:focus-within {
+          border-color: #0f7565;
+          background: #ffffff;
+          box-shadow: 0 0 0 4px rgba(15, 117, 101, 0.10);
+        }
+
+        .fixmate-phone-input .PhoneInputCountry {
           margin-right: 8px;
         }
 
-        .homeserve-phone-input .PhoneInputCountrySelect {
+        .fixmate-phone-input .PhoneInputCountrySelect {
           background: transparent;
+          border: none;
+          outline: none;
+          cursor: pointer;
         }
 
-        .homeserve-phone-input .PhoneInputInput {
+        .fixmate-phone-input .PhoneInputInput {
+          width: 100%;
           min-width: 0;
-          flex: 1;
-          border: 0;
-          outline: 0;
+          border: none;
+          outline: none;
           background: transparent;
-          padding: 12px 12px 12px 4px;
-          color: #16302B;
+          color: #18342f;
           font-size: 14px;
+          font-weight: 500;
+          padding: 0;
         }
 
-        .homeserve-phone-input .PhoneInputInput::placeholder {
-          color: #A6A69C;
+        .fixmate-phone-input .PhoneInputInput::placeholder {
+          color: #a4afaa;
+        }
+
+        .fixmate-phone-input .PhoneInputInput:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
         }
       `}</style>
-
-    </div>
+    </main>
   );
 };
 
-export default ForgotPhoneTemp;
+/* =========================================================
+   RECOVERY FEATURE
+========================================================= */
+
+function RecoveryFeature({ title, description }) {
+  return (
+    <div className="group flex items-start gap-3">
+
+      <div
+        className="
+          mt-0.5
+          grid
+          h-8
+          w-8
+          shrink-0
+          place-items-center
+          rounded-lg
+          bg-white/10
+          text-[#8ed5c3]
+          transition-all
+          duration-200
+          group-hover:bg-[#0f7565]
+          group-hover:text-white
+        "
+      >
+        <CheckCircle2 size={15} />
+      </div>
+
+      <div>
+
+        <p className="text-xs font-bold text-white">
+          {title}
+        </p>
+
+        <p className="mt-1 text-[10px] leading-5 text-white/45">
+          {description}
+        </p>
+
+      </div>
+
+    </div>
+  );
+}
+
+export default ForgotPassword;

@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 
 import Login from "./pages/Login";
+import Notifications from "./pages/notification";
 import Signup from "./pages/Signup";
 import Forgot from "./pages/Forgot";
 import ForgotPhoneTemp from "./pages/ForgotPhoneTemp";
@@ -41,6 +42,7 @@ function App() {
 
           <Route index element={<Dashboard />} />
           <Route path="dashboard" element={<Dashboard />} />
+          <Route path="notifications" element={<Notifications/>} />
           <Route path="order" element={<Orders />} />
           <Route path="services" element={<Services />} />
           <Route path="users" element={<Users />} />
