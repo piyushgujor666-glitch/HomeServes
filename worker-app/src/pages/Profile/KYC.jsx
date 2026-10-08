@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import Layout from "../../components/Layout";
-
 const KYC = () => {
   const [idFile, setIdFile] = useState(null);
   const [panFile, setPanFile] = useState(null);
 
   return (
-    <Layout>
       <div className="min-h-screen bg-gray-50 p-6 md:p-8">
 
         <div className="mb-6">
@@ -134,7 +131,6 @@ const KYC = () => {
 
         </div>
       </div>
-    </Layout>
   );
 };
 

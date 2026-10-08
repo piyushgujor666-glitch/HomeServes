@@ -1,543 +1,147 @@
-import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import Layout from "../components/Layout";
-import image from "../assets/background.png"
-
+import React, { useMemo, useState } from "react";
+import { NavLink } from "react-router-dom";
 import {
-  Package,
-  CheckCircle2,
-  Wallet,
-  Star,
-  Wrench,
-  Snowflake,
-  Zap,
-  MapPin,
-  TrendingUp,
-  Clock,
+  ArrowRight,
   CalendarDays,
-  UserRound,
+  CheckCircle2,
   ChevronRight,
-  Phone,
+  Clock3,
+  MapPin,
   Navigation,
+  Package,
+  Phone,
+  Sparkles,
+  Star,
+  TrendingUp,
+  UserRound,
+  Wallet,
+  Wrench,
 } from "lucide-react";
 
 const Dashboard = () => {
-  const navigate = useNavigate();
-
-  const [isAvailable, setIsAvailable] = useState(true);
+  const [available, setAvailable] = useState(true);
 
   const stats = [
-    {
-      title: "New Orders",
-      value: "5",
-      subtitle: "2 new today",
-      icon: Package,
-      iconBg: "bg-[#0E6B5C]/10",
-      iconColor: "text-[#0E6B5C]",
-      subtitleColor: "text-[#0E6B5C]",
-    },
-    {
-      title: "Completed Jobs",
-      value: "126",
-      subtitle: "+8 this month",
-      icon: CheckCircle2,
-      iconBg: "bg-[#0E6B5C]/10",
-      iconColor: "text-[#0E6B5C]",
-      subtitleColor: "text-[#0E6B5C]",
-    },
-    {
-      title: "This Month",
-      value: "₹18,500",
-      subtitle: "+12.5% from last month",
-      icon: Wallet,
-      iconBg: "bg-[#E08A3C]/10",
-      iconColor: "text-[#E08A3C]",
-      subtitleColor: "text-[#E08A3C]",
-    },
-    {
-      title: "Rating",
-      value: "4.8",
-      subtitle: "From 98 reviews",
-      icon: Star,
-      iconBg: "bg-[#E08A3C]/10",
-      iconColor: "text-[#E08A3C]",
-      subtitleColor: "text-[#E08A3C]",
-    },
+    { title: "New Orders", value: "5", note: "+2 today", icon: Package },
+    { title: "Completed Jobs", value: "126", note: "+8 this month", icon: CheckCircle2 },
+    { title: "This Month", value: "₹18,500", note: "+12.5% vs last month", icon: Wallet },
+    { title: "Rating", value: "4.8", note: "98 customer reviews", icon: Star },
   ];
 
-  const orders = [
-    {
-      service: "Plumbing Repair",
-      customer: "Rahul Sharma",
-      initials: "RS",
-      location: "Delhi",
-      time: "Today, 10:30 AM",
-      amount: "₹650",
-      status: "Pending",
-      icon: Wrench,
-      iconColor: "text-[#0E6B5C]",
-      iconBg: "bg-[#0E6B5C]/10",
-      statusBg: "bg-[#E08A3C]/10",
-      statusColor: "text-[#B5661E]",
-      barColor: "bg-[#E08A3C]",
-    },
-    {
-      service: "AC Repair",
-      customer: "Amit Kumar",
-      initials: "AK",
-      location: "Delhi",
-      time: "Yesterday, 3:00 PM",
-      amount: "₹1,200",
-      status: "Completed",
-      icon: Snowflake,
-      iconColor: "text-[#0E6B5C]",
-      iconBg: "bg-[#0E6B5C]/10",
-      statusBg: "bg-[#0E6B5C]/10",
-      statusColor: "text-[#0E6B5C]",
-      barColor: "bg-[#0E6B5C]",
-    },
-    {
-      service: "Electrical Work",
-      customer: "Priya Singh",
-      initials: "PS",
-      location: "Delhi",
-      time: "Yesterday, 11:00 AM",
-      amount: "₹800",
-      status: "Completed",
-      icon: Zap,
-      iconColor: "text-[#E08A3C]",
-      iconBg: "bg-[#E08A3C]/10",
-      statusBg: "bg-[#0E6B5C]/10",
-      statusColor: "text-[#0E6B5C]",
-      barColor: "bg-[#0E6B5C]",
-    },
+  const recent = [
+    { service: "Plumbing Repair", customer: "Rahul Sharma", location: "Delhi", time: "Today, 10:30 AM", amount: "₹650", status: "Pending", icon: Wrench },
+    { service: "AC Repair", customer: "Amit Kumar", location: "Delhi", time: "Yesterday, 3:00 PM", amount: "₹1,200", status: "Completed", icon: Sparkles },
+    { service: "Electrical Work", customer: "Priya Singh", location: "Delhi", time: "Yesterday, 11:00 AM", amount: "₹800", status: "Completed", icon: Package },
   ];
+
+  const completion = useMemo(() => 60, []);
 
   return (
-    <Layout>
-      {/* Back / Next Navigation */}
-      <div className="pointer-events-none fixed inset-x-0 bottom-6 z-50 flex items-center justify-between px-4 md:px-6">
-
-        {/* Next */}
-        <button
-          type="button"
-          onClick={() => navigate("/orders")}
-          className="pointer-events-auto rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#16302B] shadow-lg ring-1 ring-black/10 transition hover:bg-[#16302B] hover:text-white"
-        >
-          Next →
-        </button>
-      </div>
-
-      <div className="min-h-screen bg-[#FBFAF7] p-4 md:p-8">
-
-        {/* Header */}
-        <div className="mb-8 flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+    <div className="min-h-screen bg-[#F7F8F7] px-4 py-6 sm:px-6 lg:px-8 dark:bg-slate-950">
+      <div className="mx-auto max-w-7xl">
+        {/* Welcome */}
+        <section className="mb-7 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="text-sm font-medium text-[#8A8A82]">
-              Welcome back 👋
-            </p>
-
-            <h1 className="mt-1 text-3xl font-bold text-[#16302B]">
-              Worker Name
-            </h1>
-
-            <p className="mt-1 text-[#6B6B62]">
-              Here's what's happening with your work today.
-            </p>
+            <p className="text-sm font-semibold text-[#0E6B5C] dark:text-[#39A98D]">Good morning 👋</p>
+            <h1 className="mt-1 text-3xl font-black tracking-tight text-[#16302B] dark:text-white sm:text-4xl">Worker Name</h1>
+            <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">Here’s what’s happening with your work today.</p>
           </div>
 
-          {/* Availability */}
-          <button
-            onClick={() => setIsAvailable(!isAvailable)}
-            className="flex w-fit items-center gap-3 rounded-xl bg-white px-4 py-3 text-left shadow-sm ring-1 ring-black/5 transition hover:shadow-md"
-          >
-            <span className="relative flex h-3 w-3">
-              {isAvailable && (
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#0E6B5C] opacity-50" />
-              )}
-
-              <span
-                className={`relative inline-flex h-3 w-3 rounded-full ${
-                  isAvailable ? "bg-[#0E6B5C]" : "bg-gray-400"
-                }`}
-              />
+          <button onClick={() => setAvailable((v) => !v)} className="group flex w-full max-w-sm items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 text-left shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#0E6B5C]/10 dark:border-slate-800 dark:bg-slate-900">
+            <span className="relative flex h-3 w-3 shrink-0">
+              {available && <span className="absolute inset-0 animate-ping rounded-full bg-[#0E6B5C]/50" />}
+              <span className={`relative h-3 w-3 rounded-full ${available ? "bg-[#0E6B5C]" : "bg-slate-400"}`} />
             </span>
-
-            <div>
-              <p className="text-sm font-semibold text-[#16302B]">
-                {isAvailable ? "You're Available" : "You're Offline"}
-              </p>
-
-              <p className="text-xs text-[#8A8A82]">
-                {isAvailable
-                  ? "Ready to receive orders"
-                  : "You won't receive new orders"}
-              </p>
-            </div>
+            <span className="flex-1">
+              <span className="block text-sm font-bold text-slate-900 dark:text-white">{available ? "You’re Available" : "You’re Offline"}</span>
+              <span className="block text-xs text-slate-500">{available ? "Ready to receive new orders" : "New orders are paused"}</span>
+            </span>
+            <span className="text-xs font-bold text-[#0E6B5C]">{available ? "ON" : "OFF"}</span>
           </button>
-        </div>
+        </section>
 
-        {/* Statistics */}
-        <div className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map((stat) => {
-            const Icon = stat.icon;
-
-            return (
-              <div
-                key={stat.title}
-                className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-black/5 transition hover:-translate-y-0.5 hover:shadow-md"
-              >
-                <div className="flex items-start justify-between">
-                  <div>
-                    <p className="text-sm text-[#8A8A82]">
-                      {stat.title}
-                    </p>
-
-                    <h2 className="mt-2 text-3xl font-bold text-[#16302B]">
-                      {stat.value}
-                    </h2>
-                  </div>
-
-                  <div
-                    className={`flex h-11 w-11 items-center justify-center rounded-xl ${stat.iconBg}`}
-                  >
-                    <Icon size={20} className={stat.iconColor} />
-                  </div>
+        {/* Stats */}
+        <section className="mb-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {stats.map(({ title, value, note, icon: Icon }) => (
+            <div key={title} className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#0E6B5C]/20 hover:shadow-xl hover:shadow-slate-900/5 dark:border-slate-800 dark:bg-slate-900">
+              <div className="flex items-start justify-between">
+                <div>
+                  <p className="text-sm font-medium text-slate-500 dark:text-slate-400">{title}</p>
+                  <p className="mt-2 text-3xl font-black tracking-tight text-[#16302B] dark:text-white">{value}</p>
                 </div>
-
-                <p
-                  className={`mt-4 flex items-center gap-1 text-xs font-medium ${stat.subtitleColor}`}
-                >
-                  {stat.title !== "Rating" && <TrendingUp size={13} />}
-                  {stat.subtitle}
-                </p>
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#0E6B5C]/10 text-[#0E6B5C] transition duration-300 group-hover:rotate-6 group-hover:scale-110"><Icon size={20} /></span>
               </div>
-            );
-          })}
-        </div>
+              <p className="mt-4 flex items-center gap-1 text-xs font-semibold text-[#0E6B5C]"><TrendingUp size={13} />{note}</p>
+            </div>
+          ))}
+        </section>
 
-        {/* Quick Actions */}
-        <div className="mb-8">
-          <h2 className="mb-4 text-lg font-bold text-[#16302B]">
-            Quick Actions
-          </h2>
-
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-
-            <NavLink
-              to="/orders"
-              className="group flex items-center justify-between rounded-xl bg-white p-4 shadow-sm ring-1 ring-black/5 transition hover:shadow-md"
-            >
-              <div className="flex items-center gap-3">
-                <div className="rounded-lg bg-[#0E6B5C]/10 p-2.5">
-                  <Package size={19} className="text-[#0E6B5C]" />
-                </div>
-
-                <span className="text-sm font-semibold text-[#16302B]">
-                  View Orders
-                </span>
-              </div>
-
-              <ChevronRight
-                size={18}
-                className="text-[#8A8A82] transition group-hover:translate-x-1"
-              />
-            </NavLink>
-
-            <NavLink
-              to="/profile"
-              className="group flex items-center justify-between rounded-xl bg-white p-4 shadow-sm ring-1 ring-black/5 transition hover:shadow-md"
-            >
-              <div className="flex items-center gap-3">
-                <div className="rounded-lg bg-[#0E6B5C]/10 p-2.5">
-                  <UserRound size={19} className="text-[#0E6B5C]" />
-                </div>
-
-                <span className="text-sm font-semibold text-[#16302B]">
-                  Edit Profile
-                </span>
-              </div>
-
-              <ChevronRight
-                size={18}
-                className="text-[#8A8A82] transition group-hover:translate-x-1"
-              />
-            </NavLink>
-
-            <button className="group flex items-center justify-between rounded-xl bg-white p-4 text-left shadow-sm ring-1 ring-black/5 transition hover:shadow-md">
-              <div className="flex items-center gap-3">
-                <div className="rounded-lg bg-[#E08A3C]/10 p-2.5">
-                  <Wallet size={19} className="text-[#E08A3C]" />
-                </div>
-
-                <span className="text-sm font-semibold text-[#16302B]">
-                  View Earnings
-                </span>
-              </div>
-
-              <ChevronRight
-                size={18}
-                className="text-[#8A8A82] transition group-hover:translate-x-1"
-              />
-            </button>
-
-            <button className="group flex items-center justify-between rounded-xl bg-white p-4 text-left shadow-sm ring-1 ring-black/5 transition hover:shadow-md">
-              <div className="flex items-center gap-3">
-                <div className="rounded-lg bg-[#E08A3C]/10 p-2.5">
-                  <CalendarDays size={19} className="text-[#E08A3C]" />
-                </div>
-
-                <span className="text-sm font-semibold text-[#16302B]">
-                  My Schedule
-                </span>
-              </div>
-
-              <ChevronRight
-                size={18}
-                className="text-[#8A8A82] transition group-hover:translate-x-1"
-              />
-            </button>
-
-          </div>
-        </div>
-
-        {/* Upcoming Job */}
-        <div className="mb-8 rounded-2xl bg-[#16302B] p-5 text-white shadow-sm md:p-6">
-          <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-
+        {/* Unique smart card */}
+        <section className="mb-8 overflow-hidden rounded-3xl bg-[#16302B] p-5 text-white shadow-xl shadow-[#16302B]/10 sm:p-7">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <div className="mb-2 flex items-center gap-2">
-                <Clock size={17} />
-
-                <span className="text-sm font-medium text-white/70">
-                  Upcoming Job
-                </span>
-              </div>
-
-              <h2 className="text-xl font-bold">
-                Plumbing Repair
-              </h2>
-
-              <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm text-white/70">
-
-                <span className="flex items-center gap-1.5">
-                  <UserRound size={14} />
-                  Rahul Sharma
-                </span>
-
-                <span className="flex items-center gap-1.5">
-                  <MapPin size={14} />
-                  Delhi
-                </span>
-
-                <span className="flex items-center gap-1.5">
-                  <Clock size={14} />
-                  Today, 10:30 AM
-                </span>
-
-              </div>
+              <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-xs font-bold text-white/80"><Sparkles size={14} />Smart Workday</div>
+              <h2 className="text-2xl font-black">Your next job is 82% ready.</h2>
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-white/65">Review the customer, route and service checklist before you leave. This reduces missed details and keeps your schedule on track.</p>
             </div>
-
-            <div className="flex gap-3">
-
-              <button className="flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-[#16302B] transition hover:bg-gray-100">
-                <Navigation size={16} />
-                Navigate
-              </button>
-
-              <button className="flex items-center gap-2 rounded-lg bg-[#E08A3C] px-4 py-2.5 text-sm font-semibold text-white transition hover:opacity-90">
-                <Phone size={16} />
-                Call
-              </button>
-
+            <div className="grid grid-cols-2 gap-3 sm:min-w-[320px]">
+              <NavLink to="/schedule" className="rounded-2xl bg-white/10 p-4 transition hover:-translate-y-1 hover:bg-white/15"><p className="text-xs text-white/60">Next job</p><p className="mt-1 font-bold">10:30 AM</p></NavLink>
+              <NavLink to="/orders" className="rounded-2xl bg-[#E08A3C] p-4 transition hover:-translate-y-1 hover:brightness-105"><p className="text-xs text-white/75">Action</p><p className="mt-1 font-bold">Review order</p></NavLink>
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* Main Content */}
-        <div className="grid gap-6 lg:grid-cols-3">
-
-          {/* Recent Orders */}
-          <div className="rounded-2xl bg-white shadow-sm ring-1 ring-black/5 lg:col-span-2">
-
-            <div className="flex items-center justify-between border-b border-[#F0EEE8] p-5">
-              <div>
-                <h2 className="text-lg font-bold text-[#16302B]">
-                  Recent Orders
-                </h2>
-
-                <p className="mt-1 text-sm text-[#8A8A82]">
-                  Your latest service requests
-                </p>
-              </div>
-
-              <NavLink
-                to="/orders"
-                className="flex items-center gap-1 text-sm font-semibold text-[#0E6B5C] hover:underline"
-              >
-                View all
-                <ChevronRight size={15} />
+        {/* Quick actions */}
+        <section className="mb-8">
+          <div className="mb-4 flex items-end justify-between">
+            <div><h2 className="text-lg font-black text-[#16302B] dark:text-white">Quick Actions</h2><p className="mt-1 text-sm text-slate-500">Jump straight to what you need.</p></div>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {[
+              ["View Orders", "/orders", Package],
+              ["Edit Profile", "/profile", UserRound],
+              ["View Earnings", "/earning", Wallet],
+              ["My Schedule", "/schedule", CalendarDays],
+            ].map(([label, path, Icon]) => (
+              <NavLink key={path} to={path} className="group flex items-center justify-between rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#0E6B5C]/20 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
+                <span className="flex items-center gap-3"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0E6B5C]/10 text-[#0E6B5C] transition group-hover:scale-110"><Icon size={18} /></span><span className="text-sm font-bold text-slate-800 dark:text-white">{label}</span></span>
+                <ChevronRight size={18} className="text-slate-400 transition group-hover:translate-x-1 group-hover:text-[#0E6B5C]" />
               </NavLink>
+            ))}
+          </div>
+        </section>
+
+        {/* Upcoming + profile completion */}
+        <section className="grid gap-6 lg:grid-cols-[1.5fr_1fr]">
+          <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+            <div className="flex items-center justify-between"><div><h2 className="text-lg font-black text-[#16302B] dark:text-white">Upcoming Job</h2><p className="mt-1 text-sm text-slate-500">Your next confirmed service</p></div><span className="rounded-full bg-[#0E6B5C]/10 px-3 py-1.5 text-xs font-bold text-[#0E6B5C]">Confirmed</span></div>
+            <div className="mt-5 rounded-2xl bg-[#F7F8F7] p-5 dark:bg-slate-950">
+              <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+                <div><div className="flex items-center gap-2 text-xs font-bold text-[#0E6B5C]"><Clock3 size={14} /> Today, 10:30 AM</div><h3 className="mt-2 text-xl font-black text-[#16302B] dark:text-white">Plumbing Repair</h3><div className="mt-3 flex flex-wrap gap-3 text-sm text-slate-500"><span className="flex items-center gap-1"><UserRound size={14} />Rahul Sharma</span><span className="flex items-center gap-1"><MapPin size={14} />Delhi</span></div></div>
+                <div className="flex gap-2"><button className="flex items-center gap-2 rounded-xl bg-white px-4 py-2.5 text-sm font-bold text-[#16302B] shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md dark:bg-slate-900 dark:text-white dark:ring-slate-700"><Navigation size={16} />Navigate</button><button className="flex items-center gap-2 rounded-xl bg-[#E08A3C] px-4 py-2.5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:brightness-105"><Phone size={16} />Call</button></div>
+              </div>
             </div>
-
-            {orders.map((order, index) => {
-              const Icon = order.icon;
-
-              return (
-                <NavLink
-                  to="/orders"
-                  key={order.service}
-                  className={`group flex flex-col gap-4 p-5 transition hover:bg-[#FBFAF7] sm:flex-row sm:items-center ${
-                    index !== orders.length - 1
-                      ? "border-b border-[#F0EEE8]"
-                      : ""
-                  }`}
-                >
-                  <span
-                    className={`hidden w-1 self-stretch rounded-full sm:block ${order.barColor}`}
-                  />
-
-                  <div
-                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${order.iconBg}`}
-                  >
-                    <Icon size={18} className={order.iconColor} />
-                  </div>
-
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-[#16302B]">
-                      {order.service}
-                    </h3>
-
-                    <div className="mt-1 flex items-center gap-2">
-                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#16302B] text-[9px] font-bold text-white">
-                        {order.initials}
-                      </span>
-
-                      <p className="text-sm text-[#6B6B62]">
-                        {order.customer}
-                      </p>
-                    </div>
-
-                    <p className="mt-1 flex items-center gap-1 text-xs text-[#A6A69C]">
-                      <MapPin size={11} />
-                      {order.location} • {order.time}
-                    </p>
-                  </div>
-
-                  <div className="flex items-center justify-between sm:block sm:text-right">
-                    <div>
-                      <p className="font-semibold text-[#16302B]">
-                        {order.amount}
-                      </p>
-
-                      <span
-                        className={`mt-1 inline-block rounded-full px-3 py-1 text-xs font-medium ${order.statusBg} ${order.statusColor}`}
-                      >
-                        {order.status}
-                      </span>
-                    </div>
-
-                    <ChevronRight
-                      size={18}
-                      className="text-[#A6A69C] transition group-hover:translate-x-1 sm:hidden"
-                    />
-                  </div>
-                </NavLink>
-              );
-            })}
           </div>
 
-          {/* Profile Completion */}
-          <div className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-black/5">
-
-            <h2 className="text-lg font-bold text-[#16302B]">
-              Profile Completion
-            </h2>
-
-            <p className="mt-1 text-sm text-[#8A8A82]">
-              Complete your profile to receive more orders.
-            </p>
-
-            {/* Progress */}
-            <div className="mt-6">
-              <div className="mb-2 flex justify-between text-sm">
-
-                <span className="font-medium text-[#16302B]">
-                  60% Complete
-                </span>
-
-                <span className="text-[#8A8A82]">
-                  60%
-                </span>
-
-              </div>
-
-              <div className="h-2 overflow-hidden rounded-full bg-[#EAE7E1]">
-                <div className="h-full w-[60%] rounded-full bg-[#0E6B5C]" />
-              </div>
+          <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+            <div className="flex items-center justify-between"><div><h2 className="text-lg font-black text-[#16302B] dark:text-white">Profile Health</h2><p className="mt-1 text-sm text-slate-500">More complete profiles get more trust.</p></div><span className="text-lg font-black text-[#0E6B5C]">{completion}%</span></div>
+            <div className="mt-5 h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800"><div className="h-full rounded-full bg-[#0E6B5C] transition-all" style={{ width: `${completion}%` }} /></div>
+            <div className="mt-5 space-y-3 text-sm">
+              {["Basic information", "Profile photo", "KYC verification", "Experience details", "Certificates"].map((item, i) => <div key={item} className="flex items-center gap-3"><span className={`flex h-5 w-5 items-center justify-center rounded-full text-xs ${i < 2 ? "bg-[#0E6B5C] text-white" : "border-2 border-[#E08A3C]"}`}>{i < 2 ? "✓" : ""}</span><span className="text-slate-600 dark:text-slate-300">{item}</span></div>)}
             </div>
-
-            {/* Checklist */}
-            <div className="mt-6 space-y-4">
-
-              <div className="flex items-center gap-3">
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#0E6B5C] text-xs text-white">
-                  ✓
-                </span>
-
-                <span className="text-sm text-[#3F4844]">
-                  Basic information
-                </span>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#0E6B5C] text-xs text-white">
-                  ✓
-                </span>
-
-                <span className="text-sm text-[#3F4844]">
-                  Profile photo
-                </span>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <span className="h-5 w-5 rounded-full border-2 border-[#E08A3C]" />
-
-                <span className="text-sm text-[#3F4844]">
-                  KYC verification
-                </span>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <span className="h-5 w-5 rounded-full border-2 border-[#E08A3C]" />
-
-                <span className="text-sm text-[#3F4844]">
-                  Experience details
-                </span>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <span className="h-5 w-5 rounded-full border-2 border-[#E08A3C]" />
-
-                <span className="text-sm text-[#3F4844]">
-                  Certificates
-                </span>
-              </div>
-
-            </div>
-
-            <NavLink
-              to="/profile"
-              className="mt-6 block rounded-lg bg-[#16302B] px-5 py-3 text-center text-sm font-medium text-white transition hover:bg-[#0E6B5C]"
-            >
-              Complete Profile
-            </NavLink>
-
+            <NavLink to="/profile" className="mt-5 flex items-center justify-center gap-2 rounded-xl bg-[#16302B] px-4 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#0E6B5C]">Complete Profile <ArrowRight size={16} /></NavLink>
           </div>
+        </section>
 
-        </div>
+        {/* Recent orders */}
+        <section className="mt-6 rounded-3xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <div className="flex items-center justify-between border-b border-slate-100 p-5 dark:border-slate-800"><div><h2 className="text-lg font-black text-[#16302B] dark:text-white">Recent Orders</h2><p className="mt-1 text-sm text-slate-500">Your latest service activity</p></div><NavLink to="/orders" className="text-sm font-bold text-[#0E6B5C] hover:underline">View all</NavLink></div>
+          <div className="divide-y divide-slate-100 dark:divide-slate-800">
+            {recent.map(({ service, customer, location, time, amount, status, icon: Icon }) => <NavLink key={service} to="/orders" className="group flex flex-col gap-3 p-5 transition hover:bg-[#F7F8F7] sm:flex-row sm:items-center dark:hover:bg-slate-950"><span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#0E6B5C]/10 text-[#0E6B5C] transition group-hover:scale-110"><Icon size={18} /></span><span className="flex-1"><span className="block font-bold text-[#16302B] dark:text-white">{service}</span><span className="mt-1 block text-sm text-slate-500">{customer} · {location} · {time}</span></span><span className="flex items-center justify-between gap-4 sm:block sm:text-right"><span className="block font-black text-[#16302B] dark:text-white">{amount}</span><span className={`mt-1 inline-block rounded-full px-2.5 py-1 text-[11px] font-bold ${status === "Completed" ? "bg-[#0E6B5C]/10 text-[#0E6B5C]" : "bg-orange-50 text-orange-700"}`}>{status}</span></span><ChevronRight size={18} className="hidden text-slate-400 transition group-hover:translate-x-1 sm:block" /></NavLink>)}
+          </div>
+        </section>
       </div>
-    </Layout>
+    </div>
   );
 };
 

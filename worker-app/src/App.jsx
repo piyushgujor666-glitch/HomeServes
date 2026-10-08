@@ -1,21 +1,18 @@
 import React from "react";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-// ================= MAIN PAGES =================
+import Layout from "./components/Layout";
+
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Dashboard from "./pages/Dashboard";
-import Orders from "./pages/Orders";
-
-// ================= AUTH =================
 import Forgot from "./pages/Forgot";
 
-// ================= PROFILE PAGES =================
+import Dashboard from "./pages/Dashboard";
+import Orders from "./pages/Orders";
+import Earnings from "./pages/Earnings";
+import Schedule from "./pages/Schedule";
+import OrderDetails from "./pages/OrderDetails";
+
 import Profile from "./pages/Profile/Profile";
 import PersonalInfo from "./pages/Profile/PersonalInfo";
 import KYC from "./pages/Profile/KYC";
@@ -26,100 +23,27 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Public / Auth */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/forgot" element={<Forgot />} />
 
-        {/* ================= AUTH ================= */}
+        {/* Worker App */}
+        <Route path="/dashboard" element={<Layout><Dashboard /></Layout>} />
+        <Route path="/orders" element={<Layout><Orders /></Layout>} />
+        <Route path="/orders/:orderId" element={<Layout><OrderDetails /></Layout>} />
+        <Route path="/earning" element={<Layout><Earnings /></Layout>} />
+        <Route path="/schedule" element={<Layout><Schedule /></Layout>} />
 
-        {/* Login */}
-        <Route
-          path="/login"
-          element={<Login />}
-        />
+        {/* Profile */}
+        <Route path="/profile" element={<Layout><Profile /></Layout>} />
+        <Route path="/profile/personal" element={<Layout><PersonalInfo /></Layout>} />
+        <Route path="/profile/kyc" element={<Layout><KYC /></Layout>} />
+        <Route path="/profile/experience" element={<Layout><Experience /></Layout>} />
+        <Route path="/profile/certificates" element={<Layout><Certificate /></Layout>} />
 
-        {/* Signup */}
-        <Route
-          path="/signup"
-          element={<Signup />}
-        />
-
-        {/* Forgot Password */}
-        <Route
-          path="/forgot"
-          element={<Forgot />}
-        />
-
-
-        {/* ================= MAIN ================= */}
-
-        {/* Dashboard */}
-        <Route
-          path="/dashboard"
-          element={<Dashboard />}
-        />
-
-        {/* Orders */}
-        <Route
-          path="/orders"
-          element={<Orders />}
-        />
-
-
-        {/* ================= PROFILE ================= */}
-
-        {/* Main Profile */}
-        <Route
-          path="/profile"
-          element={<Profile />}
-        />
-
-        {/* Personal Information */}
-        <Route
-          path="/profile/personal"
-          element={<PersonalInfo />}
-        />
-
-        {/* KYC */}
-        <Route
-          path="/profile/kyc"
-          element={<KYC />}
-        />
-
-        {/* Professional Experience */}
-        <Route
-          path="/profile/experience"
-          element={<Experience />}
-        />
-
-        {/* Certificates */}
-        <Route
-          path="/profile/certificates"
-          element={<Certificate />}
-        />
-
-
-        {/* ================= DEFAULT ================= */}
-
-        {/* Open "/" → Login */}
-        <Route
-          path="/"
-          element={
-            <Navigate
-              to="/login"
-              replace
-            />
-          }
-        />
-
-        {/* Invalid URL → Login */}
-        <Route
-          path="*"
-          element={
-            <Navigate
-              to="/login"
-              replace
-            />
-          }
-        />
-
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </BrowserRouter>
   );

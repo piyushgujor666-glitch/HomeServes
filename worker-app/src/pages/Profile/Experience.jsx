@@ -1,10 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Layout from "../../components/Layout";
-
 const Experience = () => {
   return (
-    <Layout>
       <div className="min-h-screen bg-gray-50 p-6 md:p-8">
 
         <div className="mb-6">
@@ -118,7 +115,6 @@ const Experience = () => {
 
         </div>
       </div>
-    </Layout>
   );
 };
 

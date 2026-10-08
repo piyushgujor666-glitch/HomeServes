@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import Layout from "../components/Layout";
-
+import { NavLink } from "react-router-dom";
 import {
   Package,
   Snowflake,
@@ -22,7 +20,6 @@ import {
 const Orders = () => {
   const [filter, setFilter] = useState("All");
 
-  const navigate = useNavigate();
 
   // Temporary dummy data
   const orders = [
@@ -142,20 +139,6 @@ const Orders = () => {
   };
 
   return (
-    <Layout>
-      {/* Back / Next Navigation */}
-      <div className="pointer-events-none fixed inset-x-0 bottom-6 z-50 flex items-center justify-between px-4 md:px-6">
-
-        {/* Back Button */}
-        <button
-          type="button"
-          onClick={() => navigate("/dashboard")}
-          className="pointer-events-auto rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#16302B] shadow-lg ring-1 ring-black/10 transition hover:bg-[#16302B] hover:text-white"
-        >
-          ← Back
-        </button>
-      </div>
-
       <div className="min-h-screen bg-[#FBFAF7] p-4 md:p-8">
 
         {/* Header */}
@@ -478,7 +461,6 @@ const Orders = () => {
         </div>
 
       </div>
-    </Layout>
   );
 };
 

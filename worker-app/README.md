@@ -1,16 +1,48 @@
-# React + Vite
+# FixMate Worker App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive React + Vite worker portal for FixMate service professionals.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Dashboard with worker stats and smart workday insight
+- Orders list with filters and order details
+- Earnings dashboard with monthly chart, payout card and transaction filters
+- Smart Schedule page with day selection, timeline and workload insight
+- Profile and profile-management pages
+- Responsive desktop navigation
+- App-style fixed mobile bottom navigation
+- Extra bottom-safe spacing so content is never hidden behind mobile navigation
+- Dark/light theme toggle in the header
+- Notification dropdown
+- Smooth hover, lift, scale and focus interactions
+- React Router based page structure with a single shared Layout
+- No duplicate Header/Footer rendering inside individual pages
 
-## React Compiler
+## Routes
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- `/login`
+- `/signup`
+- `/forgot`
+- `/dashboard`
+- `/orders`
+- `/orders/:orderId`
+- `/earning`
+- `/schedule`
+- `/profile`
+- `/profile/personal`
+- `/profile/kyc`
+- `/profile/experience`
+- `/profile/certificates`
 
-## Expanding the ESLint configuration
+## Run locally
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build
+```

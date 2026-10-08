@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import Layout from "../../components/Layout";
-
 const Certificates = () => {
   const [certificate, setCertificate] = useState(null);
 
@@ -14,7 +12,6 @@ const Certificates = () => {
   };
 
   return (
-    <Layout>
       <div className="min-h-screen bg-gray-50 p-6 md:p-8">
 
         <div className="mb-6">
@@ -126,7 +123,6 @@ const Certificates = () => {
 
         </div>
       </div>
-    </Layout>
   );
 };
 

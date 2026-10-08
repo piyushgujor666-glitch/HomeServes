@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import Layout from "../../components/Layout";
 import {
   ArrowLeft,
   User,
@@ -58,7 +57,6 @@ const PersonalInfo = () => {
   };
 
   return (
-    <Layout>
       <div className="min-h-screen bg-[#FBFAF7] p-5 md:p-8">
 
         {/* Header */}
@@ -370,7 +368,6 @@ const PersonalInfo = () => {
         </div>
 
       </div>
-    </Layout>
   );
 };
 
