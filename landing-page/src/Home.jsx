@@ -7,9 +7,9 @@ import heroimage from "./assets/hero_image.png"
    DEPLOYED PROJECT LINKS
 ========================================================= */
 
-const USER_URL = "https://home-serves-wism.vercel.app/";
-const WORKER_URL = "https://home-serves-hs1g.vercel.app/";
-const ADMIN_URL = "https://home-serves-biwa.vercel.app/";
+const USER_URL = "https://home-serves-uz4o.vercel.app/";
+const WORKER_URL = "https://home-serves.vercel.app/";
+const ADMIN_URL = "https://home-serves-8zh3.vercel.app/";
 
 /* =========================================================
    HOME / LANDING PAGE
